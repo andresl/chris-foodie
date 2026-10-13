@@ -1,0 +1,11 @@
+---
+// Texto bilingüe: pinta las dos versiones y el CSS esconde la que no toca según <html data-lang>.
+interface Props { en?: string; es?: string }
+const { en, es } = Astro.props;
+const conSlots = Astro.slots.has('en') || Astro.slots.has('es');
+---
+{conSlots ? (
+  <><span class="i-en" lang="en"><slot name="en" /></span><span class="i-es" lang="es"><slot name="es" /></span></>
+) : (
+  <><span class="i-en" lang="en">{en}</span><span class="i-es" lang="es">{es}</span></>
+)}

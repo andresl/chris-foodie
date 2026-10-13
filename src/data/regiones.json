@@ -1,0 +1,47 @@
+{
+ "latam": {
+  "en": "Latin America",
+  "es": "Latinoamérica",
+  "color": "#E2231A"
+ },
+ "china": {
+  "en": "China & Taiwan",
+  "es": "China y Taiwán",
+  "color": "#FFC20E"
+ },
+ "japan": {
+  "en": "Japan",
+  "es": "Japón",
+  "color": "#E8338A"
+ },
+ "korea": {
+  "en": "Korea",
+  "es": "Corea",
+  "color": "#F26A1B"
+ },
+ "seasia": {
+  "en": "Burma",
+  "es": "Birmania",
+  "color": "#0E9F59"
+ },
+ "europe": {
+  "en": "Europe",
+  "es": "Europa",
+  "color": "#16A5C8"
+ },
+ "mideast": {
+  "en": "Middle East",
+  "es": "Medio Oriente",
+  "color": "#7A3FB4"
+ },
+ "usa": {
+  "en": "California & USA",
+  "es": "California y EE. UU.",
+  "color": "#8BC53F"
+ },
+ "cafe": {
+  "en": "Coffee & sweets",
+  "es": "Café y dulce",
+  "color": "#B7742F"
+ }
+}

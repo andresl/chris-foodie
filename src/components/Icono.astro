@@ -1,0 +1,42 @@
+---
+// Íconos de Phosphor (bold, y fill donde el ícono es una marca o un relleno). Solo los que usa el sitio.
+import bus from '@phosphor-icons/core/assets/bold/bus-bold.svg?raw';
+import navegar from '@phosphor-icons/core/assets/fill/navigation-arrow-fill.svg?raw';
+import control from '@phosphor-icons/core/assets/bold/game-controller-bold.svg?raw';
+import mapa from '@phosphor-icons/core/assets/bold/map-trifold-bold.svg?raw';
+import lista from '@phosphor-icons/core/assets/bold/list-bullets-bold.svg?raw';
+import estrella from '@phosphor-icons/core/assets/fill/star-fill.svg?raw';
+import chispa from '@phosphor-icons/core/assets/fill/star-four-fill.svg?raw';
+import instagram from '@phosphor-icons/core/assets/bold/instagram-logo-bold.svg?raw';
+import x from '@phosphor-icons/core/assets/bold/x-logo-bold.svg?raw';
+import sale from '@phosphor-icons/core/assets/bold/arrow-up-right-bold.svg?raw';
+import pin from '@phosphor-icons/core/assets/fill/map-pin-fill.svg?raw';
+import reloj from '@phosphor-icons/core/assets/bold/clock-bold.svg?raw';
+import tenedor from '@phosphor-icons/core/assets/bold/fork-knife-bold.svg?raw';
+import compartir from '@phosphor-icons/core/assets/bold/share-network-bold.svg?raw';
+import otra from '@phosphor-icons/core/assets/bold/arrow-counter-clockwise-bold.svg?raw';
+import cerrar from '@phosphor-icons/core/assets/bold/x-bold.svg?raw';
+import play from '@phosphor-icons/core/assets/fill/play-fill.svg?raw';
+import comillas from '@phosphor-icons/core/assets/fill/quotes-fill.svg?raw';
+import fila from '@phosphor-icons/core/assets/bold/users-three-bold.svg?raw';
+import calendario from '@phosphor-icons/core/assets/bold/calendar-check-bold.svg?raw';
+import efectivo from '@phosphor-icons/core/assets/bold/money-bold.svg?raw';
+import izq from '@phosphor-icons/core/assets/bold/caret-left-bold.svg?raw';
+import der from '@phosphor-icons/core/assets/bold/caret-right-bold.svg?raw';
+import flecha from '@phosphor-icons/core/assets/bold/arrow-right-bold.svg?raw';
+import video from '@phosphor-icons/core/assets/fill/film-strip-fill.svg?raw';
+import telefono from '@phosphor-icons/core/assets/bold/phone-bold.svg?raw';
+import web from '@phosphor-icons/core/assets/bold/globe-simple-bold.svg?raw';
+import mira from '@phosphor-icons/core/assets/bold/crosshair-bold.svg?raw';
+
+const iconos: Record<string, string> = {
+  bus, navegar, control, mapa, lista, estrella, chispa, instagram, x, sale, pin, reloj, tenedor, compartir, otra,
+  cerrar, play, comillas, fila, calendario, efectivo, izq, der, flecha, video, telefono, web, mira,
+};
+
+interface Props { n: string; class?: string; titulo?: string }
+const { n, class: clase, titulo } = Astro.props;
+const svg = (iconos[n] ?? '')
+  .replace('<svg ', `<svg class="icono ${clase ?? ''}" ${titulo ? `role="img" aria-label="${titulo}"` : 'aria-hidden="true" focusable="false"'} `);
+---
+<Fragment set:html={svg} />

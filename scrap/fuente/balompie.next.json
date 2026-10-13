@@ -1,0 +1,428 @@
+{
+ "props": {
+  "pageProps": {
+   "review": {
+    "slug": "balompie-cafe",
+    "share_title": "Balompié Café: legit pupusas, and the bill comes in a soccer shoe",
+    "best_dish": "Pupusa de queso con loroco",
+    "images": [],
+    "name": "Balompié Café",
+    "city": "San Francisco",
+    "location": "Mission · Bernal Heights",
+    "cuisine": "Salvadoran",
+    "address": "3349 18th St, San Francisco, CA 94110",
+    "website": "https://www.balompiecafe1.com/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Balompi%C3%A9+Caf%C3%A9+3349+18th+St+San+Francisco+CA+94110",
+    "review_date": "2026-10-13",
+    "status": "in_progress",
+    "dishes_recommended": [
+     {
+      "name": "Pupusa de queso con loroco",
+      "description": "My take. Cheese and loroco, the Salvadoran vegetable (an edible flower bud). The best version."
+     },
+     {
+      "name": "Mixta",
+      "description": "Chicharrón, cheese and beans. A very nice mix, but not everyone likes the beans."
+     },
+     {
+      "name": "Kolashampan",
+      "description": "The orange Salvadoran soda. Always get one."
+     }
+    ],
+    "personal_recommendation": "I really love how the bill comes in a small soccer shoe at the end. The pupusas are legit. I have been a couple of times with people from El Salvador who really miss them. San Francisco has a lot of amazing places, and this is one of my best options. I miss pupusas too, since they are very common in Guatemala.\n\nThis is not a place to discuss tech or bring your techie friends. This is a place to enjoy Salvadoran food.\n\nMy take: the pupusa de queso with loroco. If you don't know what loroco is, it's the Salvadoran vegetable, as English menus call it: actually the edible flower bud of a vine (Fernaldia pandurata) grown in El Salvador and Guatemala, with a green, herbal flavor, a bit like asparagus or squash blossom, that melts into the cheese. You have to try it. The best version is just with cheese, loroco con queso. They also do some exotic combinations (like Panchita's, another good place, does), but I stick with the classics. The other good combination is the Mixta, the one with chicharrón and also beans. That's a very nice mix, but not everyone likes the beans, so be cautious with that. Central Americans, we really love it. Better to order pupusas and not the combos, but I understand why they push the combos for people who don't have the habit of eating pupusas.\n\nAnd I really believe you need to eat this with your hands, so just go to the bathroom, wash your hands, and then enjoy your pupusas. Put the curtido on the side of the pupusa first, then some of the salsa on top of it, and mix it. The best thing is when you grab a piece of pupusa, curtido, and salsa with your hand and eat it. That's how it really makes sense, and that's how you will enjoy pupusas as a real salvadoreño: with a Kolashampan, the orange Salvadoran soda. Really, really good. Or a beer, if it's noon and they're watching some soccer on the screens.\n\nYou will definitely hear the Salvadoran accent and understand how legit this place is.",
+    "related_reviews": [
+     "el-chato",
+     "the-morris",
+     "mijote"
+    ],
+    "branches": [
+     {
+      "name": "Balompié Café #1 — Mission",
+      "city": "San Francisco",
+      "location": "Mission",
+      "address": "3349 18th St (at Capp St), San Francisco, CA 94110",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Balompi%C3%A9+Caf%C3%A9+3349+18th+St+San+Francisco+CA+94110",
+      "note": "The original, opened in 1987. Closed Mon–Tue; Wed–Fri 10am–8pm, Sat–Sun 9am–8pm."
+     },
+     {
+      "name": "Balompié Café #3 — Bernal Heights",
+      "city": "San Francisco",
+      "location": "Bernal Heights",
+      "address": "3801 Mission St (at Richland Ave), San Francisco, CA",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Balompi%C3%A9+Caf%C3%A9+3801+Mission+St+San+Francisco+CA",
+      "note": "Closed Tue; Mon and Wed–Fri 10am–8pm, Sat–Sun 9am–8pm."
+     }
+    ]
+   },
+   "prevReview": null,
+   "nextReview": null,
+   "relatedReviews": [
+    {
+     "slug": "el-chato",
+     "name": "El Chato",
+     "location": "Mission",
+     "cuisine": "Spanish Tapas",
+     "address": "2301 Bryant St, San Francisco, CA 94110",
+     "maps_url": "https://www.google.com/maps?q=El+Chato+San+Francisco+Mission",
+     "review_date": "2026-07-14",
+     "rating": 4,
+     "price_range": "$$",
+     "meal_type": [
+      "lunch",
+      "dinner",
+      "late-night"
+     ],
+     "service_style": "bar",
+     "ideal_for": "Long afternoons, tapas grazing, and following Spain",
+     "best_dish": "Tortilla Española",
+     "reservation_tip": "Small corner bar. Walk in, grab an outside table on a sunny Mission day, or trust the team at the wine stand.",
+     "instagram": "https://instagram.com/elchatosf",
+     "related_reviews": [
+      "sala-de-despiece",
+      "cerveceria-catalana",
+      "mosto"
+     ],
+     "dishes_recommended": [
+      {
+       "name": "Tortilla Española",
+       "description": "The simple, deep version you want: custardy inside, golden at the edges. They serve it as a pintxo on grilled bread with piquillo and allioli. During the World Cup it kept getting passed around with vermut and Estrella.",
+       "searchable_keywords": [
+        "custardy",
+        "pintxo",
+        "potato omelette",
+        "tortilla de patata",
+        "must-order",
+        "traditional"
+       ]
+      },
+      {
+       "name": "Navajas",
+       "description": "Galician razor clams from the conservas list. One of the dishes I keep coming back for.",
+       "searchable_keywords": [
+        "razor clams",
+        "conservas",
+        "tinned fish",
+        "galicia",
+        "seafood"
+       ]
+      },
+      {
+       "name": "Jamón and Cheese",
+       "description": "A proper Spanish jamón and cheese selection. Get the toasted jamón sandwich too: melted cheese, piparras, paprika, chips on the side.",
+       "searchable_keywords": [
+        "jamón",
+        "ibérico",
+        "cheese",
+        "sandwich",
+        "shareable"
+       ]
+      },
+      {
+       "name": "Pan con Tomate",
+       "description": "Toasted bread with olive oil and grated tomato you spread yourself. The simple Spanish bite that belongs next to the tortilla and a chato of wine.",
+       "searchable_keywords": [
+        "tomato bread",
+        "pan tumaca",
+        "toasted",
+        "olive oil",
+        "classic"
+       ]
+      },
+      {
+       "name": "Chatos of Natural Wine",
+       "description": "Ask for chatos: small glasses so you can try more of the list. It leans on small European producers. Trust their recommendations from the wine stand.",
+       "searchable_keywords": [
+        "natural wine",
+        "small pour",
+        "european",
+        "tasting",
+        "small producers"
+       ]
+      },
+      {
+       "name": "Vermut",
+       "description": "Their vermut is part of the afternoon. They also have a great non-alcoholic one for those early World Cup matches.",
+       "searchable_keywords": [
+        "vermouth",
+        "non-alcoholic",
+        "spanish",
+        "aperitif"
+       ]
+      },
+      {
+       "name": "Estrella Galicia",
+       "description": "The beer that shows up when Spain is playing. Share one with the table while you call the goals.",
+       "searchable_keywords": [
+        "beer",
+        "galicia",
+        "spanish",
+        "world cup"
+       ]
+      }
+     ],
+     "faqs": [
+      {
+       "question": "What are 'chatos' at El Chato?",
+       "answer": "Chatos are small glasses of wine, a traditional way to taste and explore in Spanish bars. Ask for some so you can try more of the natural wine list, which leans on small European producers. Trust the recommendations from the wine stand."
+      },
+      {
+       "question": "What should I order at El Chato?",
+       "answer": "Go for the tapas, the tortilla española, and the wines. The tortilla is custardy inside and golden at the edges, served as a pintxo. I really enjoy the navajas, the jamón and cheese, and pan con tomate. Ask for chatos. Get vermut, including the non-alcoholic one if you are there early, or share an Estrella."
+      },
+      {
+       "question": "Does El Chato have non-alcoholic drinks?",
+       "answer": "Yes. They have a great non-alcoholic vermut, which is what you want for those early World Cup matches."
+      },
+      {
+       "question": "Is there outdoor seating at El Chato?",
+       "answer": "Yes. On a sunny day you can hang out outside on the corner of Bryant and 21st. The Mission gets better weather than the rest of the city, and that sidewalk is part of the vibe."
+      },
+      {
+       "question": "Is El Chato a restaurant or a bar?",
+       "answer": "El Chato is a natural wine bar that serves excellent tapas. It is the kind of bar you end up trusting with a whole afternoon: come for the wine, stay for the tortilla española, and let the corner do the rest."
+      }
+     ],
+     "personal_recommendation": "This corner really makes Madrid a thing in the Mission. Beautiful place, great owners, and the kind of bar you end up trusting with a whole afternoon.\n\n    Spending a lot of time in Madrid, Barcelona, Granada and San Sebastián, you develop a love for the passion of Spanish food. And finding that same character in their owners, that love for making a tortilla taste good and caring for the bread and the vermuts, that's what makes El Chato a place where you feel in España.\n\n    It's a natural wine bar. Go for the tapas, the tortilla española, and the wines. They're just amazing. I really enjoy the navajas, and their jamón and cheese selection. Ask for some chatos so you can try more of what they have on the menu. The owners' passion shows in the food and in a list that leans on small European producers. The tortilla is simple, soft inside and golden at the edges.\n\n    They serve that tortilla as a pintxo on grilled bread with piquillo and allioli. Get pan con tomate with it, and spread the tomato yourself. The toasted jamón sandwich with melted cheese and piparras is the other plate I keep in the middle of the table.\n\n    During the World Cup this was a great community for following Spain. Locals and Spaniards hanging out, sharing an Estrella, calling the goals, passing around tortilla de patata and their vermut. They have a great non-alcoholic one for those early matches. The team is friendly. Trust their recommendations from the wine stand.\n\n    On a sunny day (the Mission gets better weather than the rest of the city) you can hang out outside. That corner doesn't just feel Mission. A friend said it could be Roma in Mexico City, Castellana in Madrid, Palermo Soho in Buenos Aires, or Providencia in Chile. There's a vibe in the corner.\n\n    Feels like a slice of Madrid in the Mission, with warm hospitality and flavors that actually hold up.",
+     "images": [
+      "/img/reviews/el-chato-pan-con-tomate-hero.jpg",
+      "/img/reviews/el-chato-tortilla-espanola-tight.jpg",
+      "/img/reviews/el-chato-storefront-f9d04878b309.jpg",
+      "/img/reviews/el-chato-world-cup-9ad3c68f7938.jpg"
+     ],
+     "image_captions": {
+      "/img/reviews/el-chato-pan-con-tomate-hero.jpg": "Pan con Tomate",
+      "/img/reviews/el-chato-tortilla-espanola-tight.jpg": "Tortilla Española",
+      "/img/reviews/el-chato-storefront-f9d04878b309.jpg": "Storefront",
+      "/img/reviews/el-chato-world-cup-9ad3c68f7938.jpg": "World Cup"
+     },
+     "city": "San Francisco",
+     "share_title": "El Chato is that Spanish corner that brings vibes of Madrid to the Mission.",
+     "seo_description": "El Chato is that Spanish corner that brings Madrid to the Mission. Tortilla española, navajas, jamón, chatos of natural wine, and vermut.",
+     "og_image": "/img/reviews/el-chato-pan-con-tomate-hero.jpg"
+    },
+    {
+     "slug": "the-morris",
+     "seo_description": "The Morris review, San Francisco (Mission / Potrero Flats): extraordinary duck, great bread, salads. Dinner reservations are easy to get.",
+     "name": "The Morris",
+     "location": "Mission / Potrero Flats",
+     "cuisine": "American Contemporary",
+     "address": "2501 Mariposa St, San Francisco, CA 94110",
+     "website": "https://themorris-sf.com",
+     "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Morris+2501+Mariposa+St+San+Francisco",
+     "review_date": "2025-12-14",
+     "rating": 5,
+     "price_range": "$$$",
+     "meal_type": [
+      "dinner"
+     ],
+     "service_style": "fine-dining",
+     "ideal_for": "Duck lovers and vegetable-forward dining",
+     "best_dish": "Duck",
+     "reservation_tip": "Reservations not hard to achieve during December dinner times",
+     "telephone": "+1-415-655-9199",
+     "resy_url": "https://resy.com/cities/sf/the-morris",
+     "instagram": "https://instagram.com/themorris_sf",
+     "related_reviews": [
+      "mr-jius",
+      "le-palais",
+      "plow"
+     ],
+     "dishes_recommended": [
+      {
+       "name": "Duck",
+       "description": "Extraordinary duck.",
+       "searchable_keywords": [
+        "duck",
+        "extraordinary",
+        "signature"
+       ]
+      },
+      {
+       "name": "Beets and radicchio",
+       "description": "Beets, radicchio, soft cheese.",
+       "searchable_keywords": [
+        "beets",
+        "radicchio",
+        "salad"
+       ]
+      },
+      {
+       "name": "Bread",
+       "description": "Great bread.",
+       "searchable_keywords": [
+        "bread"
+       ]
+      },
+      {
+       "name": "Salads",
+       "description": "Salads. Strong on vegetables.",
+       "searchable_keywords": [
+        "salad",
+        "vegetables"
+       ]
+      }
+     ],
+     "faqs": [
+      {
+       "question": "What should I order at The Morris?",
+       "answer": "Extraordinary duck. Great bread and salads. Strong on vegetables."
+      },
+      {
+       "question": "How hard are reservations at The Morris?",
+       "answer": "Not hard during December dinner times."
+      }
+     ],
+     "personal_recommendation": "Extraordinary duck, great bread selection and salads. Strong on vegetables. Reservations are also not hard to achieve during December dinner times.",
+     "images": [
+      "/img/reviews/the-morris-roasted-duck-hero.jpg",
+      "/img/reviews/the-morris-beets-radicchio-0b0804f6.jpg",
+      "/img/reviews/the-morris-chocolate-dessert-vanilla-ice-cream-421fba7f.jpg"
+     ],
+     "city": "San Francisco",
+     "share_title": "The Morris: Extraordinary duck, and salads. Oh, and great bread.",
+     "og_image": "/img/reviews/the-morris-roasted-duck-hero.jpg",
+     "image_captions": {
+      "/img/reviews/the-morris-roasted-duck-hero.jpg": "",
+      "/img/reviews/the-morris-beets-radicchio-0b0804f6.jpg": "Beets and radicchio",
+      "/img/reviews/the-morris-chocolate-dessert-vanilla-ice-cream-421fba7f.jpg": "Chocolate dessert"
+     }
+    },
+    {
+     "slug": "mijote",
+     "seo_description": "Mijoté review, San Francisco: former Mission sushi bar, weekly four-course French prix fixe. Sit at the bar, love the bread, ask what wine is on today.",
+     "name": "Mijoté",
+     "location": "Mission",
+     "cuisine": "French",
+     "address": "2400 Harrison St, San Francisco, CA 94110",
+     "website": "https://www.mijotesf.com",
+     "maps_url": "https://www.google.com/maps?q=Mijoté+San+Francisco+Mission",
+     "review_date": "2025-01-27",
+     "rating": 5,
+     "price_range": "$$$",
+     "meal_type": [
+      "dinner"
+     ],
+     "service_style": "fine-dining",
+     "ideal_for": "Intimate dinners and food enthusiasts",
+     "best_dish": "Weekly four-course prix fixe",
+     "reservation_tip": "Request bar seating for the best experience watching the chefs",
+     "resy_url": "https://resy.com/cities/sf/mijote",
+     "instagram": "https://instagram.com/mijotesf",
+     "related_reviews": [
+      "san-ho-won",
+      "el-chato",
+      "rintaro",
+      "zass",
+      "tonys-pizza"
+     ],
+     "dishes_recommended": [
+      {
+       "name": "Weekly four-course prix fixe",
+       "description": "Fixed-price French menu that changes weekly, with a couple of add-ons. Sit at the bar.",
+       "searchable_keywords": [
+        "prix fixe",
+        "four-course",
+        "weekly",
+        "french",
+        "bar"
+       ]
+      },
+      {
+       "name": "Lamb loin with saffron",
+       "description": "From a weekly menu card.",
+       "searchable_keywords": [
+        "lamb",
+        "saffron"
+       ]
+      },
+      {
+       "name": "Bread",
+       "description": "You are going to love their bread.",
+       "searchable_keywords": [
+        "bread"
+       ]
+      },
+      {
+       "name": "Wine list",
+       "description": "Check the pairings or whatever is eclectic on the wine list that day.",
+       "searchable_keywords": [
+        "wine",
+        "natural",
+        "pairings"
+       ]
+      }
+     ],
+     "faqs": [
+      {
+       "question": "Where should I sit at Mijoté?",
+       "answer": "Ask to be seated at the bar. That is the best location. You watch the chef finish the French plates right in front of you."
+      },
+      {
+       "question": "What is the menu like at Mijoté?",
+       "answer": "Weekly four-course prix fixe with a couple of add-ons. You are going to love their bread. Check the pairings or whatever is eclectic on the wine list that day."
+      },
+      {
+       "question": "Why does Mijoté feel different?",
+       "answer": "This used to be a sushi bar and they kept that dynamic. French cooking with the finishing touches right in front of you. That is kind of nice."
+      }
+     ],
+     "personal_recommendation": "I didn't really understand why I liked this restaurant so much the first time I was there, but it was probably because I was sitting at the bar next to the chef and he was finishing all these delicious French plates in front of me. And then it hit me. This used to be a sushi bar, and they kept that dynamic. They bring all the experience of cooking French food in Paris into San Francisco, but they do it and serve the plates with all the finishing touches right in front of you. That's kind of nice. Mijoté has a great, minimalistic, fixed-price menu with a couple of add-ons. You're going to love their bread and check the pairings or just see what's eclectic today in their wine list because they always have some great stuff. And make sure to ask to be seated at the bar. That's the best location.",
+     "images": [
+      "/img/reviews/mijote-lamb-loin-saffron-sauce-9109a14b.jpg",
+      "/img/reviews/mijote-cauliflower-grain-sauce-3f60358a.jpg",
+      "/img/reviews/mijote-cheese-and-soup-60bc2fb3.jpg",
+      "/img/reviews/mijote-octopus-citrus-salad-7d688c40.jpg",
+      "/img/reviews/mijote-pomegranate-meringue-dessert-cc8deafe.jpg"
+     ],
+     "city": "San Francisco",
+     "share_title": "Mijoté: The sushi bar where you get a French omakase in the Mission",
+     "og_image": "/img/reviews/mijote-lamb-loin-saffron-sauce-9109a14b.jpg",
+     "press_links": [
+      {
+       "title": "Tucked away in an S.F. Victorian, this tiny new restaurant is reinventing the French bistro",
+       "publication": "SF Chronicle",
+       "url": "https://www.sfchronicle.com/food/restaurants/article/French-restaurant-san-francisco-17199356.php",
+       "excerpt": "The savory dishes were showcases for Tada's mind for sauces, including a floral beurre blanc with saffron infusion."
+      },
+      {
+       "title": "Mijoté's constantly changing menu keeps us going back",
+       "publication": "The Infatuation",
+       "url": "https://www.theinfatuation.com/san-francisco/reviews/mijote",
+       "excerpt": "The charming, sunlit space adds to the excitement. Tables and bar seats are close together."
+      },
+      {
+       "title": "Mijoté Is a San Francisco Sleeper Hit Hiding in Plain Sight",
+       "publication": "Resy",
+       "url": "https://blog.resy.com/2025/01/mijote-is-a-san-francisco-sleeper-hit-hiding-in-plain-sight/",
+       "excerpt": "One of the most exciting restaurants San Francisco has seen in the last few years."
+      }
+     ],
+     "guest_review": {
+      "author": "My partner",
+      "intro": "My partner chose Mijoté. Her take:",
+      "paragraphs": [
+       "Mijoté is an affordable tasting in San Francisco. Incredible that the chef turned a sushi bar into a fresh experience. Chef from Japan worked in a famous bistro in Paris. We’re so lucky to have him in San Francisco.",
+       "The menu and service are unpretentious and you get very good French food."
+      ]
+     },
+     "image_captions": {
+      "/img/reviews/mijote-lamb-loin-saffron-sauce-9109a14b.jpg": "Lamb loin, saffron",
+      "/img/reviews/mijote-cauliflower-grain-sauce-3f60358a.jpg": "Cauliflower",
+      "/img/reviews/mijote-cheese-and-soup-60bc2fb3.jpg": "Cheese and soup",
+      "/img/reviews/mijote-octopus-citrus-salad-7d688c40.jpg": "Octopus, citrus",
+      "/img/reviews/mijote-pomegranate-meringue-dessert-cc8deafe.jpg": "Pomegranate meringue"
+     }
+    }
+   ]
+  },
+  "__N_SSG": true
+ },
+ "page": "/reviews/[slug]",
+ "query": {
+  "slug": "balompie-cafe"
+ },
+ "buildId": "7Gl7qmPH3amlfm_9L4hj4",
+ "isFallback": false,
+ "gsp": true,
+ "scriptLoader": []
+}

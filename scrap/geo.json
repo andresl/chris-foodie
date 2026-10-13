@@ -1,0 +1,313 @@
+{
+ "Mr Jiu's": {
+  "lat": 37.7936719,
+  "lng": -122.4065757,
+  "fuente": "28 Waverly Pl, San Francisco, CA 94108",
+  "tipo": "bar"
+ },
+ "San Ho Won": {
+  "lat": 37.7595769,
+  "lng": -122.4102101,
+  "fuente": "2170 Bryant St, San Francisco, CA 94110",
+  "tipo": "restaurant"
+ },
+ "La Taqueria": {
+  "lat": 37.7508885,
+  "lng": -122.4180722,
+  "fuente": "2889 Mission St, San Francisco, CA 94110",
+  "tipo": "yes"
+ },
+ "Swan Oyster Depot": {
+  "lat": 37.7909693,
+  "lng": -122.4209185,
+  "fuente": "1517 Polk St, San Francisco, CA 94109",
+  "tipo": "restaurant"
+ },
+ "China Live": {
+  "lat": 37.7980401,
+  "lng": -122.4078656,
+  "fuente": "644 Broadway, San Francisco, CA 94133",
+  "tipo": "yes"
+ },
+ "Burma Love": {
+  "lat": 37.7696206,
+  "lng": -122.4221812,
+  "fuente": "211 Valencia St, San Francisco, CA 94103",
+  "tipo": "restaurant"
+ },
+ "Tony's Pizza": {
+  "lat": 37.8003332,
+  "lng": -122.4090513,
+  "fuente": "1570 Stockton St, San Francisco, CA 94133",
+  "tipo": "restaurant"
+ },
+ "Rintaro": {
+  "lat": 37.7688879,
+  "lng": -122.4151313,
+  "fuente": "82 14th St, San Francisco, CA 94103",
+  "tipo": "restaurant"
+ },
+ "Mijoté": {
+  "lat": 37.7589056,
+  "lng": -122.4126981,
+  "fuente": "2400 Harrison St, San Francisco, CA 94110",
+  "tipo": "restaurant"
+ },
+ "Lazy Bear": {
+  "lat": 37.7603507,
+  "lng": -122.4197035,
+  "fuente": "3416 19th St, San Francisco, CA 94110",
+  "tipo": "restaurant"
+ },
+ "Plow": {
+  "lat": 37.762535,
+  "lng": -122.395394,
+  "fuente": "1299 18th St, San Francisco, CA 94107",
+  "tipo": "restaurant"
+ },
+ "The Mill": {
+  "lat": 37.7762714,
+  "lng": -122.4382339,
+  "fuente": "736 Divisadero St, San Francisco, CA 94117",
+  "tipo": "house"
+ },
+ "Mensho Tokyo": {
+  "lat": 37.7868535,
+  "lng": -122.4144023,
+  "fuente": "672 Geary St, San Francisco, CA 94102",
+  "tipo": "yes"
+ },
+ "Octavia": {
+  "lat": 37.7879461,
+  "lng": -122.427042,
+  "fuente": "1701 Octavia St, San Francisco, CA 94109",
+  "tipo": "restaurant"
+ },
+ "Four Kings": {
+  "lat": 37.7941015,
+  "lng": -122.4050836,
+  "fuente": "710 Commercial St, San Francisco, CA 94108",
+  "tipo": "yes"
+ },
+ "Zuni Café": {
+  "lat": 37.7734497,
+  "lng": -122.4216527,
+  "fuente": "1658 Market St, San Francisco, CA 94102",
+  "tipo": "house"
+ },
+ "Tartine Bakery": {
+  "lat": 37.7614552,
+  "lng": -122.4239452,
+  "fuente": "600 Guerrero St, San Francisco, CA 94110",
+  "tipo": "bakery"
+ },
+ "Noe Cafe": {
+  "lat": 37.7484974,
+  "lng": -122.429217,
+  "fuente": "1299 Sanchez St, San Francisco, CA 94114",
+  "tipo": "cafe"
+ },
+ "El Chato": {
+  "lat": 37.7575118,
+  "lng": -122.4094386,
+  "fuente": "2301 Bryant St, San Francisco, CA 94110",
+  "tipo": "bar"
+ },
+ "Mosto": {
+  "lat": 37.7466168,
+  "lng": -122.4201588,
+  "fuente": "741A Valencia St, San Francisco, CA 94110",
+  "tipo": "tertiary"
+ },
+ "Yuanbao Jiaozi": {
+  "lat": 37.7635688,
+  "lng": -122.4806874,
+  "fuente": "2110 Irving St, San Francisco, CA 94122",
+  "tipo": "commercial"
+ },
+ "LoLo": {
+  "lat": 37.7573678,
+  "lng": -122.4214657,
+  "fuente": "974 Valencia St, San Francisco, CA 94110",
+  "tipo": "apartments"
+ },
+ "Shoji": {
+  "lat": 37.786686,
+  "lng": -122.3998909,
+  "fuente": "140 New Montgomery St, San Francisco, CA 94105",
+  "tipo": "commercial"
+ },
+ "Dumpling Time": {
+  "lat": 37.769775,
+  "lng": -122.402552,
+  "fuente": "1 Division St, San Francisco, CA 94103",
+  "tipo": "house"
+ },
+ "Kingdom of Dumplings": {
+  "lat": 37.742491,
+  "lng": -122.4846217,
+  "fuente": "1713 Taraval St, San Francisco, CA 94116",
+  "tipo": "yes"
+ },
+ "4505 Burgers & BBQ": {
+  "lat": 37.7761968,
+  "lng": -122.4382376,
+  "fuente": "705 Divisadero St, San Francisco, CA 94117",
+  "tipo": "restaurant"
+ },
+ "Cantoo Latin Asian Rotisserie": {
+  "lat": 37.7859264,
+  "lng": -122.4141624,
+  "fuente": "572 O'Farrell St, San Francisco, CA 94102",
+  "tipo": "yes"
+ },
+ "Burma Super Star": {
+  "lat": 37.7829134,
+  "lng": -122.4625652,
+  "fuente": "309 Clement St, San Francisco, CA 94118",
+  "tipo": "restaurant"
+ },
+ "Piccino": {
+  "lat": 37.75771,
+  "lng": -122.390094,
+  "fuente": "1001 Minnesota St, San Francisco, CA 94107",
+  "tipo": "house"
+ },
+ "Shizen": {
+  "lat": 37.7682823,
+  "lng": -122.4216684,
+  "fuente": "370 14th St, San Francisco, CA 94103",
+  "tipo": "restaurant"
+ },
+ "House of Prime Rib": {
+  "lat": 37.7933913,
+  "lng": -122.4225436,
+  "fuente": "1906 Van Ness Ave, San Francisco, CA 94109",
+  "tipo": "restaurant"
+ },
+ "Z & Y": {
+  "lat": 37.7959411,
+  "lng": -122.4060364,
+  "fuente": "655 Jackson St, San Francisco, CA 94133",
+  "tipo": "yes"
+ },
+ "Kitchen Istanbul": {
+  "lat": 37.782891,
+  "lng": -122.4632006,
+  "fuente": "349 Clement St, San Francisco, CA 94118",
+  "tipo": "restaurant"
+ },
+ "Flour + Water": {
+  "lat": 37.7589266,
+  "lng": -122.41238,
+  "fuente": "2401 Harrison St, San Francisco, CA 94110",
+  "tipo": "restaurant"
+ },
+ "State Bird Provisions": {
+  "lat": 37.7837055,
+  "lng": -122.4329482,
+  "fuente": "1529 Fillmore St, San Francisco, CA 94115",
+  "tipo": "restaurant"
+ },
+ "Bi-Rite Creamery": {
+  "lat": 37.7615705,
+  "lng": -122.425662,
+  "fuente": "3692 18th St, San Francisco, CA 94110",
+  "tipo": "ice_cream"
+ },
+ "Four Barrel Coffee": {
+  "lat": 37.7670162,
+  "lng": -122.4219251,
+  "fuente": "375 Valencia St, San Francisco, CA 94103",
+  "tipo": "cafe"
+ },
+ "Wise Sons Jewish Delicatessen": {
+  "lat": 37.7525492,
+  "lng": -122.4153293,
+  "fuente": "3150 24th St, San Francisco, CA 94110",
+  "tipo": "restaurant"
+ },
+ "Ju-ni": {
+  "lat": 37.7765789,
+  "lng": -122.4388579,
+  "fuente": "1335 Fulton Street, San Francisco, CA 94102",
+  "tipo": "yes"
+ },
+ "Marufuku Ramen": {
+  "lat": null,
+  "lng": null,
+  "fuente": "1581 Web St, San Francisco, CA 94115"
+ },
+ "Hog Island Oyster Co.": {
+  "lat": 37.7955487,
+  "lng": -122.3934746,
+  "fuente": "1 Ferry Building, San Francisco, CA 94111",
+  "tipo": "ferry_terminal"
+ },
+ "Oma San Francisco Station": {
+  "lat": 37.7849621,
+  "lng": -122.4307291,
+  "fuente": "1737 Post St, San Francisco, CA 94115",
+  "tipo": "gift"
+ },
+ "Doma Sushi": {
+  "lat": 37.7474034,
+  "lng": -122.4110506,
+  "fuente": "433 Precita Ave, San Francisco, CA 94110",
+  "tipo": "house"
+ },
+ "Universal Bakery": {
+  "lat": 37.7414088,
+  "lng": -122.4228625,
+  "fuente": "3458 Mission St, San Francisco, CA 94110",
+  "tipo": "yes"
+ },
+ "Reem's California Mission": {
+  "lat": 37.7505445,
+  "lng": -122.418138,
+  "fuente": "2901 Mission St, San Francisco, CA 94110",
+  "tipo": "bakery"
+ },
+ "Beit Rima": {
+  "lat": 37.7658964,
+  "lng": -122.4511263,
+  "fuente": "138 Carl St, San Francisco, CA 94117",
+  "tipo": "yes"
+ },
+ "Balompie Cafe": {
+  "lat": 37.7617819,
+  "lng": -122.4179659,
+  "fuente": "3349 18th St, San Francisco, CA 94110",
+  "tipo": "restaurant"
+ },
+ "Arsicault Bakery": {
+  "lat": 37.7834067,
+  "lng": -122.459227,
+  "fuente": "397 Arguello Blvd, San Francisco, CA 94118",
+  "tipo": "bakery"
+ },
+ "Starbelly": {
+  "lat": 37.7640463,
+  "lng": -122.4325579,
+  "fuente": "3583 16th St, San Francisco, CA 94114",
+  "tipo": "yes"
+ },
+ "Chez Maman": {
+  "lat": 37.7624444,
+  "lng": -122.3968215,
+  "fuente": "1401 18th St, San Francisco, CA 94107",
+  "tipo": "yes"
+ },
+ "Farley's": {
+  "lat": 37.7624716,
+  "lng": -122.3959935,
+  "fuente": "1315 18th St, San Francisco, CA 94107",
+  "tipo": "yes"
+ },
+ "Trad Bone Broth": {
+  "lat": 37.7514644,
+  "lng": -122.4298534,
+  "fuente": "3903 24th St, San Francisco, CA 94114",
+  "tipo": "health_food"
+ }
+}

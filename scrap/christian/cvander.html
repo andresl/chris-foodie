@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='max-image-preview:large' />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+					+ '//' + window.location.hostname
+					+ '&postid=1028'
+					+ '&is_singular=';
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9jdmFuZGVyLmNvbQ%3D%3D"
+		+ "&wpcomid=98035"
+		+ "&time=" + Math.floor( Date.now() / 1000 );
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<title>Christian Van Der Henst &#8211; Tech investor, and bilingual explorer at the intersection of AI, entrepreneurship, Silicon Valley and Latin America&#039;s evolving tech ecosystem</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="Christian Van Der Henst &raquo; Feed" href="https://cvander.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Christian Van Der Henst &raquo; Comments Feed" href="https://cvander.com/comments/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-site-title-inline-css">
+.wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/site-title/style.min.css */
+</style>
+<style id="wp-block-group-inline-css">
+.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/group/style.min.css */
+</style>
+<style id="wp-block-navigation-link-inline-css">
+.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word}.wp-block-navigation .wp-block-navigation-item__description{display:none}.link-ui-tools{outline:1px solid #f0f0f0;padding:8px}.link-ui-block-inserter{padding-top:8px}.link-ui-block-inserter__back{margin-left:8px;text-transform:uppercase}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/navigation-link/style.min.css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-8-1' href='/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/navigation/style.min.css?m=1790763666i&cssminify=yes' type='text/css' media='all' />
+<style id="memphoria-navigation-inline-css">
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a:not(.wp-element-button),
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu a:not(.wp-element-button),
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu button.wp-block-navigation-item__content,
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-pages-list__item button.wp-block-navigation-item__content {
+	padding: 0.25em 0.5em;
+}
+
+/*# sourceURL=https://s0.wp.com/wp-content/themes/pub/memphoria/assets/css/blocks/navigation.css */
+</style>
+<style id="wp-block-spacer-inline-css">
+.wp-block-spacer{clear:both}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/spacer/style.min.css */
+</style>
+<style id="wp-block-post-featured-image-inline-css">
+.wp-block-post-featured-image{margin-left:0;margin-right:0}.wp-block-post-featured-image a{display:block;height:100%}.wp-block-post-featured-image :where(img){box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom;width:100%}.wp-block-post-featured-image.alignfull img,.wp-block-post-featured-image.alignwide img{width:100%}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim{background-color:#000;inset:0;position:absolute}.wp-block-post-featured-image{position:relative}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-gradient{background-color:transparent}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-0{opacity:0}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-10{opacity:.1}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-20{opacity:.2}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-30{opacity:.3}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-40{opacity:.4}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-50{opacity:.5}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-60{opacity:.6}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-70{opacity:.7}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-80{opacity:.8}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-90{opacity:.9}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-100{opacity:1}.wp-block-post-featured-image:where(.alignleft,.alignright){width:100%}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/post-featured-image/style.min.css */
+</style>
+<style id="wp-block-post-title-inline-css">
+.wp-block-post-title{box-sizing:border-box;overflow-wrap:anywhere;word-break:normal}.wp-block-post-title :where(a){font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/post-title/style.min.css */
+</style>
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:var(--wp--style--block-background-padding,1.25em 2.375em)}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/paragraph/style.min.css */
+</style>
+<style id="wp-block-post-excerpt-inline-css">
+:where(.wp-block-post-excerpt){box-sizing:border-box;margin-bottom:var(--wp--style--block-gap);margin-top:var(--wp--style--block-gap)}.wp-block-post-excerpt__excerpt{margin-bottom:0;margin-top:0}.wp-block-post-excerpt__more-text{margin-bottom:0;margin-top:var(--wp--style--block-gap)}.wp-block-post-excerpt__more-link{display:inline-block}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/post-excerpt/style.min.css */
+</style>
+<style id="memphoria-post-excerpt-inline-css">
+.wp-block-post-excerpt .wp-block-post-excerpt__excerpt {
+	line-height: inherit;
+}
+
+/*# sourceURL=https://s0.wp.com/wp-content/themes/pub/memphoria/assets/css/blocks/post-excerpt.css */
+</style>
+<style id="wp-block-separator-inline-css">
+@charset "UTF-8";.wp-block-separator{border:none;border-top:2px solid}:root :where(.wp-block-separator.is-style-dots){height:auto;line-height:1;text-align:center}:root :where(.wp-block-separator.is-style-dots):before{color:currentColor;content:"···";font-family:serif;font-size:1.5em;letter-spacing:2em;padding-left:2em}.wp-block-separator.is-style-dots{background:none!important;border:none!important}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/separator/style.min.css */
+</style>
+<style id="memphoria-separator-inline-css">
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.is-style-wiggley):not(.is-style-zigzag):not(.alignwide):not(.alignfull) {
+	width: 162px;
+}
+
+.wp-block-separator.is-style-wiggley {
+	border-color: currentColor;
+	border-width: 0;
+}
+
+.wp-block-separator.is-style-wiggley {
+	--s: 8px;
+	--b: 4px;
+	--m: 0.6;
+	--R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
+	--_g: transparent calc(99% - var(--b)), currentColor calc(101% - var(--b)) 99%, transparent 101%;
+	background: currentColor;
+	height: calc(2*var(--R));
+	mask: radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x, radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)),var(--_g)) 50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
+}
+
+.wp-block-separator.is-style-zigzag {
+	--a: 90deg;
+	--s: 32px;
+	--b: 6px;
+	--_g:var(--s) repeat-x conic-gradient(from calc(var(--a)/-2) at bottom, #0000,#000 1deg calc(var(--a) - 1deg),#0000 var(--a));
+	background: currentColor;
+	height: calc(var(--b) + var(--s)/(2*tan(var(--a)/2)));
+	width: 100%;
+	mask: 50% calc(-1*var(--b))/var(--_g) exclude,50%/var(--_g);
+}
+
+.wp-block-separator .is-style-zigzag-bottom {
+	mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/60px 100%;;
+}
+
+
+
+
+
+/*# sourceURL=https://s0.wp.com/wp-content/themes/pub/memphoria/assets/css/blocks/separator.css */
+</style>
+<style id="wp-block-post-date-inline-css">
+.wp-block-post-date{box-sizing:border-box}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/post-date/style.min.css */
+</style>
+<style id="wp-block-post-author-name-inline-css">
+.wp-block-post-author-name{box-sizing:border-box}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/post-author-name/style.min.css */
+</style>
+<style id="wp-block-post-terms-inline-css">
+.wp-block-post-terms{box-sizing:border-box}.wp-block-post-terms .wp-block-post-terms__separator{white-space:pre-wrap}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/post-terms/style.min.css */
+</style>
+<style id="memphoria-post-terms-inline-css">
+.wp-block-post-terms.is-style-pill a,
+.wp-block-post-terms.is-style-pill span:not([class], [data-rich-text-placeholder]) {
+	background-color: var(--wp--preset--color--theme-2);
+	border: 2px solid var(--wp--preset--color--theme-2);
+	border-radius: 999px;
+	color: var(--wp--preset--color--theme-3);
+	display: inline-block;
+	font-size: var(--wp--preset--font-size--custom-9);
+	line-height: 1;
+	margin: 4px 0;
+	padding: 4px 10px;
+}
+
+.wp-block-post-terms.is-style-pill a:hover,
+.wp-block-post-terms.is-style-pill a:focus {
+	background-color: var(--wp--preset--color--theme-4);
+	border-color: var(--wp--preset--color--theme-4);
+	text-decoration: none;
+}
+
+.wp-block-post-terms.is-style-pill .wp-block-post-terms__separator {
+	visibility: hidden;
+}
+
+/*# sourceURL=https://s0.wp.com/wp-content/themes/pub/memphoria/assets/css/blocks/post-terms.css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:var(--wp--style--block-background-padding,1.25em 2.375em)}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/heading/style.min.css */
+</style>
+<style id="wp-block-post-template-inline-css">
+.wp-block-post-template{box-sizing:border-box;list-style:none;margin-bottom:0;margin-top:0;max-width:100%;padding:0}.wp-block-post-template.is-flex-container{display:flex;flex-direction:row;flex-wrap:wrap;gap:1.25em}.wp-block-post-template.is-flex-container>li{margin:0;width:100%}@media (min-width:600px){.wp-block-post-template.is-flex-container.is-flex-container.columns-2>li{width:calc(50% - .625em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-3>li{width:calc(33.33333% - .83333em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-4>li{width:calc(25% - .9375em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-5>li{width:calc(20% - 1em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-6>li{width:calc(16.66667% - 1.04167em)}}@media (max-width:600px){.wp-block-post-template-is-layout-grid[class*=columns-]:not(.has-native-responsive-grid){grid-template-columns:1fr}}.wp-block-post-template-is-layout-constrained>li>.alignright,.wp-block-post-template-is-layout-flow>li>.alignright{float:right;margin-inline-end:0;margin-inline-start:2em}.wp-block-post-template-is-layout-constrained>li>.alignleft,.wp-block-post-template-is-layout-flow>li>.alignleft{float:left;margin-inline-end:2em;margin-inline-start:0}.wp-block-post-template-is-layout-constrained>li>.aligncenter,.wp-block-post-template-is-layout-flow>li>.aligncenter{margin-inline-end:auto;margin-inline-start:auto}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/post-template/style.min.css */
+</style>
+<style id="memphoria-post-template-inline-css">
+.wp-block-post-template.is-style-decorated > .wp-block-post {
+	position: relative;
+	z-index: 0;
+}
+
+.wp-block-post-template.is-style-decorated > .wp-block-post > .wp-block-group::before {
+	background-color: var(--wp--preset--color--theme-4);
+	background-image: url('/wp-content/themes/pub/memphoria/assets/css/blocks/../../images/leopard.png');
+	background-repeat: repeat;
+	background-size: 100px 100px;
+	border: 4px solid var(--wp--preset--color--theme-2);
+	box-shadow:var(--wp--preset--shadow--custom-shadow-1);
+	content: "";
+	height: 300px;
+	right: clamp(-48px, -1.510989vw, -11px);
+	position: absolute;
+	top: 78px;
+	transform: rotate(5deg);
+	width: 100px;
+	z-index: -1;
+}
+
+.wp-block-post-template.is-style-decorated > .wp-block-post > .wp-block-group > .wp-block-group::before {
+	aspect-ratio: 1;
+	background-image: linear-gradient(135deg, var(--wp--preset--color--theme-2) 25%, var(--wp--preset--color--theme-1) 25%, var(--wp--preset--color--theme-1) 50%, var(--wp--preset--color--theme-2) 50%, var(--wp--preset--color--theme-2) 75%, var(--wp--preset--color--theme-1) 75%, var(--wp--preset--color--theme-1) 100%);
+	background-size: 48px 48px;
+	border: 4px solid var(--wp--preset--color--theme-2);
+	box-shadow:var(--wp--preset--shadow--custom-shadow-1);
+	content: "";
+	position: absolute;
+	left: -60px;
+	top: -25px;
+	transform: rotate(-11deg);
+	width: min(360px, calc(100vw - 28px));
+	z-index: -1;
+}
+
+.wp-block-post-template.is-style-decorated > .wp-block-post > .wp-block-group > .wp-block-group > .wp-block-group::before {
+	background-color: var(--wp--preset--color--theme-5);
+	background-image: url('/wp-content/themes/pub/memphoria/assets/css/blocks/../../images/dot.png');
+	background-repeat: repeat;
+	background-size: 10px 10px;
+	border-radius: 50%;
+	border: 4px solid var(--wp--preset--color--theme-2);
+	bottom: 80px;
+	box-shadow:var(--wp--preset--shadow--custom-shadow-1);
+	content: "";
+	height: 180px;
+	position: absolute;
+	right: clamp(-56px, -3.030303vw, -24px);
+	width: 180px;
+	z-index: -1;
+}
+
+.wp-block-post-template.is-style-decorated > .wp-block-post > .wp-block-group > .wp-block-group > .wp-block-group > .wp-block-group::before {
+	background-color:var(--wp--preset--color--theme-6);
+	border: 4px solid var(--wp--preset--color--theme-2);
+	border-radius: 999px;
+	bottom: 110px;
+	box-shadow:var(--wp--preset--shadow--custom-shadow-2);
+	content: "";
+	height: 300px;
+	left: -8px;
+	position: absolute;
+	transform: rotate(20deg);
+	width: 24px;
+	z-index: -1;
+}
+
+.wp-block-post-template.is-style-decorated > .wp-block-post > .wp-block-group > .wp-block-group > .wp-block-group > .wp-block-group > .wp-block-group::before {
+	aspect-ratio: 1;
+	background-color: var(--wp--preset--color--theme-4);
+	background-image: url('/wp-content/themes/pub/memphoria/assets/css/blocks/../../images/wiggly.png');
+	background-repeat: repeat;
+	background-size: 50px 50px;
+	border: 4px solid var(--wp--preset--color--theme-2);
+	bottom: -32px;
+	box-shadow:var(--wp--preset--shadow--custom-shadow-2);
+	content: "";
+	left: min(100px, 20vw);
+	position: absolute;
+	transform: rotate(60deg);
+	width: min(230px, 46vw);
+	z-index: -1;
+}
+
+/*# sourceURL=https://s0.wp.com/wp-content/themes/pub/memphoria/assets/css/blocks/post-template.css */
+</style>
+<style id="memphoria-query-pagination-next-inline-css">
+.wp-block-query-pagination-next {
+	margin: 0;
+}
+
+/*# sourceURL=https://s0.wp.com/wp-content/themes/pub/memphoria/assets/css/blocks/query-pagination-next.css */
+</style>
+<style id="wp-block-query-pagination-inline-css">
+.wp-block-query-pagination.is-content-justification-space-between>.wp-block-query-pagination-next:last-of-type{margin-inline-start:auto}.wp-block-query-pagination.is-content-justification-space-between>.wp-block-query-pagination-previous:first-child{margin-inline-end:auto}.wp-block-query-pagination .wp-block-query-pagination-previous-arrow{display:inline-block;margin-right:1ch}.wp-block-query-pagination .wp-block-query-pagination-previous-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-query-pagination .wp-block-query-pagination-next-arrow{display:inline-block;margin-left:1ch}.wp-block-query-pagination .wp-block-query-pagination-next-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-query-pagination.aligncenter{justify-content:center}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/query-pagination/style.min.css */
+</style>
+<style id="wp-block-columns-inline-css">
+.wp-block-columns{box-sizing:border-box;display:flex;flex-wrap:wrap!important}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap!important}}.wp-block-columns{align-items:normal!important}.wp-block-columns.are-vertically-aligned-top{align-items:flex-start}.wp-block-columns.are-vertically-aligned-center{align-items:center}.wp-block-columns.are-vertically-aligned-bottom{align-items:flex-end}@media (max-width:781px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:100%!important}}@media (min-width:782px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis]{flex-grow:0}}.wp-block-columns.is-not-stacked-on-mobile{flex-wrap:nowrap!important}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column[style*=flex-basis]{flex-grow:0}:where(.wp-block-columns){margin-bottom:1.75em}:where(.wp-block-columns.has-background){padding:var(--wp--style--block-background-padding,1.25em 2.375em)}.wp-block-column{flex-grow:1;min-width:0;overflow-wrap:break-word;word-break:normal}.wp-block-column.is-vertically-aligned-top{align-self:flex-start}.wp-block-column.is-vertically-aligned-center{align-self:center}.wp-block-column.is-vertically-aligned-bottom{align-self:flex-end}.wp-block-column.is-vertically-aligned-stretch{align-self:stretch}.wp-block-column.is-vertically-aligned-bottom,.wp-block-column.is-vertically-aligned-center,.wp-block-column.is-vertically-aligned-top{width:100%}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v24.1.0/build/styles/block-library/columns/style.min.css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;overflow-wrap:normal!important;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id="coblocks-inline-format-inline-css">
+.uppercase{text-transform:uppercase}
+/*# sourceURL=coblocks-inline-format-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-60-1' href='/wp-content/plugins/coblocks/2.18.1-simple-rev.4/dist/coblocks-style.css?m=1681832297i&cssminify=yes' type='text/css' media='all' />
+<style id="wp-block-template-skip-link-inline-css">
+/*! This file is auto-generated */
+.skip-link.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute!important;width:1px;word-wrap:normal!important;word-break:normal!important}.skip-link.screen-reader-text:focus{background-color:#eee;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}
+/*# sourceURL=/wp-includes/css/wp-block-template-skip-link.min.css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-62-1' href='/_static/??/wp-content/mu-plugins/core-compat/wp-mediaelement.css,/wp-content/mu-plugins/wpcom-bbpress-premium-themes.css?m=1432920480j&cssminify=yes' type='text/css' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--theme-1: #eee6e1;--wp--preset--color--theme-2: #3C0058;--wp--preset--color--theme-3: #f6cae6;--wp--preset--color--theme-4: #a43ff1;--wp--preset--color--theme-5: #F7E9A6;--wp--preset--color--theme-6: #9737af;--wp--preset--color--theme-7: #3454C3;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.682), 20px);--wp--preset--font-size--large: clamp(22.041px, 1.378rem + ((1vw - 3.2px) * 1.586), 36px);--wp--preset--font-size--x-large: clamp(25.014px, 1.563rem + ((1vw - 3.2px) * 1.93), 42px);--wp--preset--font-size--custom-1: clamp(67px, 4.188rem + ((1vw - 3.2px) * 5.909), 119px);--wp--preset--font-size--custom-2: clamp(50px, 3.125rem + ((1vw - 3.2px) * 4.432), 89px);--wp--preset--font-size--custom-3: clamp(37px, 2.313rem + ((1vw - 3.2px) * 3.409), 67px);--wp--preset--font-size--custom-4: clamp(37px, 2.313rem + ((1vw - 3.2px) * 1.477), 50px);--wp--preset--font-size--custom-5: clamp(28px, 1.75rem + ((1vw - 3.2px) * 1.023), 37px);--wp--preset--font-size--custom-6: clamp(21px, 1.313rem + ((1vw - 3.2px) * 0.795), 28px);--wp--preset--font-size--custom-7: clamp(16px, 1rem + ((1vw - 3.2px) * 0.568), 21px);--wp--preset--font-size--custom-8: clamp(12px, 0.75rem + ((1vw - 3.2px) * 0.455), 16px);--wp--preset--font-size--custom-9: 12px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--font-family--lineal: Lineal, sans-serif;--wp--preset--text-shadow--light: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.3);--wp--preset--text-shadow--strong: 0.1em 0.1em 0.25em rgba(0, 0, 0, 0.5);--wp--preset--spacing--20: 8px;--wp--preset--spacing--30: 12px;--wp--preset--spacing--40: clamp(12px, 1.3333333vw, 16px);--wp--preset--spacing--50: clamp(16px, 1.6666667vw, 20px);--wp--preset--spacing--60: clamp(20px, 2vw, 24px);--wp--preset--spacing--70: clamp(24px, 2.6666667vw, 32px);--wp--preset--spacing--80: clamp(32px, 4vw, 48px);--wp--preset--spacing--10: 4px;--wp--preset--spacing--90: clamp(48px, 6vw, 72px);--wp--preset--spacing--100: clamp(72px, 8vw, 96px);--wp--preset--spacing--110: clamp(96px, 10vw, 120px);--wp--preset--spacing--120: clamp(24px, 4vw, 48px);--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);--wp--preset--shadow--custom-shadow-1: 6px 6px 0px var(--wp--preset--color--theme-2);--wp--preset--shadow--custom-shadow-2: 6px -6px 0px var(--wp--preset--color--theme-2);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: 728px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: var(--wp--preset--spacing--60); margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: var(--wp--preset--spacing--60); }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: var(--wp--preset--spacing--60);margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: var(--wp--preset--spacing--60);margin-block-end: 0;}:root :where(.is-layout-flex){gap: var(--wp--preset--spacing--60);}:root :where(.is-layout-grid){gap: var(--wp--preset--spacing--60);}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--wp--preset--color--theme-3);color: var(--wp--preset--color--theme-2);font-family: var(--wp--preset--font-family--inter);font-size: var(--wp--preset--font-size--custom-8);font-style: normal;font-weight: 400;line-height: 1.5;--wp--style--root--padding-top: 0px;--wp--style--root--padding-right: var(--wp--preset--spacing--120);--wp--style--root--padding-bottom: 0px;--wp--style--root--padding-left: var(--wp--preset--spacing--120);}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--theme-7);text-decoration: none;}:root :where(a:where(:not(.wp-element-button)):hover){color: var(--wp--preset--color--theme-4);}h1, h2, h3, h4, h5, h6{color: var(--wp--preset--color--theme-2);font-family: var(--wp--preset--font-family--lineal);font-style: normal;font-weight: 600;letter-spacing: -0.025em;line-height: 1;}h1{font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-2);font-style: normal;font-weight: 600;line-height: 1.014925373;}h2{font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-3);font-style: normal;font-weight: 600;line-height: 0.955223881;}h3{font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-4);font-style: normal;font-weight: 600;line-height: 0.96;}h4{font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-5);font-style: normal;font-weight: 600;line-height: 1.081081081;}h5{font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-6);font-style: normal;font-weight: 600;line-height: 1.142857143;}h6{font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-7);font-style: normal;font-weight: 600;line-height: 1.142857143;}:root :where(.wp-element-button, .wp-block-button__link){background-color: var(--wp--preset--color--theme-2);border-radius: 999px;border-width: 0;color: var(--wp--preset--color--theme-3);font-family: var(--wp--preset--font-family--inter);font-size: var(--wp--preset--font-size--custom-8);font-style: normal;font-weight: 700;letter-spacing: 0.03em;line-height: 1;padding-top: 16px;padding-right: 40px;padding-bottom: 16px;padding-left: 40px;text-decoration: none;text-transform: inherit;}:root :where(.wp-element-button:hover, .wp-block-button__link:hover){background-color: var(--wp--preset--color--theme-4);}:root :where(.wp-element-button:focus, .wp-block-button__link:focus){background-color: var(--wp--preset--color--theme-4);}:root :where(.wp-element-caption, .wp-block-audio figcaption, .wp-block-embed figcaption, .wp-block-gallery figcaption, .wp-block-image figcaption, .wp-block-table figcaption, .wp-block-video figcaption){color: var(--wp--preset--color--theme-2);font-family: var(--wp--preset--font-family--inter);font-size: var(--wp--preset--font-size--custom-9);font-style: normal;font-weight: 400;margin-top: calc(var(--wp--style--block-gap) / 2);margin-bottom: var(--wp--style--block-gap);text-transform: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-1-color{color: var(--wp--preset--color--theme-1) !important;}.has-theme-2-color{color: var(--wp--preset--color--theme-2) !important;}.has-theme-3-color{color: var(--wp--preset--color--theme-3) !important;}.has-theme-4-color{color: var(--wp--preset--color--theme-4) !important;}.has-theme-5-color{color: var(--wp--preset--color--theme-5) !important;}.has-theme-6-color{color: var(--wp--preset--color--theme-6) !important;}.has-theme-7-color{color: var(--wp--preset--color--theme-7) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-1-background-color{background-color: var(--wp--preset--color--theme-1) !important;}.has-theme-2-background-color{background-color: var(--wp--preset--color--theme-2) !important;}.has-theme-3-background-color{background-color: var(--wp--preset--color--theme-3) !important;}.has-theme-4-background-color{background-color: var(--wp--preset--color--theme-4) !important;}.has-theme-5-background-color{background-color: var(--wp--preset--color--theme-5) !important;}.has-theme-6-background-color{background-color: var(--wp--preset--color--theme-6) !important;}.has-theme-7-background-color{background-color: var(--wp--preset--color--theme-7) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-1-border-color{border-color: var(--wp--preset--color--theme-1) !important;}.has-theme-2-border-color{border-color: var(--wp--preset--color--theme-2) !important;}.has-theme-3-border-color{border-color: var(--wp--preset--color--theme-3) !important;}.has-theme-4-border-color{border-color: var(--wp--preset--color--theme-4) !important;}.has-theme-5-border-color{border-color: var(--wp--preset--color--theme-5) !important;}.has-theme-6-border-color{border-color: var(--wp--preset--color--theme-6) !important;}.has-theme-7-border-color{border-color: var(--wp--preset--color--theme-7) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-custom-1-font-size{font-size: var(--wp--preset--font-size--custom-1) !important;}.has-custom-2-font-size{font-size: var(--wp--preset--font-size--custom-2) !important;}.has-custom-3-font-size{font-size: var(--wp--preset--font-size--custom-3) !important;}.has-custom-4-font-size{font-size: var(--wp--preset--font-size--custom-4) !important;}.has-custom-5-font-size{font-size: var(--wp--preset--font-size--custom-5) !important;}.has-custom-6-font-size{font-size: var(--wp--preset--font-size--custom-6) !important;}.has-custom-7-font-size{font-size: var(--wp--preset--font-size--custom-7) !important;}.has-custom-8-font-size{font-size: var(--wp--preset--font-size--custom-8) !important;}.has-custom-9-font-size{font-size: var(--wp--preset--font-size--custom-9) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}.has-lineal-font-family{font-family: var(--wp--preset--font-family--lineal) !important;}.has-light-text-shadow{text-shadow: var(--wp--preset--text-shadow--light) !important;}.has-strong-text-shadow{text-shadow: var(--wp--preset--text-shadow--strong) !important;} 
+:root :where(.wp-block-columns-is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.wp-block-columns-is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-flow) > *{margin-block-start: var(--wp--preset--spacing--60);margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.wp-block-columns-is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-constrained) > *{margin-block-start: var(--wp--preset--spacing--60);margin-block-end: 0;}:root :where(.wp-block-columns-is-layout-flex){gap: var(--wp--preset--spacing--60);}:root :where(.wp-block-columns-is-layout-grid){gap: var(--wp--preset--spacing--60);}
+:root :where(.wp-block-heading){color: var(--wp--preset--color--theme-2);}
+:root :where(.wp-block-navigation){font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-7);font-style: normal;font-weight: 600;letter-spacing: -0.025em;line-height: 1.142857143;}:root :where(.wp-block-navigation-is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.wp-block-navigation-is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.wp-block-navigation-is-layout-flow) > *{margin-block-start: var(--wp--preset--spacing--40);margin-block-end: 0;}:root :where(.wp-block-navigation-is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.wp-block-navigation-is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.wp-block-navigation-is-layout-constrained) > *{margin-block-start: var(--wp--preset--spacing--40);margin-block-end: 0;}:root :where(.wp-block-navigation-is-layout-flex){gap: var(--wp--preset--spacing--40);}:root :where(.wp-block-navigation-is-layout-grid){gap: var(--wp--preset--spacing--40);}
+:root :where(p){line-height: calc(1em + 0.5rem);}
+:root :where(.wp-block-post-author-name){font-size: var(--wp--preset--font-size--custom-8);}
+:root :where(.wp-block-post-excerpt){font-size: var(--wp--preset--font-size--custom-8);}
+:root :where(.wp-block-post-featured-image img, .wp-block-post-featured-image .block-editor-media-placeholder, .wp-block-post-featured-image .wp-block-post-featured-image__overlay){border-top-left-radius: calc(60px - var(--wp--preset--spacing--70));border-color: var(--wp--preset--color--theme-2);border-width: 4px;border-top-color: var(--wp--preset--color--theme-2);border-top-width: 4px;border-top-style: solid;border-right-color: var(--wp--preset--color--theme-2);border-right-width: 4px;border-right-style: solid;border-bottom-color: var(--wp--preset--color--theme-2);border-bottom-width: 4px;border-bottom-style: solid;border-left-color: var(--wp--preset--color--theme-2);border-left-width: 4px;border-left-style: solid;}
+:root :where(.wp-block-post-terms){font-size: var(--wp--preset--font-size--custom-8);}
+:root :where(.wp-block-post-title){font-size: var(--wp--preset--font-size--custom-2);font-style: normal;font-weight: 600;line-height: 0.955223881;}
+:root :where(.wp-block-post-title a:where(:not(.wp-element-button))){color: var(--wp--preset--color--theme-2);}
+:root :where(.wp-block-query-pagination){font-size: var(--wp--preset--font-size--custom-7);font-style: normal;font-weight: 600;line-height: 1.142857143;}
+:root :where(.wp-block-separator){background-color: var(--wp--preset--color--theme-2);color: var(--wp--preset--color--theme-2);}
+:root :where(.wp-block-site-title){color: var(--wp--preset--color--theme-2);font-family: var(--wp--preset--font-family--lineal);font-size: var(--wp--preset--font-size--custom-7);font-style: normal;font-weight: 600;letter-spacing: -0.025em;line-height: 1.142857143;}
+:root :where(.wp-block-site-title a:where(:not(.wp-element-button)):hover){text-decoration: none;}
+:root :where(.wp-block-site-title a:where(:not(.wp-element-button)):focus){text-decoration: none;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<style id="core-block-supports-inline-css">
+.wp-elements-1 a:where(:not(.wp-element-button)){color:var(--wp--preset--color--theme-1);}.wp-container-core-group-is-layout-eb8e908f{gap:var(--wp--preset--spacing--10);}.wp-container-core-group-is-layout-9b635ac4 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-9b635ac4 > * + *{margin-block-start:var(--wp--preset--spacing--10);margin-block-end:0;}.wp-container-core-group-is-layout-ae744a23 > .alignfull{margin-right:calc(var(--wp--preset--spacing--70) * -1);margin-left:calc(var(--wp--preset--spacing--70) * -1);}.wp-container-core-post-template-is-layout-b330357f > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-post-template-is-layout-b330357f > * + *{margin-block-start:var(--wp--preset--spacing--110);margin-block-end:0;}.wp-container-core-query-pagination-is-layout-b2891da8{justify-content:space-between;}.wp-container-core-column-is-layout-128e448e > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:400px;margin-left:0 !important;margin-right:auto !important;}.wp-container-core-column-is-layout-128e448e > .alignwide{max-width:400px;}.wp-container-core-column-is-layout-128e448e .alignfull{max-width:none;}.wp-container-core-column-is-layout-a77db08e > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-column-is-layout-a77db08e > * + *{margin-block-start:0;margin-block-end:0;}.wp-container-core-navigation-is-layout-fe9cc265{flex-direction:column;align-items:flex-start;}.wp-container-core-column-is-layout-9b635ac4 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-column-is-layout-9b635ac4 > * + *{margin-block-start:var(--wp--preset--spacing--10);margin-block-end:0;}.wp-container-core-columns-is-layout-30cd009e{flex-wrap:nowrap;gap:var(--wp--preset--spacing--50) var(--wp--preset--spacing--40);}.wp-container-core-group-is-layout-df757ecc > .alignfull{margin-right:calc(var(--wp--style--root--padding-right, var(--wp--custom--gap--horizontal)) * -1);margin-left:calc(var(--wp--style--root--padding-left, var(--wp--custom--gap--horizontal)) * -1);}
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-66-1' href='/_static/??-eJx9i0EOgjAQAD9k3YBE8GB8S2nWUrPbbbrbGH8P3ODibSaZgW9xQbJhNrAFGRVKm4GRyyI1eVD7EV6D6gUOKTdXqMWUFSrOJHHDCFt10H9TRHEkwVuSfBL3Jp/qvr742Y1DP/WP2338rA6lPgk=&cssminify=yes' type='text/css' media='all' />
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-68-1' href='/wp-content/themes/h4/global.css?m=1420737423i&cssminify=yes' type='text/css' media='all' />
+<script id="wpcom-actionbar-placeholder-js-extra">
+var actionbardata = {"siteID":"98035","postID":"0","siteURL":"https://cvander.com","xhrURL":"https://cvander.com/wp-admin/admin-ajax.php","nonce":"9b6a3e762f","isLoggedIn":"","statusMessage":"","statusSubscribed":"","subsEmailDefault":"instantly","proxyScriptUrl":"https://s0.wp.com/wp-content/js/wpcom-proxy-request.js?m=1513050504i&amp;ver=20211021","i18n":{"followedText":"New posts from this site will now appear in your \u003Ca href=\"https://wordpress.com/reader\"\u003EReader\u003C/a\u003E","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Copied to clipboard."}};
+//# sourceURL=wpcom-actionbar-placeholder-js-extra
+</script>
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://s0.wp.com/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/sun/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
+//# sourceURL=jetpack-mu-wpcom-settings-js-before
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='/wp-content/js/rlt-proxy.js?m=1720530689i'></script>
+<script id="rlt-proxy-js-after">
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+//# sourceURL=rlt-proxy-js-after
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://cvander.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel='shortlink' href='https://wp.me/pvd' />
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Christian Van Der Henst" />
+<meta property="og:description" content="Tech investor, and bilingual explorer at the intersection of AI, entrepreneurship, Silicon Valley and Latin America&#039;s evolving tech ecosystem" />
+<meta property="og:url" content="https://cvander.com/" />
+<meta property="og:site_name" content="Christian Van Der Henst" />
+<meta property="og:image" content="https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=200" />
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:creator" content="@cvander" />
+<meta name="twitter:site" content="@cvander" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel='openid.server' href='https://cvander.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://cvander.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://cvander.com/osd.xml" title="Christian Van Der Henst" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="description" content="Tech investor, and bilingual explorer at the intersection of AI, entrepreneurship, Silicon Valley and Latin America&#039;s evolving tech ecosystem" />
+<style class="wp-fonts-local">
+@font-face{font-family:Inter;font-style:italic;font-weight:100 900;font-display:fallback;src:url('https://s0.wp.com/wp-content/themes/pub/memphoria/assets/fonts/inter/inter-100-900-italic.ttf') format('truetype');}
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:fallback;src:url('https://s0.wp.com/wp-content/themes/pub/memphoria/assets/fonts/inter/inter-100-900-normal.ttf') format('truetype');}
+@font-face{font-family:Lineal;font-style:normal;font-weight:200 900;font-display:fallback;src:url('https://s0.wp.com/wp-content/themes/pub/memphoria/assets/fonts/lineal/lineal-200-900-normal.woff2') format('woff2');}
+</style>
+<link rel="icon" href="https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=32" sizes="32x32" />
+<link rel="icon" href="https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=180" />
+<meta name="msapplication-TileImage" content="https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=270" />
+		<!-- Jetpack Google Analytics -->
+		<script async src='https://www.googletagmanager.com/gtag/js?id=G-1F0PP45D4P'></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push( arguments ); }
+			gtag( 'js', new Date() );
+			gtag( 'config', "G-1F0PP45D4P" );
+					</script>
+		<!-- End Jetpack Google Analytics -->
+		</head>
+
+<body class="home blog wp-embed-responsive wp-theme-pubmemphoria is-block-theme customizer-styles-applied jetpack-reblog-enabled">
+
+<a class="skip-link screen-reader-text" id="wp-skip-link" href="#wp--skip-link--target">Skip to content</a><div class="wp-site-blocks">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow has-background" style="padding-top:var(--wp--preset--spacing--120);padding-bottom:var(--wp--preset--spacing--120);background-image:url(&apos;https://s0.wp.com/wp-content/themes/pub/memphoria/assets/images/inspiration-geometry.png&apos;);background-position:50% 50%;background-size:auto;"><header class="wp-block-template-part">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-2-background-color has-background is-layout-flow wp-container-core-group-is-layout-9b635ac4 wp-block-group-is-layout-flow" style="border-width:4px;border-bottom-right-radius:30px;box-shadow:var(--wp--preset--shadow--custom-shadow-1)">
+<div class="wp-block-group has-theme-1-color has-theme-2-background-color has-text-color has-background has-link-color wp-elements-1 is-layout-flow wp-block-group-is-layout-flow" style="padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><p class="is-style-default wp-block-site-title"><a href="https://cvander.com" target="_self" rel="home" aria-current="page">Christian Van Der Henst</a></p></div>
+</div>
+
+
+
+<div class="wp-block-group has-theme-4-background-color has-background is-layout-flow wp-block-group-is-layout-flow" style="padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><nav class="wp-block-navigation is-horizontal is-layout-flex wp-block-navigation-is-layout-flex" aria-label="Header"><ul class="wp-block-navigation__container wp-block-navigation"><li class="wp-block-navigation-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com/christian/" title="Cvander"><span class="wp-block-navigation-item__label">About 💊</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://news.cvander.com"><span class="wp-block-navigation-item__label">Substack  💌</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://ig.me/j/AbZ-eKPIALi2BCqv/11m"><span class="wp-block-navigation-item__label">Insta 📸</span></a></li><li class="wp-block-navigation-item menu-item menu-item-type-custom menu-item-object-custom menu-item-home wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com" title=""><span class="wp-block-navigation-item__label"><em>Archive</em> 🗄️</span></a></li><li class="wp-block-navigation-item menu-item menu-item-type-taxonomy menu-item-object-category wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com/category/podcast/" title=""><span class="wp-block-navigation-item__label">Podcasts 🎙️</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com/category/san-francisco/"><span class="wp-block-navigation-item__label">SF 🌉</span></a></li></ul></nav></div>
+
+
+
+<div class="wp-block-group has-theme-1-background-color has-background is-layout-flow wp-block-group-is-layout-flow" style="border-bottom-right-radius:20px;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;background-image:url(&apos;https://s0.wp.com/wp-content/themes/pub/memphoria/assets/images/dot.png&apos;);background-position:50% 50%;background-size:10px;">
+<div style="height:var(--wp--preset--spacing--70)" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+</div>
+</div>
+</header>
+
+
+<main id="wp--skip-link--target" class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--110);margin-bottom:var(--wp--preset--spacing--110)">
+<div class="wp-block-query is-layout-flow wp-block-query-is-layout-flow"><ul class="is-style-decorated wp-block-post-template is-layout-flow wp-container-core-post-template-is-layout-b330357f wp-block-post-template-is-layout-flow"><li class="wp-block-post post-1028 post type-post status-publish format-standard has-post-thumbnail sticky hentry category-press">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2025/11/11/forbes/" target="_self" ><img width="839" height="752" src="https://cvander.com/wp-content/uploads/2025/11/cvander-forbes.png?w=839" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Forbes" style="object-fit:cover;" decoding="async" srcset="https://cvander.com/wp-content/uploads/2025/11/cvander-forbes.png 839w, https://cvander.com/wp-content/uploads/2025/11/cvander-forbes.png?w=107 107w, https://cvander.com/wp-content/uploads/2025/11/cvander-forbes.png?w=300 300w, https://cvander.com/wp-content/uploads/2025/11/cvander-forbes.png?w=768 768w" sizes="(max-width: 839px) 100vw, 839px" data-attachment-id="1031" data-permalink="https://cvander.com/2025/11/11/forbes/cvander-forbes/" data-orig-file="https://cvander.com/wp-content/uploads/2025/11/cvander-forbes.png" data-orig-size="839,752" data-comments-opened="1" data-image-title="cvander-forbes" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2025/11/cvander-forbes.png?w=839" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2025/11/11/forbes/" target="_self" >Forbes</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">In the Nov/Dec edition of Forbes Central America, they talk about my work as an Investor. Thanks a lot to the team at Forbes. They mention my work at Region 4, Platzi and the good parties in the Mission for Tech Week. Ya disponible en su puesto de revistas favorito (I always wanted to say&hellip; <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2025/11/11/forbes/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2025-11-11T16:00:29-08:00">November 11, 2025</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/press/" rel="tag">Press</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1269 post type-post status-publish format-standard has-post-thumbnail hentry category-ai">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2026/09/12/should-you-use-hermes-grok-bot-instinct-or-muse/" target="_self" ><img width="1024" height="576" src="https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png?w=1024" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Should you use Hermes, Grok Bot, Instinct or&nbsp;Muse?" style="object-fit:cover;" decoding="async" srcset="https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png?w=1024 1024w, https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png?w=128 128w, https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png?w=300 300w, https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png?w=768 768w, https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png?w=1440 1440w, https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png 1672w" sizes="(max-width: 1024px) 100vw, 1024px" data-attachment-id="1275" data-permalink="https://cvander.com/2026/09/12/should-you-use-hermes-grok-bot-instinct-or-muse/hermes-instinct-muse-grokbot/" data-orig-file="https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png" data-orig-size="1672,941" data-comments-opened="1" data-image-title="Should you use Hermes, Grok Bot, Instinct or Muse?" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2026/09/hermes-instinct-muse-grokbot.png?w=1672" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/09/12/should-you-use-hermes-grok-bot-instinct-or-muse/" target="_self" >Should you use Hermes, Grok Bot, Instinct or&nbsp;Muse?</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">I&#8217;ve been testing these agents so you know where to spend your time next. Muse, Grok Bot and Instinct are fighting to become the equivalent Apple ecosystem. I still bet that Hermes or OpenClaw can be our customized open source Android alternative. OpenClaw defined the beginning of 2026. Install an agent in your Mac mini&hellip; <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/09/12/should-you-use-hermes-grok-bot-instinct-or-muse/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-09-12T05:25:18-07:00">September 12, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/ai/" rel="tag">AI</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1265 post type-post status-publish format-standard has-post-thumbnail hentry category-shorts">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2026/08/19/hey-maria-what-if-one-of-the-agents-hack-us/" target="_self" ><img width="1024" height="962" src="https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png?w=1024" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Hey Maria: what if one of the agents hack&nbsp;us?" style="object-fit:cover;" decoding="async" srcset="https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png?w=1024 1024w, https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png?w=102 102w, https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png?w=300 300w, https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png?w=768 768w, https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png 1056w" sizes="(max-width: 1024px) 100vw, 1024px" data-attachment-id="1267" data-permalink="https://cvander.com/2026/08/19/hey-maria-what-if-one-of-the-agents-hack-us/v3-profile-in-glow-01/" data-orig-file="https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png" data-orig-size="1056,992" data-comments-opened="1" data-image-title="Maria la del Valley hacking" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2026/08/v3-profile-in-glow-01.png?w=1056" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/08/19/hey-maria-what-if-one-of-the-agents-hack-us/" target="_self" >Hey Maria: what if one of the agents hack&nbsp;us?</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">Another video with Maria la del Valley. Hope you enjoy the rap. This was a fun video to make with a lot of tools that we&#8217;re experimenting. Thanks Walter! <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/08/19/hey-maria-what-if-one-of-the-agents-hack-us/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-08-19T11:40:21-07:00">August 19, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/shorts/" rel="tag">Shorts</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1243 post type-post status-publish format-standard has-post-thumbnail hentry category-shorts">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2026/08/06/ai-slop-frontend/" target="_self" ><img width="394" height="571" src="https://cvander.com/wp-content/uploads/2026/08/cvander-servicio-social-anti-ai-slop.png?w=394" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="AI slop frontend" style="object-fit:cover;" decoding="async" loading="lazy" srcset="https://cvander.com/wp-content/uploads/2026/08/cvander-servicio-social-anti-ai-slop.png 394w, https://cvander.com/wp-content/uploads/2026/08/cvander-servicio-social-anti-ai-slop.png?w=66 66w, https://cvander.com/wp-content/uploads/2026/08/cvander-servicio-social-anti-ai-slop.png?w=207 207w" sizes="auto, (max-width: 394px) 100vw, 394px" data-attachment-id="1262" data-permalink="https://cvander.com/2026/08/06/ai-slop-frontend/cvander-servicio-social-anti-ai-slop/" data-orig-file="https://cvander.com/wp-content/uploads/2026/08/cvander-servicio-social-anti-ai-slop.png" data-orig-size="394,571" data-comments-opened="1" data-image-title="cvander-servicio-social-anti-ai-slop" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2026/08/cvander-servicio-social-anti-ai-slop.png?w=394" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/08/06/ai-slop-frontend/" target="_self" >AI slop frontend</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">Pequeños tips para que el fronted que generaste con Claude, Codex, Cursor o Grok no se vean tan AI slop. Ten cuidado con los em-dashes, no abuses de las cajitas con su bordecito de colores al lado izquierdo. No necesitas subtítulo, título, H3, h4, tags en cada cosa. Los que estamos generando contenido nos empezamos&hellip; <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/08/06/ai-slop-frontend/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-08-06T16:39:00-07:00">August 6, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/shorts/" rel="tag">Shorts</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1237 post type-post status-publish format-standard has-post-thumbnail hentry category-blogroll">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2026/07/21/the-worldcup-of-2026/" target="_self" ><img width="778" height="586" src="https://cvander.com/wp-content/uploads/2026/07/screenshot-2026-07-21-at-4.59.42-pm.png?w=778" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="The WorldCup of&nbsp;2026" style="object-fit:cover;" decoding="async" loading="lazy" srcset="https://cvander.com/wp-content/uploads/2026/07/screenshot-2026-07-21-at-4.59.42-pm.png 778w, https://cvander.com/wp-content/uploads/2026/07/screenshot-2026-07-21-at-4.59.42-pm.png?w=128 128w, https://cvander.com/wp-content/uploads/2026/07/screenshot-2026-07-21-at-4.59.42-pm.png?w=300 300w, https://cvander.com/wp-content/uploads/2026/07/screenshot-2026-07-21-at-4.59.42-pm.png?w=768 768w" sizes="auto, (max-width: 778px) 100vw, 778px" data-attachment-id="1240" data-permalink="https://cvander.com/2026/07/21/the-worldcup-of-2026/screenshot-2026-07-21-at-4-59-42-pm/" data-orig-file="https://cvander.com/wp-content/uploads/2026/07/screenshot-2026-07-21-at-4.59.42-pm.png" data-orig-size="778,586" data-comments-opened="1" data-image-title="Spain in Sofi Stadium, LA" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2026/07/screenshot-2026-07-21-at-4.59.42-pm.png?w=778" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/07/21/the-worldcup-of-2026/" target="_self" >The WorldCup of&nbsp;2026</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">Fifa got everything right to capture the attention of the world, organize a massive party, profit from nationalism and make the biggest sport in the world even bigger. My feed has been about fútbol for a month.&nbsp;Actually, 40 days. USA 94 was one of the first Worldcups where I was paying attention. There was no&hellip; <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/07/21/the-worldcup-of-2026/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-07-21T17:10:26-07:00">July 21, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/blogroll/" rel="tag">Blogroll</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1244 post type-post status-publish format-standard hentry category-shorts">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)">
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/06/22/gol-de-messi/" target="_self" >Gol de Messi</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">Gol de Messi. Junio 22. Juego en Dallas vs Austria. Worldcup USA Mexico Canada 2026. Lo ví en vivo. <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/06/22/gol-de-messi/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-06-22T16:20:15-07:00">June 22, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/shorts/" rel="tag">Shorts</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1253 post type-post status-publish format-standard hentry category-shorts">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)">
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/06/11/mexican-sombreros/" target="_self" >Mexican Sombreros</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">Inauguración de la Copa del Mundo 2026 en Ciudad de México. El imponente estadio Azteca. El grito del cielito lindo. Y estos sombreros. El momento mágico de esta inauguración. Inolvidable. <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/06/11/mexican-sombreros/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-06-11T16:27:52-07:00">June 11, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/shorts/" rel="tag">Shorts</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1256 post type-post status-publish format-standard has-post-thumbnail hentry category-shorts">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2026/06/04/maria-la-del-valley/" target="_self" ><img width="1024" height="1024" src="https://cvander.com/wp-content/uploads/2026/08/maria-la-del-valley-character.jpeg?w=1024" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Maria la del&nbsp;Valley" style="object-fit:cover;" decoding="async" loading="lazy" srcset="https://cvander.com/wp-content/uploads/2026/08/maria-la-del-valley-character.jpeg 1024w, https://cvander.com/wp-content/uploads/2026/08/maria-la-del-valley-character.jpeg?w=96 96w, https://cvander.com/wp-content/uploads/2026/08/maria-la-del-valley-character.jpeg?w=300 300w, https://cvander.com/wp-content/uploads/2026/08/maria-la-del-valley-character.jpeg?w=768 768w" sizes="auto, (max-width: 1024px) 100vw, 1024px" data-attachment-id="1258" data-permalink="https://cvander.com/2026/06/04/maria-la-del-valley/maria-la-del-valley-character/" data-orig-file="https://cvander.com/wp-content/uploads/2026/08/maria-la-del-valley-character.jpeg" data-orig-size="1024,1024" data-comments-opened="1" data-image-title="maria-la-del-valley" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2026/08/maria-la-del-valley-character.jpeg?w=1024" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/06/04/maria-la-del-valley/" target="_self" >Maria la del&nbsp;Valley</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">Ella es Maria la del Valley. En vivo en Twitter e Instagram. Experimentos con animación, AI y contenido para evolucionar la forma como comparto las noticias. Chismecito bilingüe. <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/06/04/maria-la-del-valley/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-06-04T16:31:38-07:00">June 4, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/shorts/" rel="tag">Shorts</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1250 post type-post status-publish format-standard hentry category-shorts">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)">
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/04/28/ai-no-te-va-quitar-el-trabajo/" target="_self" >AI no te va quitar el&nbsp;trabajo</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">La ansiedad por AI es real, pero no hace falta entrar con miedo (que es algo que funciona bien en redes sociales) mientras crees que estas siendo reemplazado por tokens. Nueva categoría de videos Shorts porque este año ando generando muchos mas de estos. <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/04/28/ai-no-te-va-quitar-el-trabajo/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-04-28T16:25:40-07:00">April 28, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/shorts/" rel="tag">Shorts</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1218 post type-post status-publish format-standard has-post-thumbnail hentry category-blogroll">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2026/04/18/inbox-zero-for-your-brain/" target="_self" ><img width="397" height="299" src="https://cvander.com/wp-content/uploads/2026/04/inbox-zero-brain.png?w=397" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Inbox zero for your&nbsp;brain" style="object-fit:cover;" decoding="async" loading="lazy" srcset="https://cvander.com/wp-content/uploads/2026/04/inbox-zero-brain.png 397w, https://cvander.com/wp-content/uploads/2026/04/inbox-zero-brain.png?w=128 128w, https://cvander.com/wp-content/uploads/2026/04/inbox-zero-brain.png?w=300 300w" sizes="auto, (max-width: 397px) 100vw, 397px" data-attachment-id="1220" data-permalink="https://cvander.com/2026/04/18/inbox-zero-for-your-brain/inbox-zero-brain/" data-orig-file="https://cvander.com/wp-content/uploads/2026/04/inbox-zero-brain.png" data-orig-size="397,299" data-comments-opened="1" data-image-title="Inbox Zero for your Brain" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2026/04/inbox-zero-brain.png?w=397" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/04/18/inbox-zero-for-your-brain/" target="_self" >Inbox zero for your&nbsp;brain</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">We talk a lot about Inbox Zero for email. Some people extend it to WhatsApp, Slack, notifications. But I&#8217;ve been thinking about something different: Inbox Zero for my brain. The idea is that I start every day without a backlog of unprocessed thoughts, half-read articles, or unwatched videos weighing on me. Here&#8217;s how it actually&hellip; <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/04/18/inbox-zero-for-your-brain/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-04-18T00:17:51-07:00">April 18, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/blogroll/" rel="tag">Blogroll</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li><li class="wp-block-post post-1231 post type-post status-publish format-standard has-post-thumbnail hentry category-twitter-threads">
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-border-color has-theme-2-border-color has-theme-6-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-ae744a23 wp-block-group-is-layout-constrained" style="border-width:4px;border-top-left-radius:60px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:40px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70);box-shadow:var(--wp--preset--shadow--custom-shadow-1)"><figure style="margin-bottom:var(--wp--preset--spacing--70)" class="wp-block-post-featured-image"><a href="https://cvander.com/2026/02/08/bad-bunny-performs-the-super-bowl-lx-halftime/" target="_self" ><img width="594" height="564" src="https://cvander.com/wp-content/uploads/2026/07/bad-bunny-tweet.png?w=594" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Bad Bunny performs the Super Bowl LX&nbsp;halftime" style="object-fit:cover;" decoding="async" loading="lazy" srcset="https://cvander.com/wp-content/uploads/2026/07/bad-bunny-tweet.png 594w, https://cvander.com/wp-content/uploads/2026/07/bad-bunny-tweet.png?w=101 101w, https://cvander.com/wp-content/uploads/2026/07/bad-bunny-tweet.png?w=300 300w" sizes="auto, (max-width: 594px) 100vw, 594px" data-attachment-id="1235" data-permalink="https://cvander.com/2026/02/08/bad-bunny-performs-the-super-bowl-lx-halftime/bad-bunny-tweet/" data-orig-file="https://cvander.com/wp-content/uploads/2026/07/bad-bunny-tweet.png" data-orig-size="594,564" data-comments-opened="1" data-image-title="bad-bunny-tweet" data-image-description="" data-image-caption="" data-large-file="https://cvander.com/wp-content/uploads/2026/07/bad-bunny-tweet.png?w=594" /></a></figure>
+
+<h2 class="wp-block-post-title has-custom-3-font-size"><a href="https://cvander.com/2026/02/08/bad-bunny-performs-the-super-bowl-lx-halftime/" target="_self" >Bad Bunny performs the Super Bowl LX&nbsp;halftime</a></h2>
+
+<div class="wp-block-post-excerpt"><p class="wp-block-post-excerpt__excerpt">Ok. Let&#8217;s save this memory for the record. Bad Bunny performs the Super Bowl LX halftime show in Santa Clara, California. The first artist with a primarily Spanish-language career to headline solo. This is historic and I feel like writing a thread with some history 🧵 Original thread in X in 2020, JLO and Shakira&hellip; <a class="wp-block-post-excerpt__more-link" href="https://cvander.com/2026/02/08/bad-bunny-performs-the-super-bowl-lx-halftime/">Read more</a></p></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wiggley" />
+
+
+<div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flex wp-container-core-group-is-layout-eb8e908f wp-block-group-is-layout-flex"><div class="wp-block-post-date"><time datetime="2026-02-08T16:17:00-08:00">February 8, 2026</time></div>
+
+
+<p class="wp-block-paragraph">—</p>
+
+
+
+<p class="wp-block-paragraph">by</p>
+
+
+<div class="wp-block-post-author-name"><a href="https://cvander.com/author/cvander/" target="_self" class="wp-block-post-author-name__link">cvander</a></div>
+
+
+<p class="wp-block-paragraph">in</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><span class="wp-block-post-terms__prefix"> </span><a href="https://cvander.com/category/twitter-threads/" rel="tag">Twitter Threads</a></div></div>
+
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--90)" aria-hidden="true" class="wp-block-spacer"></div>
+
+</li></ul>
+
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:var(--wp--preset--spacing--80);margin-bottom:var(--wp--preset--spacing--110)"><nav class="wp-block-query-pagination is-content-justification-space-between is-layout-flex wp-container-core-query-pagination-is-layout-b2891da8 wp-block-query-pagination-is-layout-flex" aria-label="Pagination">
+
+
+<a href="https://cvander.com/page/2/" class="wp-block-query-pagination-next">Next Page<span class='wp-block-query-pagination-next-arrow is-arrow-arrow' aria-hidden='true'>→</span></a>
+</nav></div>
+</div>
+</main>
+
+
+<footer class="wp-block-template-part">
+<div class="wp-block-group alignfull has-global-padding is-content-justification-center is-layout-constrained wp-container-core-group-is-layout-df757ecc wp-block-group-is-layout-constrained" style="margin-top:0;margin-bottom:0;padding-top:calc( 0.5 * var(--wp--style--root--padding-right, var(--wp--custom--gap--horizontal)));padding-right:var(--wp--style--root--padding-right, var(--wp--custom--gap--horizontal));padding-bottom:calc( 0.5 * var(--wp--style--root--padding-right, var(--wp--custom--gap--horizontal)));padding-left:var(--wp--style--root--padding-left, var(--wp--custom--gap--horizontal))">
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-zigzag" style="margin-top:var(--wp--preset--spacing--90)" />
+
+
+
+<div class="wp-block-columns alignwide is-layout-flex wp-container-core-columns-is-layout-30cd009e wp-block-columns-is-layout-flex">
+<div class="wp-block-column has-global-padding is-content-justification-left is-layout-constrained wp-container-core-column-is-layout-128e448e wp-block-column-is-layout-constrained" style="flex-basis:50%"><h1 class="wp-block-site-title"><a href="https://cvander.com" target="_self" rel="home" aria-current="page">Christian Van Der Henst</a></h1>
+
+
+<p class="wp-block-paragraph">This is the personal blog of Christian. <br>Angel Investor, teacher, speaker and co-founder of Region Cuatro, Platzi &amp; Maestros del Web.</p>
+</div>
+
+
+
+<div class="wp-block-column has-small-font-size is-layout-flow wp-container-core-column-is-layout-a77db08e wp-block-column-is-layout-flow" style="flex-basis:30%">
+<p class="has-text-align-left wp-block-paragraph"><img loading="lazy" width="1304" height="1528" class="wp-image-777" style="width: 150px" src="https://cvander.wordpress.com/wp-content/uploads/2025/04/avatar-cvander.png" alt="Christian Van Der Henst" srcset="https://cvander.wordpress.com/wp-content/uploads/2025/04/avatar-cvander.png 1304w, https://cvander.wordpress.com/wp-content/uploads/2025/04/avatar-cvander.png?w=82&amp;h=96 82w, https://cvander.wordpress.com/wp-content/uploads/2025/04/avatar-cvander.png?w=256&amp;h=300 256w, https://cvander.wordpress.com/wp-content/uploads/2025/04/avatar-cvander.png?w=768&amp;h=900 768w, https://cvander.wordpress.com/wp-content/uploads/2025/04/avatar-cvander.png?w=1024&amp;h=1200 1024w" sizes="auto, (max-width: 1304px) 100vw, 1304px"></p>
+</div>
+
+
+
+<div class="wp-block-column has-small-font-size is-layout-flow wp-container-core-column-is-layout-9b635ac4 wp-block-column-is-layout-flow" style="flex-basis:20%"><nav class="is-vertical wp-block-navigation is-layout-flex wp-container-core-navigation-is-layout-fe9cc265 wp-block-navigation-is-layout-flex" aria-label="Header 2"><ul class="wp-block-navigation__container is-vertical wp-block-navigation"><li class="wp-block-navigation-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com/christian/" title="Cvander"><span class="wp-block-navigation-item__label">About 💊</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://news.cvander.com"><span class="wp-block-navigation-item__label">Substack  💌</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://ig.me/j/AbZ-eKPIALi2BCqv/11m"><span class="wp-block-navigation-item__label">Insta 📸</span></a></li><li class="wp-block-navigation-item menu-item menu-item-type-custom menu-item-object-custom menu-item-home wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com" title=""><span class="wp-block-navigation-item__label"><em>Archive</em> 🗄️</span></a></li><li class="wp-block-navigation-item menu-item menu-item-type-taxonomy menu-item-object-category wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com/category/podcast/" title=""><span class="wp-block-navigation-item__label">Podcasts 🎙️</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="https://cvander.com/category/san-francisco/"><span class="wp-block-navigation-item__label">SF 🌉</span></a></li></ul></nav></div>
+</div>
+
+
+
+<div class="wp-block-group alignwide is-layout-flow wp-block-group-is-layout-flow">
+<p class="has-text-align-left has-small-font-size wp-block-paragraph">Designed with <a href="https://wordpress.com" rel="nofollow">WordPress</a></p>
+</div>
+</div>
+</footer></div>
+</div>
+<!-- wpcom_wp_footer -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/files/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/pub/memphoria/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+	<div style="display:none">
+	</div>
+			<div id="actionbar" dir="ltr" style="display: none;"
+				class="actnbr-pub-memphoria" role="region" aria-label="Site actions">
+			<span class="actnbr-live" aria-live="polite"></span>
+			<ul>
+										<li class="actnbr-btn actnbr-hidden">
+										<a class="actnbr-action actnbr-actn-follow " href="" role="button" aria-haspopup="dialog" aria-expanded="false">
+				<svg class="actnbr-icon actnbr-icon-bell" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 11.5c0 1.353.17 2.368.976 3 .266.209.602.376 1.024.5v1H5v-1c.422-.124.757-.291 1.024-.5.806-.632.976-1.647.976-3V9c0-2.8 2.2-5 5-5s5 2.2 5 5v2.5ZM15.5 9v2.5c0 .93.066 1.98.515 2.897l.053.103H7.932a4.018 4.018 0 0 0 .053-.103c.449-.917.515-1.967.515-2.897V9c0-1.972 1.528-3.5 3.5-3.5s3.5 1.528 3.5 3.5Zm-5.492 9.008c0-.176.023-.346.065-.508h3.854A1.996 1.996 0 0 1 12 20c-1.1 0-1.992-.892-1.992-1.992Z"/></svg>				<span>Subscribe</span>
+			</a>
+			<a class="actnbr-action actnbr-actn-following  no-display" href="" role="button">
+				<svg class="actnbr-icon actnbr-icon-check" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="fill: none" stroke="currentColor" stroke-width="1.5"><path d="M7 12L10 15L17 8" vector-effect="non-scaling-stroke"/></svg>				<span>Subscribed</span>
+			</a>
+									<div class="actnbr-popover actnbr-panel actnbr-notice" id="follow-bubble" role="dialog" aria-label="Subscribe to Christian Van Der Henst">
+								<div class="actnbr-follow-bubble">
+								<div class="actnbr-panel__group"><a class="actnbr-menu__item actnbr-sitename" href="https://cvander.com"><img loading='lazy' alt='' src='https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=50' srcset='https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=50 1x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=75 1.5x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=100 2x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=150 3x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=200 4x' class='avatar avatar-50' height='50' width='50' /><span class="actnbr-menu__label">Christian Van Der Henst</span></a></div>																	<div class="actnbr-panel__group">
+										<div class="actnbr-message no-display" aria-live="polite"></div>
+										<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" class="no-display">
+																							<div class="actnbr-follow-count">Join 39 other subscribers</div>
+																							<input type="email" name="email" placeholder="Want updates? Enter your email" class="actnbr-email-field" aria-label="Email address" />
+											<input type="hidden" name="action" value="subscribe" />
+											<input type="hidden" name="blog_id" value="98035" />
+											<input type="hidden" name="source" value="https://cvander.com/" />
+											<input type="hidden" name="sub-type" value="actionbar-follow" />
+											<input type="hidden" id="_wpnonce" name="_wpnonce" value="eb29bdd279" />											<button type="submit" class="actnbr-button">Sign me up</button>
+										</form>
+										<p class="actnbr-login-nudge">
+											Have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fcvander.com%252F2025%252F11%252F11%252Fforbes%252F">Log in now.</a>										</p>
+									</div>
+																	</div>
+							</div>
+						</li>
+									<li class="actnbr-ellipsis actnbr-hidden">
+					<button type="button" class="actnbr-more-toggle" aria-haspopup="true" aria-expanded="false" aria-label="More options">
+						<svg class="actnbr-icon actnbr-icon-more-horizontal" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="currentColor"><path d="M11 13h2v-2h-2v2zm-6 0h2v-2H5v2zm12-2v2h2v-2h-2z"/></svg>					</button>
+					<div class="actnbr-popover actnbr-menu" role="menu" aria-label="Site options">
+						<div class="actnbr-menu__group" role="group"><a role="menuitem" class="actnbr-menu__item actnbr-sitename" href="https://cvander.com"><img loading='lazy' alt='' src='https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=50' srcset='https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=50 1x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=75 1.5x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=100 2x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=150 3x, https://cvander.com/wp-content/uploads/2025/05/cropped-cvander-favicon.jpg?w=200 4x' class='avatar avatar-50' height='50' width='50' /><span class="actnbr-menu__label">Christian Van Der Henst</span></a></div><div class="actnbr-menu__group" role="group"><a role="menuitem" class="actnbr-menu__item actnbr-reader" href="https://wordpress.com/reader/feeds/106172406"><span class="actnbr-menu__label">View site in Reader</span></a></div><div class="actnbr-menu__group" role="group"><a role="menuitem" class="actnbr-menu__item actnbr-subs" href="https://subscribe.wordpress.com/"><span class="actnbr-menu__label">Manage subscriptions</span></a><a role="menuitem" class="actnbr-menu__item actnbr-signup" href="https://wordpress.com/start/"><span class="actnbr-menu__label">Sign up</span></a><a role="menuitem" class="actnbr-menu__item actnbr-login" href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fcvander.com%252F2025%252F11%252F11%252Fforbes%252F"><span class="actnbr-menu__label">Log in</span></a></div><div class="actnbr-menu__group" role="group"><a role="menuitem" class="actnbr-menu__item flb-report" href="https://wordpress.com/abuse/?report_url=https://cvander.com" target="_blank" rel="noopener noreferrer"><span class="actnbr-menu__label">Report this content</span><span class="actnbr-menu__icon"><svg class="actnbr-icon actnbr-icon-external" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="currentColor"><path d="M19.5 4.5h-7V6h4.44l-5.97 5.97 1.06 1.06L18 7.06v4.44h1.5v-7Zm-13 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3H17v3a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h3V5.5h-3Z"/></svg></span></a></div><div class="actnbr-menu__group" role="group"><a role="menuitem" class="actnbr-menu__item actnbr-fold" href=""><span class="actnbr-menu__label">Collapse this bar</span></a></div>					</div>
+				</li>
+			</ul>
+		</div>
+		<script>
+window.addEventListener( "DOMContentLoaded", function () {
+				var link = document.createElement( "link" );
+				link.href = "\/wp-content\/mu-plugins\/jetpack-plugin\/sun\/jetpack_vendor\/automattic\/jetpack-newsletter\/src\/..\/build\/action-bar.css?ver=35dd33285eb46dc308dd";
+				link.rel = "stylesheet";
+				document.head.appendChild( link );
+
+				var script = document.createElement( "script" );
+				script.src = "\/wp-content\/mu-plugins\/jetpack-plugin\/sun\/jetpack_vendor\/automattic\/jetpack-newsletter\/src\/..\/build\/action-bar.js?ver=35dd33285eb46dc308dd";
+				document.body.appendChild( script );
+			} );
+</script>
+<script id="coblocks-loader-js-extra">
+var wpcom_coblocks_js = {"coblocks_masonry_js":"https://s0.wp.com/wp-content/plugins/coblocks/2.18.1-simple-rev.4/dist/js/coblocks-masonry.min.js?m=1681832297i","coblocks_lightbox_js":"https://s0.wp.com/wp-content/plugins/coblocks/2.18.1-simple-rev.4/dist/js/coblocks-lightbox.min.js?m=1681832297i","jquery_core_js":"/wp-includes/js/jquery/jquery.min.js","jquery_migrate_js":"/wp-includes/js/jquery/jquery-migrate.min.js","masonry_js":"/wp-includes/js/masonry.min.js","imagesloaded_js":"/wp-includes/js/imagesloaded.min.js"};
+var coblocksLigthboxData = {"closeLabel":"Close Gallery","leftLabel":"Previous","rightLabel":"Next"};
+//# sourceURL=coblocks-loader-js-extra
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='/wp-content/plugins/coblocks/2.18.1-simple-rev.4/dist/js/coblocks-loader.min.js?m=1681832297i'></script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/","ext":".png","svgUrl":"https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js?m=1783090810i&ver=7.2-alpha-63973"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\udec8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+<script src="//stats.wp.com/w.js?70" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'98035','blog_tz':'-7','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+		// Prevent sending pageview tracking from WP-Admin pages.
+		_stq.push(['view', {'blog':'98035','v':'wpcom','tz':'-7','user_id':'0','arch_home':'1','subd':'cvander'}]);
+		_stq.push(['extra', {'crypt':'UE5tW3cvZGRRcFJ8eV9HQjRRaj1nW2F6dVJCMkcmaCVwdD92VCZmM1RFemp1cH5XaUtKa3clLFNRQlt2bk5tU0lGJVdMTSZkd0IlVjF0N2d6al01b3JyPXNHMG1ETWE9WSxSbStONzBreThRSDFKTFNSNU9iMVdMZlBPOC1CJjRDNU02M3hVMXc/JTJZc18sUmRSQWNRbUFrLW8tWTV8SSZzK2VfR0wyaVVyaG1xdls1'}]);
+_stq.push([ 'clickTrackerInit', '98035', '0' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="America/Los_Angeles" data-custom-props="{&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;pub\/memphoria&quot;,&quot;wptheme_is_block&quot;:&quot;1&quot;}"   >
+		<script defer src="/wp-content/js/bilmur.min.js?i=19&amp;m=202642"></script> 	</body>
+</html>

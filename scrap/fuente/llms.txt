@@ -1,0 +1,88 @@
+# CookFoodie
+
+> Honest, first-person restaurant reviews and city food guides by Christian Van Der Henst (Cvander). 28 published reviews across San Francisco, Taipei, Guatemala City, San Sebastián, Artesa de Lleida, Barcelona, Madrid, Positano, Seoul, Singapore. Each review names what to order, where it is, and how to book.
+
+Every review page has a markdown twin: add `.md` to the URL (for example https://www.cookfoodie.com/reviews/la-espiga.md). The HTML page at the same path without `.md` is canonical; cite that one. Reviews are opinion from real visits; hours, menus, and prices change. Attribute to CookFoodie or Christian Van Der Henst.
+
+## City guides
+
+- [San Francisco](https://www.cookfoodie.com/wishlist/san-francisco): San Francisco restaurant recommendations with CookFoodie reviews, neighborhood picks, and maps.
+- [San Sebastián / Donostia](https://www.cookfoodie.com/wishlist/san-sebastian): Local recommendations for Donostia, Getaria, Errenteria, Lasarte-Oria, Oiartzun, and Hondarribia: pintxos bars, cider houses, fine dining, seafood, and grills.
+- [Taipei](https://www.cookfoodie.com/wishlist/taipei): Taipei restaurant recommendations with CookFoodie reviews, district picks, and maps.
+- [Mexico City](https://www.cookfoodie.com/wishlist/mexico-city): Quintonil, Pujol, Taquería El Califa de León, Fonda Margarita, and more across Polanco, Condesa, Roma Norte, and San Rafael.
+- [Antigua Guatemala](https://www.cookfoodie.com/wishlist/antigua-guatemala): Casa Escobar, Quiltro, Caoba Farms, Coffea Specialty Coffee, Mezon Panza Verde, and more.
+
+## Reviews: San Francisco
+
+- [Noe Cafe](https://www.cookfoodie.com/reviews/noe-cafe.md): Coffee shop · Cafe, Noe Valley. Noe Cafe on the Sanchez Slow Street, Noe Valley: a chill spot for meetings and coffee. Get the Breakfast Sandwich and avocado toast; beer later in the day.
+- [El Chato](https://www.cookfoodie.com/reviews/el-chato.md): Spanish Tapas, Mission. 4/5. El Chato is that Spanish corner that brings Madrid to the Mission. Tortilla española, navajas, jamón, chatos of natural wine, and vermut.
+- [The Morris](https://www.cookfoodie.com/reviews/the-morris.md): American Contemporary, Mission / Potrero Flats. 5/5. The Morris review, San Francisco (Mission / Potrero Flats): extraordinary duck, great bread, salads. Dinner reservations are easy to get.
+- [Mijoté](https://www.cookfoodie.com/reviews/mijote.md): French, Mission. 5/5. Mijoté review, San Francisco: former Mission sushi bar, weekly four-course French prix fixe. Sit at the bar, love the bread, ask what wine is on today.
+- [Mosto](https://www.cookfoodie.com/reviews/mosto.md): Mexican, Mission. 4/5. Tacolicious has a small mezcal bar next door in the Mission: Mosto. Pastor tacos from a proper trompo, and the pastor that the Mission gives.
+- [China Live](https://www.cookfoodie.com/reviews/china-live.md): Chinese, Chinatown. 4/5. China Live review, San Francisco Chinatown: xiaolongbao and dim sum in a big hall for groups. Cold Drinks Bar upstairs; Eight Tables is its own tasting menu.
+- [Burma Love](https://www.cookfoodie.com/reviews/burma-love.md): Burmese, Mission. 4/5. Burma Love review, San Francisco: the Valencia branch is the best one. Get the tea leaf salad, coconut rice, a curry, and noodle soup at the round table.
+- [La Taqueria](https://www.cookfoodie.com/reviews/la-taqueria.md): Mexican, Mission. 5/5. La Taqueria review: my top burrito in San Francisco's Mission. Carne asada, supreme, no rice, extra guac. The Michelin line is long; come back for tacos.
+- [Swan Oyster Depot](https://www.cookfoodie.com/reviews/swan-oyster-depot.md): Seafood, Polk Gulch. 5/5. Swan Oyster Depot review, San Francisco: fresh seafood on Polk Street since 1912. Get the Sicilian sashimi. No reservations; expect a line.
+- [San Ho Won](https://www.cookfoodie.com/reviews/san-ho-won.md): Korean, Mission. 5/5. San Ho Won review: Michelin-star Korean BBQ in San Francisco's Mission. Double-cut galbi grilled for you. Hard to book; share it with 4 to 6 people.
+- [Mister Jiu's](https://www.cookfoodie.com/reviews/mr-jius.md): Chinese-American, Chinatown. 5/5. Mister Jiu's: always go for the Liberty duck. $125 Peking duck banquet you pre-order. À la carte sells out. Chinatown, San Francisco.
+- [Rintaro](https://www.cookfoodie.com/reviews/rintaro.md): Japanese, Mission. 5/5. Rintaro review, San Francisco: the Mission izakaya that feels like Tokyo. Yakitori chicken skewers, daily specials, and a strong sake list. Book on Resy.
+- [Tony's Pizza Napoletana](https://www.cookfoodie.com/reviews/tonys-pizza.md): Italian, North Beach. 4/5. Tony's Pizza Napoletana: only 73 Margheritas a day in North Beach. You usually get one if you care. Golden Boy if you just want a slice.
+- [Mensho Tokyo](https://www.cookfoodie.com/reviews/mensho-tokyo.md): Japanese, Tenderloin. 5/5. Mensho Tokyo review: special ramen on Geary in the Tenderloin. The line is worth it. Their broth is special. Dinner only, Tue-Sun.
+- [Plow](https://www.cookfoodie.com/reviews/plow.md): American Brunch, Potrero Hill. 5/5. Plow review: the best brunch in San Francisco, in Potrero Hill. Lemon ricotta pancakes, the Chinese breakfast when they have it. No reservations; go early.
+
+## Reviews: Taipei
+
+- [食令 SHABU](https://www.cookfoodie.com/reviews/shi-ling-shabu.md): Shabu-shabu, Xinyi District. 5/5. 食令 SHABU at Taipei 101: live abalone, Iberico in the soup, and crab they clean for you. 4F luxury floor, next to Dior.
+- [Din Tai Fung](https://www.cookfoodie.com/reviews/din-tai-fung.md): Taiwanese, Da'an District. 5/5. A love letter to Din Tai Fung: xiaolongbao, chilled cucumber salad, and the original Xinyi Road shop in Taipei, plus favorite branches worldwide.
+- [Le Palais](https://www.cookfoodie.com/reviews/le-palais.md): Cantonese, Datong. 5/5. Le Palais review, Taipei: three-Michelin-star Cantonese duck at Palais de Chine. Pre-order 先知鴨 or 火焰片皮鴨 when you book.
+
+## Reviews: Guatemala City
+
+- [Casa Escobar](https://www.cookfoodie.com/reviews/casa-escobar.md): Steakhouse, Cayalá. 4/5. Casa Escobar Cayalá, Guatemala City: get the Mar y Tierra, lomito with giant shrimps, and ask for the local lomito and chorizo. Great steak, fast service.
+- [Diacá](https://www.cookfoodie.com/reviews/diaca.md): Contemporary Guatemalan, Cuatro Grados Norte. 5/5. Diacá in Cuatro Grados Norte, Guatemala City: tasting menu and brunch with grandpa. Huevitos revueltos chapines, sausage of beans. Now in Muxbal.
+
+## Reviews: San Sebastián
+
+- [La Espiga](https://www.cookfoodie.com/reviews/la-espiga.md): Basque pintxos, Centro. 5/5. La Espiga, a family-run pintxos bar in San Sebastián: Tortillita with truffles, rollito de jamón, croquetas, and wine by the glass. Open 10 AM to 10 PM.
+- [La Cuchara de San Telmo](https://www.cookfoodie.com/reviews/cuchara-de-san-telmo.md): Basque Pintxos, Parte Vieja. 5/5. La Cuchara de San Telmo, San Sebastián: cochinillo skin, kokotxas, navajas. Tiny room, fast service, portions not cheap pintxos. Tue-Sun, closed Mon.
+
+## Reviews: Artesa de Lleida
+
+- [Arrosseria Antoni Rubies](https://www.cookfoodie.com/reviews/arrosseria-antoni-rubies.md): Catalan / arroceria / rice, Artesa de Lleida. 4/5. Arrosseria Antoni Rubies, Artesa de Lleida: Bib Gourmand roadside stop for arròs a la marinera and cordero ribs.
+
+## Reviews: Barcelona
+
+- [Cervecería Catalana](https://www.cookfoodie.com/reviews/cerveceria-catalana.md): Spanish Tapas, Eixample. 5/5. Cervecería Catalana review, Barcelona: no reservations, fast service, great energy. Order the jamón, navajas, pincho de solomillo, and crema catalana.
+
+## Reviews: Madrid
+
+- [Sala de Despiece](https://www.cookfoodie.com/reviews/sala-de-despiece.md): Contemporary Spanish, Chamberí · Centro · Salamanca. 5/5. Sala de Despiece review, Madrid: the giant tomato, the Rolex, raw chuletón, and fried artichoke at the bar. Wines by the glass.
+
+## Reviews: Positano
+
+- [Zass](https://www.cookfoodie.com/reviews/zass.md): Italian, Amalfi Coast. 5/5. Just outside Positano, Zass at Il San Pietro is a romantic Michelin dinner: the view, octopus with figs, and lemon tagliatelle.
+
+## Reviews: Seoul
+
+- [Geoboki Sikdang](https://www.cookfoodie.com/reviews/geoboki-sikdang.md): Korean BBQ, Hoegi (Kyung Hee). 4/5. Geoboki Sikdang in Seoul serves charcoal-grilled pork, chewy kkeopdegi, grilled kimchi, and lunchtime soju near Kyung Hee University.
+
+## Reviews: Singapore
+
+- [The Coconut Club Beach Road](https://www.cookfoodie.com/reviews/the-coconut-club-beach-road.md): Singaporean / Malay, Beach Road / Kampong Gelam. 4/5. Nasi lemak at The Coconut Club Beach Road near Arab Street and Masjid Sultan, with ayam goreng berempah, beef rendang, and homemade otah.
+
+## Reviews in progress
+
+Live but still being edited (photos pending). Index: https://www.cookfoodie.com/reviews-in-progress
+
+- [Balompié Café](https://www.cookfoodie.com/reviews/balompie-cafe.md): Salvadoran, Mission · Bernal Heights. What to order at Balompié Café, including Pupusa de queso con loroco.
+- [Vivero y Café de La Escalonia](https://www.cookfoodie.com/reviews/la-escalonia.md): Guatemalan breakfast · Garden café, Antigua. What to order at Vivero y Café de La Escalonia, including Huevitos revueltos with frijoles, cheese and tortillas.
+- [Caoba Farms](https://www.cookfoodie.com/reviews/caoba-farms.md): Farm-to-table · Breakfast & lunch, Outskirts of Antigua. An honest CookFoodie review of Caoba Farms.
+- [Fonda Margarita](https://www.cookfoodie.com/reviews/fonda-margarita.md): Mexican breakfast · Fonda, Tlacoquemécatl del Valle. What to order at Fonda Margarita, including Frijoles con huevo.
+
+## Optional
+
+- [All reviews as one markdown file](https://www.cookfoodie.com/llms-full.txt): full text of every published review.
+- [Reviews index](https://www.cookfoodie.com/reviews): newest first.
+- [RSS feed](https://www.cookfoodie.com/feed.xml): new reviews as they publish.
+- [Sitemap](https://www.cookfoodie.com/sitemap.xml): every indexable URL, with photos.
+- [Author](https://cvander.com): Christian Van Der Henst.

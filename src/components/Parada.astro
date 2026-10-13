@@ -1,0 +1,71 @@
+---
+// Tarjeta de lugar. Con reseña: la foto de Chris arriba. Sin reseña: su nota es la protagonista (no se inventan fotos).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import T from './T.astro';
+import Icono from './Icono.astro';
+import { insignias, primeraFrase, type Lugar } from '../lib/datos';
+
+interface Props { lugar: Lugar; prioridad?: boolean }
+const { lugar: l, prioridad = false } = Astro.props;
+const fotos = import.meta.glob<{ default: ImageMetadata }>('../assets/reviews/*.{jpg,jpeg,png,webp}', { eager: true });
+const archivo = l.review?.images?.[0]?.file;
+const foto = archivo ? fotos[`../assets/reviews/${archivo}`]?.default : undefined;
+const visibles = l.tags.filter((t) => t in insignias);
+const publicada = l.review && l.review.status !== 'in_progress';
+---
+<li class:list={['lugar', { 'con-foto': foto }]} data-slug={l.slug} style={`view-transition-name: l-${l.slug};`}>
+  <a class="lugar-enlace" href={`/places/${l.slug}`}>
+    {foto && (
+      <div class="lugar-foto">
+        <Image src={foto} alt={l.review?.images?.[0]?.caption || l.name} widths={[360, 640]} sizes="(max-width: 700px) 92vw, 400px" loading={prioridad ? 'eager' : 'lazy'} />
+      </div>
+    )}
+    <div class="lugar-cuerpo">
+      <p class="lugar-meta">
+        <span class="lugar-cocina"><T en={l.adj.en} es={l.adj.es.replace(/^del? /, '')} /></span>
+        <span class="lugar-barrio">{l.hood}</span>
+        <span class="lugar-distancia num" data-distancia hidden></span>
+      </p>
+      <h3 class="lugar-nombre"><span class="lugar-numero num" data-numero aria-hidden="true"></span>{l.name}</h3>
+      <p class="lugar-nota" lang="en">{primeraFrase(l.note, foto ? 130 : 190)}</p>
+      <ul class="lugar-datos">
+        {publicada && <li class="dato-resena"><Icono n="estrella" /><T en={`Reviewed · ${l.review!.rating}/5`} es={`Reseñado · ${l.review!.rating}/5`} /></li>}
+        {l.review?.status === 'in_progress' && <li><T en="Review coming" es="Reseña en camino" /></li>}
+        {(l.reel || l.igPosts.length > 0) && <li><Icono n="video" /><T en={l.reel ? 'Video' : 'Instagram'} es={l.reel ? 'Video' : 'Instagram'} /></li>}
+        {visibles.map((t) => <li><T en={insignias[t].en} es={insignias[t].es} /></li>)}
+        <li class="num" title={l.priceEst ? 'Estimate / Estimado' : undefined}>{l.price}</li>
+      </ul>
+    </div>
+  </a>
+</li>
+
+<style>
+  .lugar { list-style: none; }
+  .lugar-enlace {
+    display: grid; grid-template-rows: auto 1fr; height: 100%; overflow: hidden;
+    background: var(--placa); border: 1px solid var(--linea); border-radius: var(--r);
+    text-decoration: none; transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), border-color 300ms;
+  }
+  .lugar-enlace:hover { transform: translateY(-3px); box-shadow: var(--sombra-alta); border-color: transparent; }
+  .lugar-foto { aspect-ratio: 4 / 3; overflow: hidden; background: var(--placa-2); }
+  .lugar-foto :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--ease); }
+  .lugar-enlace:hover .lugar-foto :global(img) { transform: scale(1.04); }
+  .lugar-cuerpo { display: grid; align-content: start; gap: 8px; padding: 16px 18px 18px; }
+  .lugar:not(.con-foto) .lugar-cuerpo { padding-top: 20px; }
+  .lugar-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 0.84rem; font-weight: 550; color: var(--texto-2); }
+  .lugar-cocina { color: var(--acento); font-weight: 650; }
+  .lugar-cocina::first-letter { text-transform: uppercase; }
+  .lugar-distancia { margin-left: auto; font-weight: 650; color: var(--texto); }
+  .lugar-nombre { font-size: 1.28rem; font-weight: 700; letter-spacing: -0.03em; display: flex; align-items: baseline; gap: 8px; }
+  .lugar-numero:empty { display: none; }
+  .lugar-numero { font-size: 0.8rem; font-weight: 700; color: var(--texto-3); }
+  .lugar-nota { color: var(--texto-2); font-size: 0.97rem; line-height: 1.5; }
+  .lugar:not(.con-foto) .lugar-nota { font-size: 1.05rem; color: var(--texto); }
+  .lugar:not(.con-foto) .lugar-nota::before { content: '“'; color: var(--acento); font-weight: 800; }
+  .lugar:not(.con-foto) .lugar-nota::after { content: '”'; color: var(--acento); font-weight: 800; }
+  .lugar-datos { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .lugar-datos li { display: inline-flex; align-items: center; gap: 0.3em; padding: 2px 10px; border-radius: 999px; background: var(--placa-2); font-size: 0.78rem; font-weight: 600; color: var(--texto-2); }
+  .lugar-datos .dato-resena { background: var(--acento-suave); color: var(--acento-hondo); }
+  @media (prefers-color-scheme: dark) { .lugar-datos .dato-resena { color: var(--acento); } }
+</style>

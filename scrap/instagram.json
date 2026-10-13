@@ -1,0 +1,16 @@
+{
+  "_nota": "Cruce manual del 13-oct-2026: 79 publicaciones de @cookfoodie (75 visibles en la grilla). Las de 2012-2014 son viajes (Espana, Chile). Solo estas tocan el directorio de SF.",
+  "posts": [
+    { "restaurante": "Burma Love", "url": "https://www.instagram.com/p/DWKCf6_j_RU/", "texto": "Always a great stop. @burmalove", "fecha": "2026-03-21", "cuenta": "cookfoodie" },
+    { "restaurante": "Mosto", "url": "https://www.instagram.com/p/Cp4QsiRuku7/", "texto": "Good pastor tacos and gringas in SF", "fecha": "2023-03-17", "cuenta": "cookfoodie" },
+    { "restaurante": "Kingdom of Dumplings", "url": "https://www.instagram.com/p/Ctpsk2xv5QP/", "texto": "Kingdom of Dumplings and Moku Yakitori-Ya", "fecha": "2023-06-18", "cuenta": "cookfoodie" },
+    { "restaurante": "Mosto", "url": "https://www.instagram.com/reel/CzPEH0-Pfji/", "texto": "Reel de la visita (ya estaba en cookfoodie.com)", "tipo": "reel", "cuenta": "sitio" },
+    { "restaurante": "San Ho Won", "url": "https://www.instagram.com/reel/C0GkpnOOpip/", "texto": "Reel de la visita (ya estaba en cookfoodie.com)", "tipo": "reel", "cuenta": "sitio" }
+  ],
+  "sf_fuera_del_directorio": [
+    { "nombre": "Parachute Bakery (Ferry Building)", "url": "https://www.instagram.com/p/DSTyAbSjk-Q/" },
+    { "nombre": "Moku Yakitori-Ya", "url": "https://www.instagram.com/p/Ctpsk2xv5QP/" },
+    { "nombre": "May meals (San Francisco, sin nombres)", "url": "https://www.instagram.com/p/C62RzuTrsMM/" },
+    { "nombre": "Yummy food last weeks in SF, Burlingame and Chicago", "url": "https://www.instagram.com/p/DRIHDlTEg-x/" }
+  ]
+}

@@ -1,0 +1,4014 @@
+[
+ {
+  "slug": "flour-water",
+  "name": "Flour + Water",
+  "hood": "Mission",
+  "cuisine": "Italian",
+  "region": "europe",
+  "adj": {
+   "en": "Italian",
+   "es": "italiana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "reserve",
+   "wine",
+   "lively",
+   "share"
+  ],
+  "plato": {
+   "en": "house-made pasta",
+   "es": "pasta de la casa"
+  },
+  "note": "House-made pasta is the star. The agnolotti and the tajarin are life-changing. Neapolitan-style pizzas from the wood-fired oven are equally impressive. Reservations essential at this pasta temple.",
+  "priority": 4,
+  "address": "2401 Harrison St, San Francisco, CA 94110",
+  "lat": 37.7589266,
+  "lng": -122.41238,
+  "maps": "https://www.google.com/maps?q=Flour+Water+San+Francisco+Mission",
+  "website": null,
+  "instagram": "https://instagram.com/flourandwatersf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "mijote",
+    "mi": 0.02
+   },
+   {
+    "slug": "san-ho-won",
+    "mi": 0.13
+   },
+   {
+    "slug": "el-chato",
+    "mi": 0.19
+   }
+  ]
+ },
+ {
+  "slug": "house-of-prime-rib",
+  "name": "House of Prime Rib",
+  "hood": "Van Ness",
+  "cuisine": "American",
+  "region": "usa",
+  "adj": {
+   "en": "old-school American",
+   "es": "americana clásica"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "family",
+   "fine",
+   "reserve",
+   "cocktails",
+   "lively",
+   "personal"
+  ],
+  "plato": {
+   "en": "prime rib carved tableside",
+   "es": "prime rib cortado en la mesa"
+  },
+  "note": "Old-school SF since 1949. Prime rib carved tableside from silver carts, Yorkshire pudding, and creamed spinach. The martinis are perfect. A time capsule of classic American dining.",
+  "priority": 4,
+  "address": "1906 Van Ness Ave, San Francisco, CA 94109",
+  "lat": 37.7933913,
+  "lng": -122.4225436,
+  "maps": "https://www.google.com/maps?q=House+of+Prime+Rib+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/thehouseofprimerib",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "swan-oyster-depot",
+    "mi": 0.19
+   },
+   {
+    "slug": "octavia",
+    "mi": 0.45
+   },
+   {
+    "slug": "mensho-tokyo",
+    "mi": 0.63
+   }
+  ]
+ },
+ {
+  "slug": "ju-ni",
+  "name": "Ju-ni",
+  "hood": "Divisadero",
+  "cuisine": "Japanese",
+  "region": "japan",
+  "adj": {
+   "en": "omakase",
+   "es": "omakase"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "fine",
+   "reserve",
+   "sake",
+   "calm",
+   "counter"
+  ],
+  "plato": {
+   "en": "12-seat omakase",
+   "es": "omakase de 12 puestos"
+  },
+  "note": "Intimate 12-seat omakase sushi bar from former Saison chef Geoffrey Lee. The $300+ tasting menu features pristine fish flown in from Tsukiji Market. Watching the chef's knife work up close is part of the experience. Reservations essential.",
+  "priority": 4,
+  "address": "1335 Fulton Street, San Francisco, CA 94102",
+  "lat": 37.7765789,
+  "lng": -122.4388579,
+  "maps": "https://www.google.com/maps?q=Ju-ni+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/juni_sf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "the-mill",
+    "mi": 0.04
+   },
+   {
+    "slug": "4505-burgers-and-bbq",
+    "mi": 0.04
+   },
+   {
+    "slug": "state-bird-provisions",
+    "mi": 0.59
+   }
+  ]
+ },
+ {
+  "slug": "lazy-bear",
+  "name": "Lazy Bear",
+  "hood": "Mission",
+  "cuisine": "Modern American",
+  "region": "usa",
+  "adj": {
+   "en": "Californian",
+   "es": "californiana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$$",
+  "priceEst": false,
+  "tags": [
+   "date",
+   "group",
+   "fine",
+   "reserve",
+   "wine",
+   "calm"
+  ],
+  "plato": {
+   "en": "a tasting menu and that bread and butter",
+   "es": "menú de degustación y ese pan con mantequilla"
+  },
+  "note": "One of my most memorable fine-dining experiences in San Francisco. The cultured butter and bread were exceptional, but what made the meal truly special was the original shared-table dinner-party format, with everyone eating together. Lazy Bear no longer seats guests communally, but the nostalgic, hyper-seasonal tasting menu and that incredible bread and butter still make it a recommendation.",
+  "priority": 4,
+  "address": "3416 19th St, San Francisco, CA 94110",
+  "lat": 37.7603507,
+  "lng": -122.4197035,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Lazy%20Bear%203416%2019th%20St%20San%20Francisco%20CA%2094110",
+  "website": null,
+  "instagram": "https://instagram.com/lazybearsf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "balompie-cafe",
+    "mi": 0.14
+   },
+   {
+    "slug": "lolo",
+    "mi": 0.23
+   },
+   {
+    "slug": "tartine-bakery",
+    "mi": 0.24
+   }
+  ]
+ },
+ {
+  "slug": "mijote",
+  "name": "Mijoté",
+  "hood": "Mission",
+  "cuisine": "French",
+  "region": "europe",
+  "adj": {
+   "en": "French",
+   "es": "francesa"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": false,
+  "tags": [
+   "date",
+   "calm",
+   "wine",
+   "fine",
+   "reserve",
+   "counter"
+  ],
+  "plato": {
+   "en": "the weekly French prix fixe",
+   "es": "el menú francés de la semana"
+  },
+  "note": "Modern French bistro with a California soul. The duck confit and the bone marrow with escargot are standouts. Natural wine program is exceptional. Intimate space perfect for special occasions.",
+  "priority": 4,
+  "address": "2400 Harrison St, San Francisco, CA 94110",
+  "lat": 37.7589056,
+  "lng": -122.4126981,
+  "maps": "https://www.google.com/maps?q=Mijoté+San+Francisco+Mission",
+  "website": "https://www.mijotesf.com",
+  "instagram": "https://instagram.com/mijotesf",
+  "telephone": null,
+  "review": {
+   "status": "published",
+   "date": "2025-01-27",
+   "rating": 5,
+   "shareTitle": "Mijoté: The sushi bar where you get a French omakase in the Mission",
+   "bestDish": "Weekly four-course prix fixe",
+   "personal": [
+    "I didn't really understand why I liked this restaurant so much the first time I was there, but it was probably because I was sitting at the bar next to the chef and he was finishing all these delicious French plates in front of me. And then it hit me. This used to be a sushi bar, and they kept that dynamic. They bring all the experience of cooking French food in Paris into San Francisco, but they do it and serve the plates with all the finishing touches right in front of you. That's kind of nice. Mijoté has a great, minimalistic, fixed-price menu with a couple of add-ons. You're going to love their bread and check the pairings or just see what's eclectic today in their wine list because they always have some great stuff. And make sure to ask to be seated at the bar. That's the best location."
+   ],
+   "dishes": [
+    {
+     "name": "Weekly four-course prix fixe",
+     "description": "Fixed-price French menu that changes weekly, with a couple of add-ons. Sit at the bar."
+    },
+    {
+     "name": "Lamb loin with saffron",
+     "description": "From a weekly menu card."
+    },
+    {
+     "name": "Bread",
+     "description": "You are going to love their bread."
+    },
+    {
+     "name": "Wine list",
+     "description": "Check the pairings or whatever is eclectic on the wine list that day."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "Where should I sit at Mijoté?",
+     "answer": "Ask to be seated at the bar. That is the best location. You watch the chef finish the French plates right in front of you."
+    },
+    {
+     "question": "What is the menu like at Mijoté?",
+     "answer": "Weekly four-course prix fixe with a couple of add-ons. You are going to love their bread. Check the pairings or whatever is eclectic on the wine list that day."
+    },
+    {
+     "question": "Why does Mijoté feel different?",
+     "answer": "This used to be a sushi bar and they kept that dynamic. French cooking with the finishing touches right in front of you. That is kind of nice."
+    }
+   ],
+   "reservationTip": "Request bar seating for the best experience watching the chefs",
+   "idealFor": "Intimate dinners and food enthusiasts",
+   "pullQuote": null,
+   "guest": {
+    "author": "My partner",
+    "intro": "My partner chose Mijoté. Her take:",
+    "paragraphs": [
+     "Mijoté is an affordable tasting in San Francisco. Incredible that the chef turned a sushi bar into a fresh experience. Chef from Japan worked in a famous bistro in Paris. We’re so lucky to have him in San Francisco.",
+     "The menu and service are unpretentious and you get very good French food."
+    ]
+   },
+   "images": [
+    {
+     "file": "mijote-lamb-loin-saffron-sauce-9109a14b.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mijote-cauliflower-grain-sauce-3f60358a.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mijote-cheese-and-soup-60bc2fb3.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mijote-octopus-citrus-salad-7d688c40.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mijote-pomegranate-meringue-dessert-cc8deafe.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/mijote"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "flour-water",
+    "mi": 0.02
+   },
+   {
+    "slug": "san-ho-won",
+    "mi": 0.14
+   },
+   {
+    "slug": "el-chato",
+    "mi": 0.2
+   }
+  ]
+ },
+ {
+  "slug": "mr-jius",
+  "name": "Mister Jiu's",
+  "hood": "Chinatown",
+  "cuisine": "Chinese-American",
+  "region": "china",
+  "adj": {
+   "en": "Chinese-American",
+   "es": "chino-americana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$$",
+  "priceEst": false,
+  "tags": [
+   "date",
+   "group",
+   "fine",
+   "reserve",
+   "cocktails",
+   "share",
+   "calm"
+  ],
+  "plato": {
+   "en": "Liberty duck",
+   "es": "pato Liberty"
+  },
+  "note": "Try the duck. This is a Michelin-starred Chinese American restaurant in Chinatown -the original Chinatown of San Francisco. The video will show you how much care they put into that duck, and they also do amazing hot pot and cocktails.",
+  "priority": 4,
+  "address": "28 Waverly Pl, San Francisco, CA 94108",
+  "lat": 37.7936719,
+  "lng": -122.4065757,
+  "maps": "https://maps.app.goo.gl/wbhmEBCU6ryRdSJSA",
+  "website": "https://www.misterjius.com",
+  "instagram": "https://instagram.com/misterjius",
+  "telephone": "+1-415-857-9688",
+  "review": {
+   "status": "published",
+   "date": "2023-10-07",
+   "rating": 5,
+   "shareTitle": "Mister Jiu's: always go for the Liberty duck",
+   "bestDish": "Liberty Duck",
+   "personal": [
+    "Mister Jiu's: always go for the Liberty duck.",
+    "I really like to eat duck in Chinese restaurants. Duck and rice. Maybe a soup by the side. It does not have to be fancy. When you want the best in town, head to Mister Jiu's.",
+    "Beautiful bar upstairs: Moongate Lounge. Great cocktails, beautiful decor. They also do fancy events if you get invited.",
+    "Talk about the duck. Liberty Farms, Sonoma. Pre-order it with the reservation. The treatment that makes the skin crispier. I have had my fair share of this dish, and I am still impressed by the flavor, the texture, and the crunch. The condiments. The little tortillas. Somebody will say those are not tortillas. If you were raised with them, you see them anywhere. Mix duck, condiments, veggies. Enjoy.",
+    "Now it is a $125 Peking duck banquet you can pre-order. The à la carte duck sells out. Pre-order it with the reservation.",
+    "Definitely the best restaurant in Chinatown. Sorry China Live. You are trendy and I love you too. El señor Jiu and I have some good stories.",
+    "Reserve in advance. Pre-order the duck. I repeat, go for the duck."
+   ],
+   "dishes": [
+    {
+     "name": "Liberty Duck / Peking duck banquet",
+     "description": "Liberty Farms, Sonoma. Now a $125 Peking duck banquet you can pre-order with the reservation. The à la carte duck sells out. The treatment that makes the skin crispier. Flavor, texture, crunch. Mix it with the condiments, the veggies, and the little tortillas."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "Do I need to pre-order the duck at Mister Jiu's?",
+     "answer": "Yes. Pre-order the Liberty duck with the reservation. It is now a $125 Peking duck banquet. The à la carte duck sells out. I repeat, go for the duck."
+    },
+    {
+     "question": "What should I order at Mister Jiu's?",
+     "answer": "The Liberty duck. Liberty Farms, Sonoma. The skin, the crunch, the little tortillas. Mix duck, condiments, veggies. Enjoy."
+    },
+    {
+     "question": "Is Moongate Lounge worth it?",
+     "answer": "Beautiful bar upstairs. Great cocktails, beautiful decor. They also do fancy events if you get invited."
+    }
+   ],
+   "reservationTip": "Reserve in advance. Pre-order the duck.",
+   "idealFor": "When you want the best duck in town",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "mr-jius-liberty-duck.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mr-jius-interior-moongate-bar-1857e270bcfb.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mr-jius-prawn.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mr-jius-tofu-greens.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mr-jius-caviar.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mr-jius-watermelon-radish.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/mr-jius"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "four-kings",
+    "mi": 0.09
+   },
+   {
+    "slug": "z-and-y",
+    "mi": 0.16
+   },
+   {
+    "slug": "china-live",
+    "mi": 0.31
+   }
+  ]
+ },
+ {
+  "slug": "octavia",
+  "name": "Octavia",
+  "hood": "Pacific Heights",
+  "cuisine": "California",
+  "region": "usa",
+  "adj": {
+   "en": "Californian",
+   "es": "californiana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "calm",
+   "fine",
+   "reserve",
+   "wine"
+  ],
+  "plato": {
+   "en": "a seasonal New American dinner",
+   "es": "cena de temporada"
+  },
+  "note": "This is a cozy place for dinner. Always a great selection and a good description of what New American stands for. The menu changes with the season, but it consistently feels polished, comfortable, and worth the night out.",
+  "priority": 4,
+  "address": "1701 Octavia St, San Francisco, CA 94109",
+  "lat": 37.7879461,
+  "lng": -122.427042,
+  "maps": "https://www.google.com/maps?q=Octavia+Restaurant+Pacific+Heights+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/sf_octavia",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "oma-san-francisco-station",
+    "mi": 0.29
+   },
+   {
+    "slug": "marufuku-ramen",
+    "mi": 0.32
+   },
+   {
+    "slug": "swan-oyster-depot",
+    "mi": 0.39
+   }
+  ]
+ },
+ {
+  "slug": "rintaro",
+  "name": "Rintaro",
+  "hood": "Mission",
+  "cuisine": "Japanese",
+  "region": "japan",
+  "adj": {
+   "en": "Japanese",
+   "es": "japonesa"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": false,
+  "tags": [
+   "date",
+   "group",
+   "sake",
+   "share",
+   "reserve",
+   "lively"
+  ],
+  "plato": {
+   "en": "yakitori and sake",
+   "es": "yakitori y sake"
+  },
+  "note": "This is the beautiful izakaya that we have in town. It really cares about yakitori. And the chicken skewers are really recommended. But try everything and ask for the specials. You'll have a blast. Their sake selection is also really good. It really feels like Tokyo in the Mission.",
+  "priority": 4,
+  "address": "82 14th St, San Francisco, CA 94103",
+  "lat": 37.7688879,
+  "lng": -122.4151313,
+  "maps": "https://www.google.com/maps?q=Rintaro+San+Francisco",
+  "website": "https://www.izakayarintaro.com",
+  "instagram": "https://instagram.com/izakayarintaro",
+  "telephone": "+1-415-517-8539",
+  "review": {
+   "status": "published",
+   "date": "2022-01-29",
+   "rating": 5,
+   "shareTitle": "Rintaro: yakitori in the Mission, ask for the specials",
+   "bestDish": "Yakitori Omakase",
+   "personal": [
+    "Rintaro is the beautiful izakaya we have in the Mission. Go for the yakitori. Ask for the specials. It really feels like Tokyo.",
+    "Chicken skewers first. They care about every cut. Sake list is strong. Reserve on Resy, or try the bar if you’re flexible.",
+    "Try more than the skewers once you’re in. You’ll have a blast."
+   ],
+   "dishes": [
+    {
+     "name": "Yakitori",
+     "description": "Chicken skewers over binchotan. Ask for the specials."
+    },
+    {
+     "name": "Tsukune",
+     "description": "Minced chicken skewers with egg yolk and tare."
+    },
+    {
+     "name": "Hanetsuki gyoza",
+     "description": "Berkshire pork gyoza with crispy wings."
+    },
+    {
+     "name": "Kurobuta tonkatsu",
+     "description": "Berkshire pork loin katsu with cabbage and Hatcho miso sauce."
+    },
+    {
+     "name": "Yosedofu",
+     "description": "Housemade silken tofu with shaved katsuobushi, ginger, scallion, and shiitake shoyu."
+    },
+    {
+     "name": "Eringi",
+     "description": "Charcoal-grilled king trumpet mushrooms."
+    },
+    {},
+    {}
+   ],
+   "faqs": [
+    {
+     "question": "What should I order at Rintaro?",
+     "answer": "Go for the yakitori. Ask for the specials. Chicken skewers first. They care about every cut. Try more than the skewers once you are in."
+    },
+    {
+     "question": "How do I book Rintaro?",
+     "answer": "Reserve on Resy, or try the bar if you are flexible."
+    },
+    {
+     "question": "Does Rintaro feel like Tokyo?",
+     "answer": "Yes. Beautiful izakaya in the Mission. It really feels like Tokyo. Sake list is strong."
+    }
+   ],
+   "reservationTip": "Reserve through Resy; bar seats available for walk-ins",
+   "idealFor": "Japanese food enthusiasts seeking authentic izakaya",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "rintaro-hanetsuki-gyoza.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-yakitori.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-tsukune.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-kurobuta-tonkatsu.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-yosedofu.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-eringi.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-shaving-daikon.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-menu.jpg",
+     "caption": ""
+    },
+    {
+     "file": "rintaro-tmnt-painting.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/rintaro"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "shizen",
+    "mi": 0.36
+   },
+   {
+    "slug": "burma-love",
+    "mi": 0.39
+   },
+   {
+    "slug": "four-barrel-coffee",
+    "mi": 0.39
+   }
+  ]
+ },
+ {
+  "slug": "shizen",
+  "name": "Shizen",
+  "hood": "Mission",
+  "cuisine": "Japanese",
+  "region": "japan",
+  "adj": {
+   "en": "vegan Japanese",
+   "es": "japonesa vegana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "vegan",
+   "sake",
+   "share",
+   "lively",
+   "reserve"
+  ],
+  "plato": {
+   "en": "vegan sushi",
+   "es": "sushi vegano"
+  },
+  "note": "Vegan sushi that converts carnivores. The spicy tuna (made from tomatoes) and the candied walnut & quinoa roll are revelations. Proof that plant-based dining can be both sustainable and indulgent.",
+  "priority": 4,
+  "address": "370 14th St, San Francisco, CA 94103",
+  "lat": 37.7682823,
+  "lng": -122.4216684,
+  "maps": "https://www.google.com/maps?q=Shizen+San+Francisco+Mission",
+  "website": null,
+  "instagram": "https://instagram.com/shizensf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "four-barrel-coffee",
+    "mi": 0.09
+   },
+   {
+    "slug": "burma-love",
+    "mi": 0.1
+   },
+   {
+    "slug": "rintaro",
+    "mi": 0.36
+   }
+  ]
+ },
+ {
+  "slug": "state-bird-provisions",
+  "name": "State Bird Provisions",
+  "hood": "Fillmore",
+  "cuisine": "American",
+  "region": "usa",
+  "adj": {
+   "en": "Californian",
+   "es": "californiana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "date",
+   "share",
+   "reserve",
+   "lively",
+   "wine"
+  ],
+  "plato": {
+   "en": "dim sum-style California small plates",
+   "es": "platitos californianos estilo dim sum"
+  },
+  "note": "Dim sum-style service meets California cuisine. The state bird (quail) with provisions is iconic, as are the garlic bread with burrata and the pork belly salad. James Beard Award winner that changed how Americans think about small plates.",
+  "priority": 4,
+  "address": "1529 Fillmore St, San Francisco, CA 94115",
+  "lat": 37.7837055,
+  "lng": -122.4329482,
+  "maps": "https://www.google.com/maps/search/?api=1&query=State%20Bird%20Provisions%201529%20Fillmore%20St%20San%20Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/statebirdprovisions",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "marufuku-ramen",
+    "mi": 0.12
+   },
+   {
+    "slug": "oma-san-francisco-station",
+    "mi": 0.15
+   },
+   {
+    "slug": "octavia",
+    "mi": 0.44
+   }
+  ]
+ },
+ {
+  "slug": "the-morris",
+  "name": "The Morris",
+  "hood": "Mission / Potrero Flats",
+  "cuisine": "American Contemporary",
+  "region": "usa",
+  "adj": {
+   "en": "American",
+   "es": "americana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": false,
+  "tags": [
+   "date",
+   "group",
+   "wine",
+   "fine",
+   "calm",
+   "share"
+  ],
+  "plato": {
+   "en": "the duck and the bread",
+   "es": "el pato y el pan"
+  },
+  "note": "The Morris review, San Francisco (Mission / Potrero Flats): extraordinary duck, great bread, salads. Dinner reservations are easy to get.",
+  "priority": 4,
+  "address": "2501 Mariposa St, San Francisco, CA 94110",
+  "lat": 37.76325,
+  "lng": -122.41079,
+  "maps": "https://www.google.com/maps/search/?api=1&query=The+Morris+2501+Mariposa+St+San+Francisco",
+  "website": "https://themorris-sf.com",
+  "instagram": "https://instagram.com/themorris_sf",
+  "telephone": "+1-415-655-9199",
+  "review": {
+   "status": "published",
+   "date": "2025-12-14",
+   "rating": 5,
+   "shareTitle": "The Morris: Extraordinary duck, and salads. Oh, and great bread.",
+   "bestDish": "Duck",
+   "personal": [
+    "Extraordinary duck, great bread selection and salads. Strong on vegetables. Reservations are also not hard to achieve during December dinner times."
+   ],
+   "dishes": [
+    {
+     "name": "Duck",
+     "description": "Extraordinary duck."
+    },
+    {
+     "name": "Beets and radicchio",
+     "description": "Beets, radicchio, soft cheese."
+    },
+    {
+     "name": "Bread",
+     "description": "Great bread."
+    },
+    {
+     "name": "Salads",
+     "description": "Salads. Strong on vegetables."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "What should I order at The Morris?",
+     "answer": "Extraordinary duck. Great bread and salads. Strong on vegetables."
+    },
+    {
+     "question": "How hard are reservations at The Morris?",
+     "answer": "Not hard during December dinner times."
+    }
+   ],
+   "reservationTip": "Reservations not hard to achieve during December dinner times",
+   "idealFor": "Duck lovers and vegetable-forward dining",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "the-morris-roasted-duck-hero.jpg",
+     "caption": ""
+    },
+    {
+     "file": "the-morris-beets-radicchio-0b0804f6.jpg",
+     "caption": ""
+    },
+    {
+     "file": "the-morris-chocolate-dessert-vanilla-ice-cream-421fba7f.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/the-morris"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "san-ho-won",
+    "mi": 0.26
+   },
+   {
+    "slug": "flour-water",
+    "mi": 0.31
+   },
+   {
+    "slug": "mijote",
+    "mi": 0.32
+   }
+  ]
+ },
+ {
+  "slug": "universal-bakery",
+  "name": "Universal Bakery",
+  "hood": "Mission",
+  "cuisine": "Bakery",
+  "region": "latam",
+  "adj": {
+   "en": "Guatemalan",
+   "es": "chapina"
+  },
+  "meals": [
+   "breakfast",
+   "coffee"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "solo",
+   "coffee",
+   "sweet",
+   "casual",
+   "calm"
+  ],
+  "plato": {
+   "en": "Guatemalan breakfast and pan dulce",
+   "es": "desayuno chapín y pan dulce"
+  },
+  "note": "Great breakfasts from Guatemala and pan dulce.",
+  "priority": 4,
+  "address": "3458 Mission St, San Francisco, CA 94110",
+  "lat": 37.7414088,
+  "lng": -122.4228625,
+  "maps": "https://www.google.com/maps?q=Universal+Bakery+Mission+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/universalbakeryinc",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "mosto",
+    "mi": 0.39
+   },
+   {
+    "slug": "noe-cafe",
+    "mi": 0.6
+   },
+   {
+    "slug": "reem-s-california-mission",
+    "mi": 0.68
+   }
+  ]
+ },
+ {
+  "slug": "4505-burgers-and-bbq",
+  "name": "4505 Burgers & BBQ",
+  "hood": "Divisadero",
+  "cuisine": "American",
+  "region": "usa",
+  "adj": {
+   "en": "American BBQ",
+   "es": "de barbacoa americana"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "family",
+   "patio",
+   "beer",
+   "casual",
+   "lively",
+   "personal"
+  ],
+  "plato": {
+   "en": "the Best Damn Cheeseburger",
+   "es": "la Best Damn Cheeseburger"
+  },
+  "note": "Founded by champion pitmaster Ryan Farr. The 'Best Damn Cheeseburger' lives up to its name, and the brisket is properly smoked for 18 hours. Their picnic-style outdoor seating captures SF's casual dining spirit.",
+  "priority": 3,
+  "address": "705 Divisadero St, San Francisco, CA 94117",
+  "lat": 37.7761968,
+  "lng": -122.4382376,
+  "maps": "https://www.google.com/maps?q=4505+Burgers+BBQ+San+Francisco+Divisadero",
+  "website": null,
+  "instagram": "https://instagram.com/4505bbq",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "the-mill",
+    "mi": 0.01
+   },
+   {
+    "slug": "ju-ni",
+    "mi": 0.04
+   },
+   {
+    "slug": "state-bird-provisions",
+    "mi": 0.59
+   }
+  ]
+ },
+ {
+  "slug": "beit-rima",
+  "name": "Beit Rima",
+  "hood": "Cole Valley",
+  "cuisine": "Middle Eastern",
+  "region": "mideast",
+  "adj": {
+   "en": "Palestinian",
+   "es": "palestina"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "date",
+   "share",
+   "calm",
+   "casual"
+  ],
+  "plato": {
+   "en": "chicken musakhan",
+   "es": "musakhan de pollo"
+  },
+  "note": "Modern Middle Eastern with a focus on Palestinian and Jordanian dishes. The chicken musakhan (sumac-spiced chicken with caramelized onions on flatbread) is incredible. Their hummus with lamb is a meal in itself. Cozy neighborhood spot with excellent hospitality.",
+  "priority": 3,
+  "address": "138 Carl St, San Francisco, CA 94117",
+  "lat": 37.7658964,
+  "lng": -122.4511263,
+  "maps": "https://www.google.com/maps?q=Beit+Rima+Cole+Valley+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/beitrima",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "the-mill",
+    "mi": 1
+   },
+   {
+    "slug": "4505-burgers-and-bbq",
+    "mi": 1
+   },
+   {
+    "slug": "ju-ni",
+    "mi": 1
+   }
+  ]
+ },
+ {
+  "slug": "burma-love",
+  "name": "Burma Love",
+  "hood": "Mission",
+  "cuisine": "Burmese",
+  "region": "seasia",
+  "adj": {
+   "en": "Burmese",
+   "es": "birmana"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": false,
+  "tags": [
+   "group",
+   "share",
+   "lively",
+   "cocktails",
+   "casual",
+   "family",
+   "spicy"
+  ],
+  "plato": {
+   "en": "tea leaf salad at the round table",
+   "es": "ensalada de hoja de té en la mesa redonda"
+  },
+  "note": "The Valencia branch is the best one. Find an excuse to reserve the big round table, and get there early for a drink at the bar. Tea leaf salad is a must. Menlo Park and Mint Plaza get special mention. Sister properties: Kayah by Burma Love at Chase Center, and Teakwood by Burma Love in Hayes Valley.",
+  "priority": 3,
+  "address": "211 Valencia St, San Francisco, CA 94103",
+  "lat": 37.7696206,
+  "lng": -122.4221812,
+  "maps": "https://www.google.com/maps?q=Burma+Love+San+Francisco+Valencia",
+  "website": "https://www.burmalove.com",
+  "instagram": "https://instagram.com/burmalovesf",
+  "telephone": "+1-415-861-2100",
+  "review": {
+   "status": "published",
+   "date": "2025-01-27",
+   "rating": 4,
+   "shareTitle": "Burma Love: the Valencia branch is the best one, get the tea leaf salad.",
+   "bestDish": "Tea Leaf Salad",
+   "personal": [
+    "The Valencia branch is the best one. Find an excuse to reserve the big round table: bring a group so you can try it all. Get there early for a drink at the bar.",
+    "You have to try the tea leaf salad because those fermented tea leaves are amazing and it has a great umami magic. Also, the coconut rice is great and I always include at least a curry, a soup with noodles, and some chicken.",
+    "Menlo Park and Mint Plaza get special mention. Same family, same tea leaf salad, a different room: Springline on the Peninsula, and the downtown dining room on Mint Plaza.",
+    "Now there are sister properties too. Kayah by Burma Love is at Thrive City next to Chase Center, the one you want before a Warriors game. Teakwood by Burma Love is the Hayes Valley room, more of a fire-warmed, special-occasion table.",
+    "This place introduced Burmese cuisine to many Americans, and Valencia is still the one I trust with a whole afternoon."
+   ],
+   "dishes": [
+    {
+     "name": "Tea Leaf Salad",
+     "description": "Fermented tea leaves with nuts, seeds, and fresh vegetables. Great umami magic."
+    },
+    {
+     "name": "Coconut Rice",
+     "description": "I always include the coconut rice."
+    },
+    {
+     "name": "Curry",
+     "description": "I always include at least a curry."
+    },
+    {
+     "name": "Noodle soup",
+     "description": "A soup with noodles."
+    },
+    {
+     "name": "Chicken",
+     "description": "And some chicken."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "What is special about Burmese tea leaf salad?",
+     "answer": "You have to try it. Those fermented tea leaves are amazing and it has a great umami magic."
+    },
+    {
+     "question": "Which Burma Love location is best?",
+     "answer": "The Valencia branch in the Mission is the best one. Find an excuse to reserve the big round table, and get there early for a drink at the bar. Menlo Park and Mint Plaza get special mention. The sister properties are Kayah and Teakwood."
+    },
+    {
+     "question": "How should I book Burma Love on Valencia?",
+     "answer": "Reserve the big round table so a group can share tea leaf salad, coconut rice, a curry, a noodle soup, and some chicken. Get there early and have a drink at the bar before you sit."
+    }
+   ],
+   "reservationTip": "At Valencia, find an excuse to reserve the big round table. Get there early for a drink at the bar.",
+   "idealFor": "Groups at the round table, and anyone discovering Burmese food",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "burma-love-tea-leaf-salad-b9af722de792.jpg",
+     "caption": ""
+    },
+    {
+     "file": "burma-love-roti-and-curry-0d60afd9a588.jpg",
+     "caption": ""
+    },
+    {
+     "file": "burma-love-rice-and-curry-30f81c7c39e6.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/burma-love"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [
+   {
+    "url": "https://www.instagram.com/p/DWKCf6_j_RU/",
+    "text": "Always a great stop. @burmalove",
+    "date": "2026-03-21"
+   }
+  ],
+  "nearby": [
+   {
+    "slug": "shizen",
+    "mi": 0.1
+   },
+   {
+    "slug": "four-barrel-coffee",
+    "mi": 0.18
+   },
+   {
+    "slug": "zuni-cafe",
+    "mi": 0.27
+   }
+  ]
+ },
+ {
+  "slug": "burma-super-star",
+  "name": "Burma Super Star",
+  "hood": "Sunset",
+  "cuisine": "Burmese",
+  "region": "seasia",
+  "adj": {
+   "en": "Burmese",
+   "es": "birmana"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "family",
+   "share",
+   "line",
+   "lively",
+   "casual",
+   "spicy"
+  ],
+  "plato": {
+   "en": "tea leaf salad and coconut rice",
+   "es": "ensalada de hoja de té y arroz de coco"
+  },
+  "note": "The tea leaf salad is legendary, fermented tea leaves with nuts and seeds create umami magic. Rainbow salad and coconut rice are also must-orders. Expect a wait; this place introduced Burmese cuisine to many Americans.",
+  "priority": 3,
+  "address": "309 Clement St, San Francisco, CA 94118",
+  "lat": 37.7829134,
+  "lng": -122.4625652,
+  "maps": "https://www.google.com/maps?q=Burma+Super+Star+San+Francisco+Sunset",
+  "website": null,
+  "instagram": "https://instagram.com/burmasuperstarsf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": "burma-love",
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "kitchen-istanbul",
+    "mi": 0.03
+   },
+   {
+    "slug": "arsicault-bakery",
+    "mi": 0.19
+   },
+   {
+    "slug": "beit-rima",
+    "mi": 1.33
+   }
+  ]
+ },
+ {
+  "slug": "cantoo-latin-asian-rotisserie",
+  "name": "Cantoo Latin Asian Rotisserie",
+  "hood": "Tenderloin",
+  "cuisine": "Venezuelan-Chinese Fusion",
+  "region": "latam",
+  "adj": {
+   "en": "Venezuelan-Chinese",
+   "es": "venezolana y china"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$",
+  "priceEst": false,
+  "tags": [
+   "solo",
+   "personal",
+   "casual",
+   "counter",
+   "calm"
+  ],
+  "plato": {
+   "en": "the 9 dollar rice and chicken",
+   "es": "el arroz con pollo de 9 dólares"
+  },
+  "note": "Venezuelan and Chinese fusion with a lovely history coming from Venezuela and Panama to the Tenderloin. Will always honor their 9 dollar rice and chicken dish. A unique blend of Latin American and Asian flavors that tells the story of migration and cultural fusion in San Francisco.",
+  "priority": 3,
+  "address": "572 O'Farrell St, San Francisco, CA 94102",
+  "lat": 37.7859264,
+  "lng": -122.4141624,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Cantoo%20Latin%20Asian%20Rotisserie%20572%20OFarrell%20St%20San%20Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/cantoosf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "mensho-tokyo",
+    "mi": 0.07
+   },
+   {
+    "slug": "swan-oyster-depot",
+    "mi": 0.51
+   },
+   {
+    "slug": "mr-jius",
+    "mi": 0.68
+   }
+  ]
+ },
+ {
+  "slug": "chez-maman",
+  "name": "Chez Maman",
+  "hood": "Potrero Hill",
+  "cuisine": "French",
+  "region": "europe",
+  "adj": {
+   "en": "French",
+   "es": "francesa"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "wine",
+   "patio",
+   "calm",
+   "casual"
+  ],
+  "plato": {
+   "en": "moules frites",
+   "es": "mejillones con papas"
+  },
+  "note": "Authentic French bistro with a neighborhood feel. Their moules frites and croque monsieur transport you to Paris. Great French wine selection and charming back patio.",
+  "priority": 3,
+  "address": "1401 18th St, San Francisco, CA 94107",
+  "lat": 37.7624444,
+  "lng": -122.3968215,
+  "maps": "https://www.google.com/maps?q=Chez+Maman+Potrero+Hill",
+  "website": null,
+  "instagram": "https://instagram.com/chezmamansf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "farley-s",
+    "mi": 0.05
+   },
+   {
+    "slug": "plow",
+    "mi": 0.08
+   },
+   {
+    "slug": "piccino",
+    "mi": 0.49
+   }
+  ]
+ },
+ {
+  "slug": "china-live",
+  "name": "China Live",
+  "hood": "Chinatown",
+  "cuisine": "Chinese",
+  "region": "china",
+  "adj": {
+   "en": "Chinese",
+   "es": "china"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": false,
+  "tags": [
+   "group",
+   "family",
+   "share",
+   "lively",
+   "cocktails",
+   "casual"
+  ],
+  "plato": {
+   "en": "xiaolongbao and dim sum",
+   "es": "xiaolongbao y dim sum"
+  },
+  "note": "China Live made what Italy is for Italian food but for Chinese food in Chinatown. They have an amazing variety of stuff, great for groups. Try all the different dim sum. The Xiaolongbao is always a great recommendation, and it's a very big space. Not only do they have the restaurant, but there's also a speakeasy that's highly recommended.",
+  "priority": 3,
+  "address": "644 Broadway, San Francisco, CA 94133",
+  "lat": 37.7980401,
+  "lng": -122.4078656,
+  "maps": "https://www.google.com/maps?q=China+Live+San+Francisco+Chinatown",
+  "website": "https://www.chinalivesf.com",
+  "instagram": "https://instagram.com/chinalivesf",
+  "telephone": "+1-415-788-8188",
+  "review": {
+   "status": "published",
+   "date": "2025-01-27",
+   "rating": 4,
+   "shareTitle": "China Live: xiaolongbao in Chinatown, then Cold Drinks Bar upstairs",
+   "bestDish": "Xiaolongbao (Soup Dumplings)",
+   "personal": [
+    "China Live on Broadway in Chinatown is the big Chinese food hall for groups. Go for the xiaolongbao. Dim sum all around.",
+    "Variety is the point. Great for a table that wants to try a lot. Huge space: restaurant, market energy, and Cold Drinks Bar upstairs if you want the quieter night. Eight Tables is a separate tasting-menu restaurant. Reserve Eight Tables ahead; walk in for the main floor."
+   ],
+   "dishes": [
+    {},
+    {},
+    {}
+   ],
+   "faqs": [
+    {
+     "question": "What should I order at China Live?",
+     "answer": "Go for the xiaolongbao. Dim sum all around. Variety is the point."
+    },
+    {
+     "question": "How do I book China Live?",
+     "answer": "Walk in for the main floor. Cold Drinks Bar is upstairs. Reserve Eight Tables ahead if you want that separate tasting-menu restaurant."
+    },
+    {
+     "question": "Is China Live good for groups?",
+     "answer": "Yes. Big Chinese food hall on Broadway in Chinatown. Great for a table that wants to try a lot."
+    }
+   ],
+   "reservationTip": "Walk-ins for market hall; reserve ahead for Eight Tables speakeasy",
+   "idealFor": "Groups exploring diverse Chinese regional cuisines",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "china-live-kitchen-steamers.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/china-live"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "tonys-pizza",
+    "mi": 0.17
+   },
+   {
+    "slug": "z-and-y",
+    "mi": 0.18
+   },
+   {
+    "slug": "mr-jius",
+    "mi": 0.31
+   }
+  ]
+ },
+ {
+  "slug": "doma-sushi",
+  "name": "Doma Sushi",
+  "hood": "Bernal Heights",
+  "cuisine": "Japanese",
+  "region": "japan",
+  "adj": {
+   "en": "Japanese",
+   "es": "japonesa"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "calm",
+   "sake",
+   "casual",
+   "family"
+  ],
+  "plato": {
+   "en": "omakase and ankimo",
+   "es": "omakase y ankimo"
+  },
+  "note": "Doma remains open, but this recommendation moved with the restaurant from its former Cortland Avenue address to 433 Precita Avenue. The welcoming neighborhood setting, omakase, nigiri, salmon skin salad, and ankimo remain the reasons to go.",
+  "priority": 3,
+  "address": "433 Precita Ave, San Francisco, CA 94110",
+  "lat": 37.7474034,
+  "lng": -122.4110506,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Doma%20Sushi%20433%20Precita%20Ave%20San%20Francisco%20CA%2094110",
+  "website": null,
+  "instagram": null,
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "wise-sons-jewish-delicatessen",
+    "mi": 0.43
+   },
+   {
+    "slug": "reem-s-california-mission",
+    "mi": 0.44
+   },
+   {
+    "slug": "la-taqueria",
+    "mi": 0.45
+   }
+  ]
+ },
+ {
+  "slug": "dumpling-time",
+  "name": "Dumpling Time",
+  "hood": "Design District",
+  "cuisine": "Asian",
+  "region": "china",
+  "adj": {
+   "en": "dumpling",
+   "es": "de dumplings"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "family",
+   "share",
+   "lively",
+   "casual",
+   "beer"
+  ],
+  "plato": {
+   "en": "xiao long bao and the King-Dum",
+   "es": "xiao long bao y el King-Dum"
+  },
+  "note": "Watch dumpling makers through the glass window. The colorful xiao long bao (soup dumplings) and the King-Dum (massive pork & shrimp dumpling) are Instagram-famous for good reason. Modern take on dim sum classics.",
+  "priority": 3,
+  "address": "1 Division St, San Francisco, CA 94103",
+  "lat": 37.769775,
+  "lng": -122.402552,
+  "maps": "https://www.google.com/maps?q=Dumpling+Time+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/dumplingtime_sf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "chez-maman",
+    "mi": 0.6
+   },
+   {
+    "slug": "farley-s",
+    "mi": 0.62
+   },
+   {
+    "slug": "plow",
+    "mi": 0.63
+   }
+  ]
+ },
+ {
+  "slug": "el-chato",
+  "name": "El Chato",
+  "hood": "Mission",
+  "cuisine": "Spanish Tapas",
+  "region": "europe",
+  "adj": {
+   "en": "Spanish",
+   "es": "española"
+  },
+  "meals": [
+   "lunch",
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$",
+  "priceEst": false,
+  "tags": [
+   "group",
+   "date",
+   "lively",
+   "wine",
+   "share",
+   "patio",
+   "casual"
+  ],
+  "plato": {
+   "en": "tapas and natural wine",
+   "es": "tapas y vino natural"
+  },
+  "note": "El Chato is that Spanish corner that brings vibes of Madrid to the Mission. Natural wine bar with great owners. Go for the tapas, the tortilla española, navajas, jamón and cheese, and ask for chatos. Trust the wine stand. On a sunny day, hang out outside.",
+  "priority": 3,
+  "address": "2301 Bryant St, San Francisco, CA 94110",
+  "lat": 37.7575118,
+  "lng": -122.4094386,
+  "maps": "https://www.google.com/maps?q=El+Chato+San+Francisco+Mission",
+  "website": null,
+  "instagram": "https://instagram.com/elchatosf",
+  "telephone": null,
+  "review": {
+   "status": "published",
+   "date": "2026-07-14",
+   "rating": 4,
+   "shareTitle": "El Chato is that Spanish corner that brings vibes of Madrid to the Mission.",
+   "bestDish": "Tortilla Española",
+   "personal": [
+    "This corner really makes Madrid a thing in the Mission. Beautiful place, great owners, and the kind of bar you end up trusting with a whole afternoon.",
+    "Spending a lot of time in Madrid, Barcelona, Granada and San Sebastián, you develop a love for the passion of Spanish food. And finding that same character in their owners, that love for making a tortilla taste good and caring for the bread and the vermuts, that's what makes El Chato a place where you feel in España.",
+    "It's a natural wine bar. Go for the tapas, the tortilla española, and the wines. They're just amazing. I really enjoy the navajas, and their jamón and cheese selection. Ask for some chatos so you can try more of what they have on the menu. The owners' passion shows in the food and in a list that leans on small European producers. The tortilla is simple, soft inside and golden at the edges.",
+    "They serve that tortilla as a pintxo on grilled bread with piquillo and allioli. Get pan con tomate with it, and spread the tomato yourself. The toasted jamón sandwich with melted cheese and piparras is the other plate I keep in the middle of the table.",
+    "During the World Cup this was a great community for following Spain. Locals and Spaniards hanging out, sharing an Estrella, calling the goals, passing around tortilla de patata and their vermut. They have a great non-alcoholic one for those early matches. The team is friendly. Trust their recommendations from the wine stand.",
+    "On a sunny day (the Mission gets better weather than the rest of the city) you can hang out outside. That corner doesn't just feel Mission. A friend said it could be Roma in Mexico City, Castellana in Madrid, Palermo Soho in Buenos Aires, or Providencia in Chile. There's a vibe in the corner.",
+    "Feels like a slice of Madrid in the Mission, with warm hospitality and flavors that actually hold up."
+   ],
+   "dishes": [
+    {
+     "name": "Tortilla Española",
+     "description": "The simple, deep version you want: custardy inside, golden at the edges. They serve it as a pintxo on grilled bread with piquillo and allioli. During the World Cup it kept getting passed around with vermut and Estrella."
+    },
+    {
+     "name": "Navajas",
+     "description": "Galician razor clams from the conservas list. One of the dishes I keep coming back for."
+    },
+    {
+     "name": "Jamón and Cheese",
+     "description": "A proper Spanish jamón and cheese selection. Get the toasted jamón sandwich too: melted cheese, piparras, paprika, chips on the side."
+    },
+    {
+     "name": "Pan con Tomate",
+     "description": "Toasted bread with olive oil and grated tomato you spread yourself. The simple Spanish bite that belongs next to the tortilla and a chato of wine."
+    },
+    {
+     "name": "Chatos of Natural Wine",
+     "description": "Ask for chatos: small glasses so you can try more of the list. It leans on small European producers. Trust their recommendations from the wine stand."
+    },
+    {
+     "name": "Vermut",
+     "description": "Their vermut is part of the afternoon. They also have a great non-alcoholic one for those early World Cup matches."
+    },
+    {
+     "name": "Estrella Galicia",
+     "description": "The beer that shows up when Spain is playing. Share one with the table while you call the goals."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "What are 'chatos' at El Chato?",
+     "answer": "Chatos are small glasses of wine, a traditional way to taste and explore in Spanish bars. Ask for some so you can try more of the natural wine list, which leans on small European producers. Trust the recommendations from the wine stand."
+    },
+    {
+     "question": "What should I order at El Chato?",
+     "answer": "Go for the tapas, the tortilla española, and the wines. The tortilla is custardy inside and golden at the edges, served as a pintxo. I really enjoy the navajas, the jamón and cheese, and pan con tomate. Ask for chatos. Get vermut, including the non-alcoholic one if you are there early, or share an Estrella."
+    },
+    {
+     "question": "Does El Chato have non-alcoholic drinks?",
+     "answer": "Yes. They have a great non-alcoholic vermut, which is what you want for those early World Cup matches."
+    },
+    {
+     "question": "Is there outdoor seating at El Chato?",
+     "answer": "Yes. On a sunny day you can hang out outside on the corner of Bryant and 21st. The Mission gets better weather than the rest of the city, and that sidewalk is part of the vibe."
+    },
+    {
+     "question": "Is El Chato a restaurant or a bar?",
+     "answer": "El Chato is a natural wine bar that serves excellent tapas. It is the kind of bar you end up trusting with a whole afternoon: come for the wine, stay for the tortilla española, and let the corner do the rest."
+    }
+   ],
+   "reservationTip": "Small corner bar. Walk in, grab an outside table on a sunny Mission day, or trust the team at the wine stand.",
+   "idealFor": "Long afternoons, tapas grazing, and following Spain",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "el-chato-pan-con-tomate-hero.jpg",
+     "caption": ""
+    },
+    {
+     "file": "el-chato-tortilla-espanola-tight.jpg",
+     "caption": ""
+    },
+    {
+     "file": "el-chato-storefront-f9d04878b309.jpg",
+     "caption": ""
+    },
+    {
+     "file": "el-chato-world-cup-9ad3c68f7938.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/el-chato"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "san-ho-won",
+    "mi": 0.15
+   },
+   {
+    "slug": "flour-water",
+    "mi": 0.19
+   },
+   {
+    "slug": "mijote",
+    "mi": 0.2
+   }
+  ]
+ },
+ {
+  "slug": "four-kings",
+  "name": "Four Kings",
+  "hood": "Chinatown",
+  "cuisine": "Chinese",
+  "region": "china",
+  "adj": {
+   "en": "Chinese",
+   "es": "china"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "lively",
+   "share",
+   "reserve",
+   "beer",
+   "cocktails",
+   "spicy"
+  ],
+  "plato": {
+   "en": "a Cantonese-Taiwanese feast",
+   "es": "banquete cantonés y taiwanés"
+  },
+  "note": "Cozy place that reminds me of the feeling of some izakayas, but the variety is amazing. You get Singaporean, Korean, and a lot of Taiwanese and Chinese delicatessen influences all in one dinner. Great food, great ambience, and one of the most fun meals in Chinatown.",
+  "priority": 3,
+  "address": "710 Commercial St, San Francisco, CA 94108",
+  "lat": 37.7941015,
+  "lng": -122.4050836,
+  "maps": "https://www.google.com/maps?q=Four+Kings+710+Commercial+St+San+Francisco+CA+94108",
+  "website": null,
+  "instagram": "https://instagram.com/fourkings__",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "mr-jius",
+    "mi": 0.09
+   },
+   {
+    "slug": "z-and-y",
+    "mi": 0.14
+   },
+   {
+    "slug": "china-live",
+    "mi": 0.31
+   }
+  ]
+ },
+ {
+  "slug": "hog-island-oyster-co",
+  "name": "Hog Island Oyster Co.",
+  "hood": "Ferry Building",
+  "cuisine": "Seafood",
+  "region": "usa",
+  "adj": {
+   "en": "oyster",
+   "es": "de ostras"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "group",
+   "wine",
+   "beer",
+   "share",
+   "lively",
+   "line"
+  ],
+  "plato": {
+   "en": "oysters with a Bay Bridge view",
+   "es": "ostras con vista al Bay Bridge"
+  },
+  "note": "Ferry Building institution serving oysters from their Tomales Bay farms. The grilled cheese with three artisan cheeses pairs perfectly with oysters. Views of the Bay Bridge while slurping Sweetwaters and Kumamotos. Happy hour is the best deal.",
+  "priority": 3,
+  "address": "1 Ferry Building #11, San Francisco, CA 94111",
+  "lat": 37.7955487,
+  "lng": -122.3934746,
+  "maps": "https://www.google.com/maps?q=Hog+Island+Oyster+Co+Ferry+Building+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/hogislandoysterco",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "four-kings",
+    "mi": 0.64
+   },
+   {
+    "slug": "z-and-y",
+    "mi": 0.69
+   },
+   {
+    "slug": "shoji",
+    "mi": 0.71
+   }
+  ]
+ },
+ {
+  "slug": "kitchen-istanbul",
+  "name": "Kitchen Istanbul",
+  "hood": "Inner Richmond",
+  "cuisine": "Turkish",
+  "region": "mideast",
+  "adj": {
+   "en": "Turkish",
+   "es": "turca"
+  },
+  "meals": [
+   "breakfast",
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "group",
+   "share",
+   "calm",
+   "casual"
+  ],
+  "plato": {
+   "en": "lamb kebabs and meze",
+   "es": "kebab de cordero y meze"
+  },
+  "note": "Family-run Turkish spot. The lamb kebabs and the meze platter with house-made hummus, baba ganoush, and muhammara are exceptional. Their Turkish breakfast on weekends is an overlooked gem.",
+  "priority": 3,
+  "address": "349 Clement St, San Francisco, CA 94118",
+  "lat": 37.782891,
+  "lng": -122.4632006,
+  "maps": "https://www.google.com/maps?q=Kitchen+Istanbul+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/kitchenistanbulsf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "burma-super-star",
+    "mi": 0.03
+   },
+   {
+    "slug": "arsicault-bakery",
+    "mi": 0.22
+   },
+   {
+    "slug": "beit-rima",
+    "mi": 1.35
+   }
+  ]
+ },
+ {
+  "slug": "la-taqueria",
+  "name": "La Taqueria",
+  "hood": "Mission",
+  "cuisine": "Mexican",
+  "region": "latam",
+  "adj": {
+   "en": "Mexican",
+   "es": "mexicana"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$",
+  "priceEst": false,
+  "tags": [
+   "solo",
+   "personal",
+   "line",
+   "casual",
+   "counter",
+   "lively",
+   "beer",
+   "spicy"
+  ],
+  "plato": {
+   "en": "a carne asada burrito",
+   "es": "burrito de carne asada"
+  },
+  "note": "Oh my God, it might be called The Place of the Tacos, but trust me, this place really knows how to make a burrito. Go for the carne asada, make it supreme, ask for extra guac if you want, and maybe ask for less beans. You will love it. You go here for the burrito -the carne asada one, amazing.",
+  "priority": 3,
+  "address": "2889 Mission St, San Francisco, CA 94110",
+  "lat": 37.7508885,
+  "lng": -122.4180722,
+  "maps": "https://www.google.com/maps?q=La+Taqueria+San+Francisco+Mission",
+  "website": null,
+  "instagram": "https://instagram.com/lataqueriasf",
+  "telephone": "+1-415-285-7117",
+  "review": {
+   "status": "published",
+   "date": "2025-01-27",
+   "rating": 5,
+   "shareTitle": "La Taqueria: This is my top burrito in San Francisco. Tacos are also great.",
+   "bestDish": "Carne Asada Burrito (Supreme)",
+   "personal": [
+    "This is my top burrito in San Francisco. Since appearing in the Michelin guide, the line got really big. Still worth it. No rice, pure love of carne asada. Funny that you get a burrito at La Taqueria. Go for the carne asada, make it supreme, ask for extra guac if you want. The carne asada is grilled to order.",
+    "If you are repeating, make sure to try the variety of tacos. The salsa is amazing. They even have issues with people stealing the containers. Part of the Mission's taqueria culture for decades, La Taqueria has been doing this long enough that the name is a little joke on first-timers: you come for the burrito, then you come back for the tacos.",
+    "We are still missing a proper burrito photo. For now, at least we have the carne asada on the grill and the actual tacos on the table."
+   ],
+   "dishes": [
+    {
+     "name": "Carne Asada Burrito (Supreme)",
+     "description": "Grilled-to-order steak burrito with sour cream, guac, and cheese -no rice"
+    },
+    {
+     "name": "Extra Guacamole",
+     "description": "Fresh, chunky guacamole made daily"
+    },
+    {
+     "name": "Carne Asada Tacos",
+     "description": "Simple, perfect tacos with tender grilled beef and fresh salsa"
+    }
+   ],
+   "faqs": [
+    {
+     "question": "What makes La Taqueria's burrito special?",
+     "answer": "This is my top burrito in San Francisco. No rice, pure love of carne asada. Funny that you get a burrito at a place called La Taqueria, but the carne asada is grilled to order and that is the whole point."
+    },
+    {
+     "question": "Why is the line so long?",
+     "answer": "Since appearing in the Michelin guide, the line got really big. It is still worth it. Go at off-peak hours if you can, but the wait is part of getting the best burrito in the city."
+    },
+    {
+     "question": "Should I get tacos or a burrito?",
+     "answer": "Get the burrito first. If you are repeating, make sure to try the variety of tacos. The salsa is amazing. They even have issues with people stealing the containers."
+    }
+   ],
+   "reservationTip": "No reservations. The Michelin-guide line is long; go at off-peak hours.",
+   "idealFor": "Anyone seeking SF's best burrito, then tacos on the next visit",
+   "pullQuote": null,
+   "guest": {
+    "author": "Aldo",
+    "intro": "Se ha vuelto una tradición ir por La Taquería con mi amigo Aldo. Su opinión:",
+    "paragraphs": [
+     "Lo más cercano a un burrito sonorense en EEUU con salsa que SÍ pica."
+    ],
+    "image": "/img/reviews/la-taqueria-aldo-visit.jpg",
+    "image_caption": "Aldo and Cvander sharing a meal at La Taqueria."
+   },
+   "images": [
+    {
+     "file": "la-taqueria-carne-asada-tacos.jpg",
+     "caption": ""
+    },
+    {
+     "file": "la-taqueria-la-taqueria-storefront-dcb41ca9.jpg",
+     "caption": ""
+    },
+    {
+     "file": "la-taqueria-carne-asada-tacos-plate.jpg",
+     "caption": ""
+    },
+    {
+     "file": "la-taqueria-mission-facade.jpg",
+     "caption": ""
+    },
+    {
+     "file": "la-taqueria-carne-asada-grill.jpg",
+     "caption": ""
+    },
+    {
+     "file": "la-taqueria-taqueria-grill-station-904a810a.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/la-taqueria"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "reem-s-california-mission",
+    "mi": 0.02
+   },
+   {
+    "slug": "wise-sons-jewish-delicatessen",
+    "mi": 0.19
+   },
+   {
+    "slug": "mosto",
+    "mi": 0.32
+   }
+  ]
+ },
+ {
+  "slug": "lolo",
+  "name": "LoLo",
+  "hood": "Mission",
+  "cuisine": "Mexican",
+  "region": "latam",
+  "adj": {
+   "en": "Mexican",
+   "es": "mexicana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "group",
+   "lively",
+   "cocktails",
+   "mezcal",
+   "share"
+  ],
+  "plato": {
+   "en": "creative tacos",
+   "es": "tacos creativos"
+  },
+  "note": "Known for creative tacos like fried chicken with mole verde and their famous quesadilla with bone marrow. A modern Mexican spot that's both playful and deeply respectful of Mexican culinary traditions. Their decoration is extremely creative.",
+  "priority": 3,
+  "address": "974 Valencia St, San Francisco, CA 94110",
+  "lat": 37.7573678,
+  "lng": -122.4214657,
+  "maps": "https://www.google.com/maps?q=LoLo+San+Francisco+Mission",
+  "website": null,
+  "instagram": "https://instagram.com/lolorestaurantsf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "lazy-bear",
+    "mi": 0.23
+   },
+   {
+    "slug": "tartine-bakery",
+    "mi": 0.31
+   },
+   {
+    "slug": "balompie-cafe",
+    "mi": 0.36
+   }
+  ]
+ },
+ {
+  "slug": "marufuku-ramen",
+  "name": "Marufuku Ramen",
+  "hood": "Japantown",
+  "cuisine": "Japanese",
+  "region": "japan",
+  "adj": {
+   "en": "Japanese",
+   "es": "japonesa"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "solo",
+   "personal",
+   "line",
+   "soup",
+   "casual"
+  ],
+  "plato": {
+   "en": "Hakata tonkotsu ramen",
+   "es": "ramen tonkotsu de Hakata"
+  },
+  "note": "Hakata-style tonkotsu ramen with rich pork bone broth simmered for 20+ hours. Choose your noodle firmness and richness level. The black garlic oil adds incredible depth. One of SF's best ramen shops, expect a wait.",
+  "priority": 3,
+  "address": "1581 Webster St #235, San Francisco, CA 94115",
+  "lat": 37.78527,
+  "lng": -122.43193,
+  "maps": "https://www.google.com/maps?q=Marufuku+Ramen+Japantown+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/marufukuramenofficial",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "oma-san-francisco-station",
+    "mi": 0.07
+   },
+   {
+    "slug": "state-bird-provisions",
+    "mi": 0.12
+   },
+   {
+    "slug": "octavia",
+    "mi": 0.32
+   }
+  ]
+ },
+ {
+  "slug": "mensho-tokyo",
+  "name": "Mensho Tokyo",
+  "hood": "Tenderloin",
+  "cuisine": "Japanese",
+  "region": "japan",
+  "adj": {
+   "en": "Japanese",
+   "es": "japonesa"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$",
+  "priceEst": false,
+  "tags": [
+   "solo",
+   "personal",
+   "line",
+   "soup",
+   "casual",
+   "counter"
+  ],
+  "plato": {
+   "en": "creamy ramen",
+   "es": "ramen cremoso"
+  },
+  "note": "This is the best ramen in town -rich, creamy broth, and it's just perfectly cooked. You will have to make a line, and of course, it's in the Tenderloin, so some people get a little bit worried about it, but trust me, totally worth it. And they have also a branch in Tokyo. I think the one in San Francisco was even first, not sure about that, but good to consider it.",
+  "priority": 3,
+  "address": "672 Geary St, San Francisco, CA 94102",
+  "lat": 37.7868535,
+  "lng": -122.4144023,
+  "maps": "https://www.google.com/maps?q=Mensho+Tokyo+San+Francisco",
+  "website": "https://www.mensho.tokyo",
+  "instagram": "https://instagram.com/maboroshimensho",
+  "telephone": null,
+  "review": {
+   "status": "published",
+   "date": "2018-01-24",
+   "rating": 5,
+   "shareTitle": "Mensho Tokyo: special ramen from the Tenderloin, line and all",
+   "bestDish": "Special ramen",
+   "personal": [
+    "This is the special ramen from the Tenderloin. The line is worth it. Their broth is special."
+   ],
+   "dishes": [
+    {}
+   ],
+   "faqs": [
+    {
+     "question": "Is the line at Mensho Tokyo worth it?",
+     "answer": "Yes. Special ramen from the Tenderloin. The line is worth it. Their broth is special."
+    },
+    {
+     "question": "What should I order at Mensho Tokyo?",
+     "answer": "The special ramen. That is the one."
+    },
+    {
+     "question": "When is Mensho Tokyo open?",
+     "answer": "Dinner only, Tuesday through Sunday."
+    }
+   ],
+   "reservationTip": "No reservations. Dinner only, Tue-Sun. Expect a line.",
+   "idealFor": "Ramen purists seeking the city's best bowl",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "mensho-tokyo-special-ramen.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mensho-tokyo-line.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mensho-tokyo-storefront.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/mensho-tokyo"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "cantoo-latin-asian-rotisserie",
+    "mi": 0.07
+   },
+   {
+    "slug": "swan-oyster-depot",
+    "mi": 0.46
+   },
+   {
+    "slug": "house-of-prime-rib",
+    "mi": 0.63
+   }
+  ]
+ },
+ {
+  "slug": "oma-san-francisco-station",
+  "name": "Oma San Francisco Station",
+  "hood": "Japantown",
+  "cuisine": "Japanese",
+  "region": "japan",
+  "adj": {
+   "en": "omakase",
+   "es": "omakase"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "counter",
+   "sake",
+   "reserve",
+   "calm"
+  ],
+  "plato": {
+   "en": "Japantown omakase",
+   "es": "omakase en Japantown"
+  },
+  "note": "Located in the heart of Japantown, Oma is designed to resemble an izakaya. It is the best omakase in Japantown.",
+  "priority": 3,
+  "address": "1737 Post St, Suite 337, San Francisco, CA 94115",
+  "lat": 37.7849621,
+  "lng": -122.4307291,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Oma%20San%20Francisco%20Station%201737%20Post%20St%20San%20Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/oma_sfstation",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "marufuku-ramen",
+    "mi": 0.07
+   },
+   {
+    "slug": "state-bird-provisions",
+    "mi": 0.15
+   },
+   {
+    "slug": "octavia",
+    "mi": 0.29
+   }
+  ]
+ },
+ {
+  "slug": "piccino",
+  "name": "Piccino",
+  "hood": "Dogpatch",
+  "cuisine": "Italian",
+  "region": "europe",
+  "adj": {
+   "en": "Italian",
+   "es": "italiana"
+  },
+  "meals": [
+   "brunch",
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "family",
+   "patio",
+   "wine",
+   "share",
+   "calm"
+  ],
+  "plato": {
+   "en": "wood-fired pizza in the garden",
+   "es": "pizza de leña en el jardín"
+  },
+  "note": "Wood-fired pizzas with creative California toppings and excellent natural wines. Weekend brunch is exceptional. Their backyard garden patio is one of SF's best outdoor dining spots.",
+  "priority": 3,
+  "address": "1001 Minnesota St, San Francisco, CA 94107",
+  "lat": 37.75771,
+  "lng": -122.390094,
+  "maps": "https://www.google.com/maps?q=Piccino+San+Francisco+Dogpatch",
+  "website": null,
+  "instagram": "https://instagram.com/piccinosf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "plow",
+    "mi": 0.44
+   },
+   {
+    "slug": "farley-s",
+    "mi": 0.46
+   },
+   {
+    "slug": "chez-maman",
+    "mi": 0.49
+   }
+  ]
+ },
+ {
+  "slug": "plow",
+  "name": "Plow",
+  "hood": "Potrero Hill",
+  "cuisine": "American Brunch",
+  "region": "usa",
+  "adj": {
+   "en": "American",
+   "es": "americana"
+  },
+  "meals": [
+   "breakfast",
+   "brunch"
+  ],
+  "price": "$",
+  "priceEst": false,
+  "tags": [
+   "family",
+   "date",
+   "line",
+   "casual",
+   "coffee",
+   "share"
+  ],
+  "plato": {
+   "en": "lemon ricotta pancakes",
+   "es": "pancakes de limón y ricotta"
+  },
+  "note": "Is definitely the best brunch in town. It's long hour waits on the weekends, but trust me, it's worth it. And they also have some special breakfast if they have the Chinese one, go for it. Thanks to my poblano cooks for this amazing, beautiful place in San Francisco.",
+  "priority": 3,
+  "address": "1299 18th St, San Francisco, CA 94107",
+  "lat": 37.762535,
+  "lng": -122.395394,
+  "maps": "https://www.google.com/maps?q=Plow+Potrero+Hill+San+Francisco",
+  "website": "https://www.plowsf.com",
+  "instagram": "https://instagram.com/plowsf",
+  "telephone": "+1-415-821-7569",
+  "review": {
+   "status": "published",
+   "date": "2016-12-06",
+   "rating": 5,
+   "shareTitle": "Plow, the definite place for brunch in San Francisco",
+   "bestDish": "Lemon ricotta pancakes",
+   "personal": [
+    "Plow, the definite place for brunch in San Francisco.",
+    "Every time somebody asks me where to go for brunch, I mention Plow. I really like the place. It’s a great destination on Potrero Hill, and you’ll always find a line on a busy day. Go on a Wednesday, or get there early, and you can get in. It’s definitely worth it. Behind the bar, happy cooks are always surprising you with breakfasts: eggs, bread, and sometimes a Chinese version of breakfast. It’s always a fantastic experience. The coffee, the ambience, and the flavors. Try the different menus and see what you like.",
+    "Plow’s great. It’s worth the wait. If the line is really hard, still put your name on the list, walk to Farley’s (1315 18th St) half a block away, grab a tea or a coffee, and come back. I’ve had some of the best conversations in that line. If you’re lucky, you’re just getting in. I still remember during the pandemic they kept serving breakfast. I’m not sure about delivery, but I remember picking up directly. They always handed over those packages with a great smile and a lot of thanks. Plow is where you go for breakfast and really enjoy it. That’s why San Francisco has spots that are worth it. This is my best example.",
+    "Try to avoid weekends. It’s super crowded. Get there early on a weekday and you’ll have the best experience."
+   ],
+   "dishes": [
+    {
+     "name": "The Plow",
+     "description": "Two eggs, two lemon ricotta pancakes, plow potatoes, and house sausage. This is the plate."
+    },
+    {
+     "name": "Lemon ricotta pancakes",
+     "description": "House made ricotta, lemon curd, salted whipped butter, pure maple syrup."
+    },
+    {
+     "name": "Grain bowl",
+     "description": "Quinoa, black rice, Hodo Soy yuba, kale, oyster mushrooms, soy marinated egg. Avocado when you add it."
+    },
+    {
+     "name": "Two egg brekkie",
+     "description": "Eggs with house made pork sausage, plow potatoes, and toast."
+    },
+    {
+     "name": "Hong Kong style toast",
+     "description": "Lightly burnt brioche, coffee condensed milk, sea salt."
+    },
+    {
+     "name": "Chinese breakfast (when available)",
+     "description": "Ask if they have it. Not always on the menu."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "How do I deal with the line at Plow?",
+     "answer": "Try to avoid weekends. Go on a Wednesday or get there early on a weekday. If the line is really hard, put your name on the list, walk to Farley's (1315 18th St) half a block away, grab a tea or coffee, and come back."
+    },
+    {
+     "question": "Is Plow worth the wait?",
+     "answer": "Yes. Every time somebody asks me where to go for brunch, I mention Plow. Worth it."
+    },
+    {
+     "question": "What should I order at Plow?",
+     "answer": "Eggs, bread, whatever they are surprising you with behind the bar. Sometimes a Chinese version of breakfast. Try the different menus and see what you like."
+    }
+   ],
+   "reservationTip": "No reservations. Stick to weekdays; get there early. If the line is hard, put your name down and walk to Farley's (1315 18th St) for coffee.",
+   "idealFor": "Weekend brunch worth the wait",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "plow-the-plow-hero.jpg",
+     "caption": ""
+    },
+    {
+     "file": "plow-two-egg-brekkie.jpg",
+     "caption": ""
+    },
+    {
+     "file": "plow-grain-bowl.jpg",
+     "caption": ""
+    },
+    {
+     "file": "plow-hong-kong-style-toast.jpg",
+     "caption": ""
+    },
+    {
+     "file": "plow-the-plow-chicken-apple-sausage.jpg",
+     "caption": ""
+    },
+    {
+     "file": "plow-entrance.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/plow"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "farley-s",
+    "mi": 0.03
+   },
+   {
+    "slug": "chez-maman",
+    "mi": 0.08
+   },
+   {
+    "slug": "piccino",
+    "mi": 0.44
+   }
+  ]
+ },
+ {
+  "slug": "reem-s-california-mission",
+  "name": "Reem's California Mission",
+  "hood": "Mission",
+  "cuisine": "Middle Eastern",
+  "region": "mideast",
+  "adj": {
+   "en": "Arab",
+   "es": "árabe"
+  },
+  "meals": [
+   "breakfast",
+   "lunch"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "solo",
+   "family",
+   "casual",
+   "counter",
+   "coffee",
+   "personal"
+  ],
+  "plato": {
+   "en": "za'atar mana'eesh",
+   "es": "mana'eesh de za'atar"
+  },
+  "note": "Arab street food meets California ingredients. Their mana'eesh (flatbreads) are baked to order in a custom oven. The za'atar with cheese and the lamb flatbread are exceptional. Owner Reem Assil creates food that tells stories of Arab heritage.",
+  "priority": 3,
+  "address": "2901 Mission St, San Francisco, CA 94110",
+  "lat": 37.7505445,
+  "lng": -122.418138,
+  "maps": "https://www.google.com/maps?q=Reems+California+Mission+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/reemscalifornia",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "la-taqueria",
+    "mi": 0.02
+   },
+   {
+    "slug": "wise-sons-jewish-delicatessen",
+    "mi": 0.21
+   },
+   {
+    "slug": "mosto",
+    "mi": 0.29
+   }
+  ]
+ },
+ {
+  "slug": "san-ho-won",
+  "name": "San Ho Won",
+  "hood": "Mission",
+  "cuisine": "Korean",
+  "region": "korea",
+  "adj": {
+   "en": "Korean",
+   "es": "coreana"
+  },
+  "meals": [
+   "dinner"
+  ],
+  "price": "$$$$",
+  "priceEst": false,
+  "tags": [
+   "group",
+   "lively",
+   "fine",
+   "reserve",
+   "share",
+   "cocktails",
+   "beer"
+  ],
+  "plato": {
+   "en": "charcoal Korean BBQ",
+   "es": "barbacoa al carbón"
+  },
+  "note": "Chef Corey Lee and Jeong-In Hwang's Michelin-starred Korean charcoal barbecue restaurant. The house menu is generous, the banchan and vegetables are as carefully handled as the meat, and the charcoal-grilled beef is the centerpiece. Reservations can be difficult, so book when they are released.",
+  "priority": 3,
+  "address": "2170 Bryant St, San Francisco, CA 94110",
+  "lat": 37.7595769,
+  "lng": -122.4102101,
+  "maps": "https://www.google.com/maps?q=San+Ho+Won+San+Francisco+Mission",
+  "website": "https://www.sanhowon.com",
+  "instagram": "https://instagram.com/sanhowonsf",
+  "telephone": "+1-415-814-2783",
+  "review": {
+   "status": "published",
+   "date": "2023-11-27",
+   "rating": 5,
+   "shareTitle": "San Ho Won, the michelin star korean bbq in San Francisco.",
+   "bestDish": "Double-Cut Galbi",
+   "personal": [
+    "If you love Korean BBQ, this is the fancy version in San Francisco. You will be full, you will be happy, and you can get leftover food to go. I always enjoy going with friends to a Korean barbecue, but for an upscale experience, San Ho Won is the one you're looking for if you want to impress. Not only will they make great barbecue meat for you, but their selection of beverages and add-ons is superb. If you've ever gone to a Korean barbecue and were worried about overcooking the meat or not having it at the right point, that's what San Ho Won will do for you.",
+    "Reservations are hard to get in advance unless you want to try the last serving at night, and that late seating might be a heavy meal. Still, San Ho Won is a very good deal: a Michelin-star menu, a very good selection of meat, and a reservation that is worth sharing with a group of four or even six people. Plan ahead, and sometimes check for the very last options in the schedule because they tend to open up occasionally. This is definitely a place worth visiting in San Francisco.",
+    "We did a small reel when we visited. It is a better way to appreciate the tasting menu. Check it out."
+   ],
+   "dishes": [
+    {
+     "name": "Galbi (Korean BBQ Short Ribs)",
+     "description": "Double-cut short ribs grilled tableside. The signature dish."
+    },
+    {
+     "name": "Egg Soufflé",
+     "description": "Light steamed egg."
+    },
+    {
+     "name": "Crispy Scallion Pancakes",
+     "description": "Crisp pajeon with scallions."
+    },
+    {
+     "name": "Korean beef ssam",
+     "description": "Beef in lettuce wraps."
+    },
+    {
+     "name": "Kimchi Jjigae",
+     "description": "Kimchi stew."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "Is San Ho Won walk-in friendly?",
+     "answer": "Walk-ins are a long shot. Reservations are hard to get in advance unless you want the last serving at night, and that late seating can be a heavy meal. Book on Resy when you can, and keep an eye on last-minute openings."
+    },
+    {
+     "question": "Is San Ho Won worth it for a group?",
+     "answer": "Yes. It is a very good deal for a Michelin-star menu: a strong selection of meat, leftovers to take home, and a reservation that is worth sharing with four or even six people. You will be full and you will be happy."
+    },
+    {
+     "question": "What makes San Ho Won special?",
+     "answer": "If you love Korean BBQ, this is the fancy version in San Francisco. The staff grill the meat for you at the table, so you are not worrying about overcooking it, and the portions are generous enough that leftover food to go is part of the night."
+    }
+   ],
+   "reservationTip": "Hard to book ahead on Resy unless you take the last seating, which can be a heavy meal. Worth sharing with 4 to 6 people.",
+   "idealFor": "Groups of 4 to 6 who love Korean BBQ",
+   "pullQuote": null,
+   "guest": {
+    "author": "Friends",
+    "intro": "Remarks from other friends I enjoyed this experience with:",
+    "paragraphs": [
+     "In San Ho Won the short rib was amazing. All in general was very good. It’s a different experience for Korean BBQ. Feels upper middle class while usually a BBQ experience is more a popular meal."
+    ]
+   },
+   "images": [
+    {
+     "file": "san-ho-won-egg-souffle.jpg",
+     "caption": ""
+    },
+    {
+     "file": "san-ho-won-double-cut-galbi.jpg",
+     "caption": ""
+    },
+    {
+     "file": "san-ho-won-charcoal-grilled-beef.jpg",
+     "caption": ""
+    },
+    {
+     "file": "san-ho-won-kimchi-jjigae.jpg",
+     "caption": ""
+    },
+    {
+     "file": "san-ho-won-michelin-guide-2023.jpg",
+     "caption": ""
+    },
+    {
+     "file": "san-ho-won-korean-beef-ssam-beaf8e4d.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/san-ho-won"
+  },
+  "reviewLink": null,
+  "reel": {
+   "video": "/video/san-ho-won-visit-reel.mp4",
+   "poster": "/video/san-ho-won-visit-reel-poster.jpg",
+   "url": "https://www.instagram.com/reel/C0GkpnOOpip/"
+  },
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "flour-water",
+    "mi": 0.13
+   },
+   {
+    "slug": "mijote",
+    "mi": 0.14
+   },
+   {
+    "slug": "el-chato",
+    "mi": 0.15
+   }
+  ]
+ },
+ {
+  "slug": "starbelly",
+  "name": "Starbelly",
+  "hood": "Castro",
+  "cuisine": "California",
+  "region": "usa",
+  "adj": {
+   "en": "Californian",
+   "es": "californiana"
+  },
+  "meals": [
+   "brunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "patio",
+   "cocktails",
+   "casual",
+   "lively",
+   "family"
+  ],
+  "plato": {
+   "en": "fried chicken sandwich on the patio",
+   "es": "sándwich de pollo frito en el patio"
+  },
+  "note": "California comfort food with a great back patio. Their fried chicken sandwich and pizzas are neighborhood favorites. Excellent brunch spot with bottomless mimosas. Dog-friendly patio.",
+  "priority": 3,
+  "address": "3583 16th St, San Francisco, CA 94114",
+  "lat": 37.7640463,
+  "lng": -122.4325579,
+  "maps": "https://www.google.com/maps?q=Starbelly+Castro+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/starbellysf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "bi-rite-creamery",
+    "mi": 0.41
+   },
+   {
+    "slug": "tartine-bakery",
+    "mi": 0.5
+   },
+   {
+    "slug": "four-barrel-coffee",
+    "mi": 0.62
+   }
+  ]
+ },
+ {
+  "slug": "the-mill",
+  "name": "The Mill",
+  "hood": "NoPa",
+  "cuisine": "Bakery/Cafe",
+  "region": "cafe",
+  "adj": {
+   "en": "bakery",
+   "es": "de panadería"
+  },
+  "meals": [
+   "breakfast",
+   "coffee"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "solo",
+   "meeting",
+   "coffee",
+   "casual",
+   "calm",
+   "sweet"
+  ],
+  "plato": {
+   "en": "thick toast and Four Barrel coffee",
+   "es": "tostada gruesa y café Four Barrel"
+  },
+  "note": "Famous for thick-cut toast topped with seasonal ingredients and Four Barrel coffee. The $4 toast became a symbol of SF's artisanal food movement. Their bread from Josey Baker Bread is exceptional, and the almond butter toast with sea salt is iconic.",
+  "priority": 3,
+  "address": "736 Divisadero St, San Francisco, CA 94117",
+  "lat": 37.7762714,
+  "lng": -122.4382339,
+  "maps": "https://www.google.com/maps?q=The+Mill+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/themillsf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "4505-burgers-and-bbq",
+    "mi": 0.01
+   },
+   {
+    "slug": "ju-ni",
+    "mi": 0.04
+   },
+   {
+    "slug": "state-bird-provisions",
+    "mi": 0.59
+   }
+  ]
+ },
+ {
+  "slug": "tonys-pizza",
+  "name": "Tony's Pizza Napoletana",
+  "hood": "North Beach",
+  "cuisine": "Italian",
+  "region": "europe",
+  "adj": {
+   "en": "Italian",
+   "es": "italiana"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": false,
+  "tags": [
+   "group",
+   "family",
+   "share",
+   "lively",
+   "casual",
+   "line",
+   "beer",
+   "wine"
+  ],
+  "plato": {
+   "en": "a Margherita from the 73 a day",
+   "es": "una de las 73 Margheritas del día"
+  },
+  "note": "It's a place in San Francisco that has some awards, especially if you want to go for the Margherita or the Mozzarella one. They have seven different ovens for different styles, and they say that some of the pizzas will be sold out. I've never seen any pizza sold out, but just go early. Make the line. It's totally worth it.",
+  "priority": 3,
+  "address": "1570 Stockton St, San Francisco, CA 94133",
+  "lat": 37.8003332,
+  "lng": -122.4090513,
+  "maps": "https://www.google.com/maps?q=Tonys+Pizza+San+Francisco+North+Beach",
+  "website": "https://www.tonyspizzanapoletana.com",
+  "instagram": "https://instagram.com/tonyspizza415",
+  "telephone": "+1-415-835-9888",
+  "review": {
+   "status": "published",
+   "date": "2021-11-24",
+   "rating": 4,
+   "shareTitle": "Tony's Pizza Napoletana: Margherita in North Beach, Golden Boy if you just want a slice",
+   "bestDish": "Margherita Pizza",
+   "personal": [
+    "Glad this is one of the best pizzas in America. Glad it exists in North Beach and makes San Francisco special. When I tried pizza in Napoli, I was confused, hehehe.",
+    "That said: good pizza, expensive pizza. Really good pizza. Try the specials. They only make 73 Margheritas a day. You usually get one if you care. Order a Margherita if you are in the room. I remember you cannot get that one to go. Only get pizza to go if you are walking to Washington Square and want to skip the line.",
+    "No reservations. Crowded. For sharing good pizza with friends, this is the place. Just a snack: walk a block to Golden Boy Pizza. Square slices. Really good.",
+    "In a city that will never match New York on pizza, this is our institution. Big, pricey, worth it."
+   ],
+   "dishes": [
+    {
+     "name": "Margherita Pizza",
+     "description": "Order a Margherita if you are in the room. I remember you cannot get that one to go."
+    },
+    {
+     "name": "The Specials",
+     "description": "Try the specials. Really good pizza."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "Can I get the Margherita to go?",
+     "answer": "I remember you cannot get that one to go. Only get pizza to go if you are walking to Washington Square and want to skip the line. They only make 73 Margheritas a day."
+    },
+    {
+     "question": "Does Tony's Pizza Napoletana take reservations?",
+     "answer": "Try booking via Yelp before assuming walk-in only. It is still crowded. For sharing good pizza with friends, this is the place."
+    },
+    {
+     "question": "What if I just want a slice?",
+     "answer": "Just a snack: walk a block to Golden Boy Pizza. Square slices. Really good."
+    }
+   ],
+   "reservationTip": "Try Yelp for a booking before assuming walk-in only. Still crowded.",
+   "idealFor": "Sharing good pizza with friends",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "tonys-pizza-pizza-at-the-bar-33e5dc07ce0f.jpg",
+     "caption": ""
+    },
+    {
+     "file": "tonys-pizza-pizzas-on-the-line-d209623a7ea9.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/tonys-pizza"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "china-live",
+    "mi": 0.17
+   },
+   {
+    "slug": "z-and-y",
+    "mi": 0.35
+   },
+   {
+    "slug": "mr-jius",
+    "mi": 0.48
+   }
+  ]
+ },
+ {
+  "slug": "wise-sons-jewish-delicatessen",
+  "name": "Wise Sons Jewish Delicatessen",
+  "hood": "Mission",
+  "cuisine": "Jewish Deli",
+  "region": "usa",
+  "adj": {
+   "en": "Jewish deli",
+   "es": "de deli judío"
+  },
+  "meals": [
+   "breakfast",
+   "brunch",
+   "lunch"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "personal",
+   "casual",
+   "coffee"
+  ],
+  "plato": {
+   "en": "pastrami on rye",
+   "es": "pastrami en pan de centeno"
+  },
+  "note": "Modern Jewish deli serving pastrami on rye that rivals NYC's best, plus bagels, lox, and babka. Their challah French toast at brunch is exceptional. A taste of the Lower East Side in the Mission, with multiple locations across the city.",
+  "priority": 3,
+  "address": "3150 24th St, San Francisco, CA 94110",
+  "lat": 37.7525492,
+  "lng": -122.4153293,
+  "maps": "https://www.google.com/maps?q=Wise+Sons+Jewish+Delicatessen+Mission+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/wisesons",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "la-taqueria",
+    "mi": 0.19
+   },
+   {
+    "slug": "reem-s-california-mission",
+    "mi": 0.21
+   },
+   {
+    "slug": "doma-sushi",
+    "mi": 0.43
+   }
+  ]
+ },
+ {
+  "slug": "z-and-y",
+  "name": "Z & Y",
+  "hood": "Chinatown",
+  "cuisine": "Chinese",
+  "region": "china",
+  "adj": {
+   "en": "Sichuan",
+   "es": "de Sichuan"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "priceEst": true,
+  "tags": [
+   "group",
+   "share",
+   "spicy",
+   "lively",
+   "casual",
+   "beer"
+  ],
+  "plato": {
+   "en": "Explosive Chili Chicken",
+   "es": "el pollo explosivo con chiles"
+  },
+  "note": "Explosive Sichuan flavors, the tea-smoked duck and mapo tofu will test your spice tolerance. Their 'Explosive Chili Chicken' is buried in chilies. One of the best regional Chinese restaurants in America.",
+  "priority": 3,
+  "address": "655 Jackson St, San Francisco, CA 94133",
+  "lat": 37.7959411,
+  "lng": -122.4060364,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Z%20%26%20Y%20655%20Jackson%20St%20San%20Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/zandyrestaurant",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "four-kings",
+    "mi": 0.14
+   },
+   {
+    "slug": "mr-jius",
+    "mi": 0.16
+   },
+   {
+    "slug": "china-live",
+    "mi": 0.18
+   }
+  ]
+ },
+ {
+  "slug": "balompie-cafe",
+  "name": "Balompié Café",
+  "hood": "Mission · Bernal Heights",
+  "cuisine": "Salvadoran",
+  "region": "latam",
+  "adj": {
+   "en": "Salvadoran",
+   "es": "salvadoreña"
+  },
+  "meals": [
+   "breakfast",
+   "lunch",
+   "dinner"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "group",
+   "football",
+   "cash",
+   "casual",
+   "lively",
+   "beer",
+   "personal"
+  ],
+  "plato": {
+   "en": "pupusas de queso con loroco",
+   "es": "pupusas de queso con loroco"
+  },
+  "note": "Authentic pupuseria serving handmade pupusas stuffed with cheese, beans, chicharrón, or loroco. Watch them made fresh through the window. Their curtido (pickled cabbage) and salsa roja are perfect accompaniments. Cash only, incredibly affordable.",
+  "priority": 2,
+  "address": "3349 18th St, San Francisco, CA 94110",
+  "lat": 37.7617819,
+  "lng": -122.4179659,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Balompi%C3%A9+Caf%C3%A9+3349+18th+St+San+Francisco+CA+94110",
+  "website": "https://www.balompiecafe1.com/",
+  "instagram": "https://instagram.com/balompiecafe",
+  "telephone": null,
+  "review": {
+   "status": "in_progress",
+   "date": "2026-10-13",
+   "rating": null,
+   "shareTitle": "Balompié Café: legit pupusas, and the bill comes in a soccer shoe",
+   "bestDish": "Pupusa de queso con loroco",
+   "personal": [
+    "I really love how the bill comes in a small soccer shoe at the end. The pupusas are legit. I have been a couple of times with people from El Salvador who really miss them. San Francisco has a lot of amazing places, and this is one of my best options. I miss pupusas too, since they are very common in Guatemala.",
+    "This is not a place to discuss tech or bring your techie friends. This is a place to enjoy Salvadoran food.",
+    "My take: the pupusa de queso with loroco. If you don't know what loroco is, it's the Salvadoran vegetable, as English menus call it: actually the edible flower bud of a vine (Fernaldia pandurata) grown in El Salvador and Guatemala, with a green, herbal flavor, a bit like asparagus or squash blossom, that melts into the cheese. You have to try it. The best version is just with cheese, loroco con queso. They also do some exotic combinations (like Panchita's, another good place, does), but I stick with the classics. The other good combination is the Mixta, the one with chicharrón and also beans. That's a very nice mix, but not everyone likes the beans, so be cautious with that. Central Americans, we really love it. Better to order pupusas and not the combos, but I understand why they push the combos for people who don't have the habit of eating pupusas.",
+    "And I really believe you need to eat this with your hands, so just go to the bathroom, wash your hands, and then enjoy your pupusas. Put the curtido on the side of the pupusa first, then some of the salsa on top of it, and mix it. The best thing is when you grab a piece of pupusa, curtido, and salsa with your hand and eat it. That's how it really makes sense, and that's how you will enjoy pupusas as a real salvadoreño: with a Kolashampan, the orange Salvadoran soda. Really, really good. Or a beer, if it's noon and they're watching some soccer on the screens.",
+    "You will definitely hear the Salvadoran accent and understand how legit this place is."
+   ],
+   "dishes": [
+    {
+     "name": "Pupusa de queso con loroco",
+     "description": "My take. Cheese and loroco, the Salvadoran vegetable (an edible flower bud). The best version."
+    },
+    {
+     "name": "Mixta",
+     "description": "Chicharrón, cheese and beans. A very nice mix, but not everyone likes the beans."
+    },
+    {
+     "name": "Kolashampan",
+     "description": "The orange Salvadoran soda. Always get one."
+    }
+   ],
+   "faqs": [],
+   "reservationTip": null,
+   "idealFor": null,
+   "pullQuote": null,
+   "guest": null,
+   "images": [],
+   "url": "https://www.cookfoodie.com/reviews/balompie-cafe"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "lazy-bear",
+    "mi": 0.14
+   },
+   {
+    "slug": "tartine-bakery",
+    "mi": 0.33
+   },
+   {
+    "slug": "mijote",
+    "mi": 0.35
+   }
+  ]
+ },
+ {
+  "slug": "bi-rite-creamery",
+  "name": "Bi-Rite Creamery",
+  "hood": "Mission",
+  "cuisine": "Dessert",
+  "region": "cafe",
+  "adj": {
+   "en": "ice cream",
+   "es": "de helado"
+  },
+  "meals": [
+   "dessert"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "date",
+   "sweet",
+   "line",
+   "casual"
+  ],
+  "plato": {
+   "en": "salted caramel ice cream",
+   "es": "helado de caramelo salado"
+  },
+  "note": "San Francisco's most beloved ice cream shop. The salted caramel is legendary, and seasonal flavors like honey lavender showcase local ingredients. Expect long lines on sunny days - it's a Mission District ritual. Their soft serve with olive oil and sea salt is a must-try.",
+  "priority": 2,
+  "address": "3692 18th St, San Francisco, CA 94110",
+  "lat": 37.7615705,
+  "lng": -122.425662,
+  "maps": "https://www.google.com/maps?q=Bi-Rite+Creamery+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/biritecreamery",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "tartine-bakery",
+    "mi": 0.09
+   },
+   {
+    "slug": "lazy-bear",
+    "mi": 0.34
+   },
+   {
+    "slug": "lolo",
+    "mi": 0.37
+   }
+  ]
+ },
+ {
+  "slug": "farley-s",
+  "name": "Farley's",
+  "hood": "Potrero Hill",
+  "cuisine": "Coffee",
+  "region": "cafe",
+  "adj": {
+   "en": "coffee",
+   "es": "de café"
+  },
+  "meals": [
+   "breakfast",
+   "coffee"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "meeting",
+   "solo",
+   "family",
+   "coffee",
+   "patio",
+   "calm"
+  ],
+  "plato": {
+   "en": "coffee on 18th Street",
+   "es": "café en la calle 18"
+  },
+  "note": "Potrero Hill's community living room since 1989. Great coffee, fresh pastries, and a mix of locals working on laptops and families grabbing breakfast. Their outdoor seating on 18th Street is perfect for people watching. A true neighborhood institution.",
+  "priority": 2,
+  "address": "1315 18th St, San Francisco, CA 94107",
+  "lat": 37.7624716,
+  "lng": -122.3959935,
+  "maps": "https://www.google.com/maps?q=Farleys+Coffee+Potrero+Hill+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/farleyscoffee",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "plow",
+    "mi": 0.03
+   },
+   {
+    "slug": "chez-maman",
+    "mi": 0.05
+   },
+   {
+    "slug": "piccino",
+    "mi": 0.46
+   }
+  ]
+ },
+ {
+  "slug": "four-barrel-coffee",
+  "name": "Four Barrel Coffee",
+  "hood": "Mission",
+  "cuisine": "Coffee",
+  "region": "cafe",
+  "adj": {
+   "en": "coffee",
+   "es": "de café"
+  },
+  "meals": [
+   "breakfast",
+   "coffee"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "solo",
+   "meeting",
+   "coffee",
+   "calm"
+  ],
+  "plato": {
+   "en": "a single-origin pour-over",
+   "es": "un pour-over de origen"
+  },
+  "note": "Valencia Street's coffee temple with a massive roasting facility visible from the cafe. Single-origin pour-overs and expertly pulled espresso. The industrial-chic space with high ceilings and communal seating embodies Mission District coffee culture.",
+  "priority": 2,
+  "address": "375 Valencia St, San Francisco, CA 94103",
+  "lat": 37.7670162,
+  "lng": -122.4219251,
+  "maps": "https://www.google.com/maps?q=Four+Barrel+Coffee+Valencia+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/fourbarrelcoffee",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "shizen",
+    "mi": 0.09
+   },
+   {
+    "slug": "burma-love",
+    "mi": 0.18
+   },
+   {
+    "slug": "rintaro",
+    "mi": 0.39
+   }
+  ]
+ },
+ {
+  "slug": "kingdom-of-dumplings",
+  "name": "Kingdom of Dumplings",
+  "hood": "Inner Richmond",
+  "cuisine": "Asian",
+  "region": "china",
+  "adj": {
+   "en": "Beijing-style",
+   "es": "estilo Pekín"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "share",
+   "cash",
+   "casual",
+   "calm",
+   "spicy"
+  ],
+  "plato": {
+   "en": "lamb and cumin dumplings",
+   "es": "dumplings de cordero y comino"
+  },
+  "note": "No-frills spot for authentic Beijing-style dumplings. Their lamb & cumin dumplings and the hand-pulled biang biang noodles are exceptional. Cash only, worth the trek to the Richmond.",
+  "priority": 2,
+  "address": "1713 Taraval St, San Francisco, CA 94116",
+  "lat": 37.742491,
+  "lng": -122.4846217,
+  "maps": "https://www.google.com/maps?q=Kingdom+of+Dumplings+San+Francisco+Inner+Richmond",
+  "website": null,
+  "instagram": "https://instagram.com/kingdomofdumpling",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [
+   {
+    "url": "https://www.instagram.com/p/Ctpsk2xv5QP/",
+    "text": "Kingdom of Dumplings and Moku Yakitori-Ya",
+    "date": "2023-06-18"
+   }
+  ],
+  "nearby": [
+   {
+    "slug": "yuanbao-jiaozi",
+    "mi": 1.47
+   },
+   {
+    "slug": "beit-rima",
+    "mi": 2.44
+   },
+   {
+    "slug": "kitchen-istanbul",
+    "mi": 3.03
+   }
+  ]
+ },
+ {
+  "slug": "mosto",
+  "name": "Mosto",
+  "hood": "Mission",
+  "cuisine": "Mexican",
+  "region": "latam",
+  "adj": {
+   "en": "Mexican",
+   "es": "mexicana"
+  },
+  "meals": [
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$",
+  "priceEst": false,
+  "tags": [
+   "group",
+   "lively",
+   "mezcal",
+   "casual",
+   "personal",
+   "spicy",
+   "football"
+  ],
+  "plato": {
+   "en": "tacos al pastor off the trompo",
+   "es": "tacos al pastor de trompo"
+  },
+  "note": "Their tacos al pastor are amazing because they have a proper trompo, and they also have a great mezcal selection. Unfortunately, lately they are also building burgers, and despite the fact that they are trendy, I think that they are losing part of the essence that made me recommend them at the first time.",
+  "priority": 2,
+  "address": "741A Valencia St, San Francisco, CA 94110",
+  "lat": 37.7466168,
+  "lng": -122.4201588,
+  "maps": "https://www.google.com/maps?q=Mosto+San+Francisco+Mission",
+  "website": null,
+  "instagram": "https://instagram.com/mosto_sf",
+  "telephone": null,
+  "review": {
+   "status": "published",
+   "date": "2025-01-27",
+   "rating": 4,
+   "shareTitle": "Mosto: The mezcal bar of the Mission where you can have good pastor tacos.",
+   "bestDish": "Tacos Al Pastor",
+   "personal": [
+    "We have a real mezcal bar in San Francisco. Is the sister little property of Tacolicious. Mosto/El Burger also has good pastor. Skip the burgers.",
+    "There's a picture of Obama, and that guy knew about good food when I saw him on a little banquito in Hanoi eating bún chả with Bourdain, so I will trust his selection of tacos. Not sure if he paired them with some mezcal.",
+    "The tacos al pastor come from a proper trompo and remain the reason to go. Carved with char, pineapple, and salsa. We did a small reel when we visited. Check it out. They have a good mezcal selection too. Lately they are also making burgers, but I think that loses part of what made me recommend them the first time. Stick to the pastor. Skip the burgers."
+   ],
+   "dishes": [
+    {
+     "name": "Tacos Al Pastor",
+     "description": "Carved from a proper trompo with char, pineapple, and salsa."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "Is Mosto the bar next to Tacolicious?",
+     "answer": "Tacolicious has a small bar next door. Might be the extra space but for me, it has always been the main attraction. A full mezcal bar, with pastor tacos. Intimate. With banda linda. The pastor that the Mission gives."
+    },
+    {
+     "question": "What should I order at Mosto?",
+     "answer": "Stick to the pastor. It comes from a proper trompo, carved with char, pineapple, and salsa. Skip the burgers. That loses part of what made me recommend them."
+    },
+    {
+     "question": "Do they have mezcal?",
+     "answer": "Yes. Good mezcal selection. That is half the point."
+    }
+   ],
+   "reservationTip": "Walk-ins welcome; busiest after 10pm on weekends",
+   "idealFor": "Late-night tacos and mezcal with friends",
+   "pullQuote": "Stick to the pastor. Skip the burgers.",
+   "guest": null,
+   "images": [
+    {
+     "file": "mosto-pastor-tacos-basket-hero.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mosto-tacos-al-pastor-347b9a632b3f.jpg",
+     "caption": ""
+    },
+    {
+     "file": "mosto-storefront-0001e9ef91aa.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/mosto"
+  },
+  "reviewLink": null,
+  "reel": {
+   "video": "/video/mosto-visit-reel.mp4",
+   "poster": "/video/mosto-visit-reel-poster.jpg",
+   "url": "https://www.instagram.com/reel/CzPEH0-Pfji/"
+  },
+  "igPosts": [
+   {
+    "url": "https://www.instagram.com/p/Cp4QsiRuku7/",
+    "text": "Good pastor tacos and gringas in SF",
+    "date": "2023-03-17"
+   }
+  ],
+  "nearby": [
+   {
+    "slug": "reem-s-california-mission",
+    "mi": 0.29
+   },
+   {
+    "slug": "la-taqueria",
+    "mi": 0.32
+   },
+   {
+    "slug": "universal-bakery",
+    "mi": 0.39
+   }
+  ]
+ },
+ {
+  "slug": "noe-cafe",
+  "name": "Noe Cafe",
+  "hood": "Noe Valley",
+  "cuisine": "Coffee shop · Cafe",
+  "region": "cafe",
+  "adj": {
+   "en": "coffee",
+   "es": "de café"
+  },
+  "meals": [
+   "breakfast",
+   "lunch",
+   "coffee"
+  ],
+  "price": "$",
+  "priceEst": false,
+  "tags": [
+   "meeting",
+   "solo",
+   "family",
+   "coffee",
+   "beer",
+   "patio",
+   "casual",
+   "calm"
+  ],
+  "plato": {
+   "en": "the breakfast sandwich in the parklet",
+   "es": "el breakfast sandwich en el parklet"
+  },
+  "note": "Known for perfectly prepared chai lattes and their avocado toast topped with hemp seeds and chili flakes. A neighborhood gem that embodies Noe Valley's village-like charm.",
+  "priority": 2,
+  "address": "1299 Sanchez St (at 26th St), San Francisco, CA 94114",
+  "lat": 37.7484974,
+  "lng": -122.429217,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Noe+Cafe+1299+Sanchez+St+San+Francisco+CA+94114",
+  "website": "https://noecafe.com/",
+  "instagram": "https://instagram.com/noecafesf",
+  "telephone": null,
+  "review": {
+   "status": "published",
+   "date": "2026-10-13",
+   "rating": null,
+   "shareTitle": "Noe Cafe, my go-to for a meeting and an easy coffee in Noe Valley",
+   "bestDish": "Breakfast Sandwich",
+   "personal": [
+    "It's a really cool coffee shop in Noe Valley, on the Sanchez Slow Street, very child and dog friendly.",
+    "I love it. They have two branches, the other one in Mission Bay, but the one I really like is Noe Cafe in Noe Valley. They have a nice parklet, so you can really grab your coffee outside. They also have some inside tables that aren't always available, but the vibe is pretty good.",
+    "Occasionally during the week they bring a guy who sells tacos, wearing a big taco hat. It's the place where you hang out when you live in the Noe Valley area, but it's also visited by a lot of tech people and VCs.",
+    "I really recommend their sandwiches and their toast. The avocado toast is really good, and I usually get the breakfast sandwich. Other than the different coffees, they also have a selection of kombuchas, and they have a liquor license, so if you go a little later in the day you can also grab a beer. It's a great spot for a beer, and whenever there are festivities on Sanchez, the community and the ambience are really good.",
+    "Some other friends always say it's a very chill place and a great place for meetings, and I agree. It's my go-to place to have a meeting, or just to enjoy an easy coffee in Noe Valley.",
+    "Noe Cafe, the best place to have a coffee, chill and hang out with your friends in Noe Valley."
+   ],
+   "dishes": [
+    {
+     "name": "Breakfast Sandwich",
+     "description": "My usual. Brioche bun, eggs, cheddar and arugula."
+    },
+    {
+     "name": "Avocado Toast",
+     "description": "Really good."
+    },
+    {
+     "name": "Coffee",
+     "description": "Grab it and sit outside in the parklet."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "Where is Noe Cafe?",
+     "answer": "1299 Sanchez St at 26th St, Noe Valley, on the Sanchez Slow Street. There's a parklet outside and some tables inside."
+    },
+    {
+     "question": "What should I order at Noe Cafe?",
+     "answer": "I usually get the Breakfast Sandwich. The avocado toast is really good too. Besides coffee, they have kombuchas, and beer later in the day."
+    },
+    {
+     "question": "What are Noe Cafe's hours?",
+     "answer": "Mon–Wed 7am–5pm, Thu–Sun 7am–6pm."
+    }
+   ],
+   "reservationTip": null,
+   "idealFor": null,
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "noe-cafe-logo-hero.jpg",
+     "caption": ""
+    },
+    {
+     "file": "noe-cafe-parklet.jpg",
+     "caption": ""
+    },
+    {
+     "file": "noe-cafe-tacos.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/noe-cafe"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "trad-bone-broth",
+    "mi": 0.21
+   },
+   {
+    "slug": "mosto",
+    "mi": 0.51
+   },
+   {
+    "slug": "universal-bakery",
+    "mi": 0.6
+   }
+  ]
+ },
+ {
+  "slug": "shoji",
+  "name": "Shoji",
+  "hood": "SOMA",
+  "cuisine": "Cafe",
+  "region": "cafe",
+  "adj": {
+   "en": "Japanese café",
+   "es": "de café japonés"
+  },
+  "meals": [
+   "coffee",
+   "dessert"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "solo",
+   "meeting",
+   "coffee",
+   "sweet",
+   "calm"
+  ],
+  "plato": {
+   "en": "matcha soft serve",
+   "es": "helado de matcha"
+  },
+  "note": "Their signature matcha soft serve and expertly prepared pour-over coffee make this a must-visit. The minimalist Japanese aesthetic creates a zen moment in busy SOMA.",
+  "priority": 2,
+  "address": "140 New Montgomery St, Suite 1, San Francisco, CA 94105",
+  "lat": 37.786686,
+  "lng": -122.3998909,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Shoji%20140%20New%20Montgomery%20St%20San%20Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/shoji_sf",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "four-kings",
+    "mi": 0.59
+   },
+   {
+    "slug": "mr-jius",
+    "mi": 0.61
+   },
+   {
+    "slug": "hog-island-oyster-co",
+    "mi": 0.71
+   }
+  ]
+ },
+ {
+  "slug": "swan-oyster-depot",
+  "name": "Swan Oyster Depot",
+  "hood": "Polk Gulch",
+  "cuisine": "Seafood",
+  "region": "usa",
+  "adj": {
+   "en": "seafood",
+   "es": "de mariscos"
+  },
+  "meals": [
+   "lunch"
+  ],
+  "price": "$$$",
+  "priceEst": false,
+  "tags": [
+   "line",
+   "cash",
+   "counter",
+   "casual",
+   "beer",
+   "lively",
+   "share",
+   "solo",
+   "date"
+  ],
+  "plato": {
+   "en": "oysters and Sicilian sashimi",
+   "es": "ostras y sashimi siciliano"
+  },
+  "note": "I recently made the line and it was totally worth it. Not only do they have amazing oysters, but always ask for a sample, but also their sashimi plates are great, as well as the clam chowder soup. Really recommend it. Worth the wait. Remember that it's cash only and get a beer.",
+  "priority": 2,
+  "address": "1517 Polk St, San Francisco, CA 94109",
+  "lat": 37.7909693,
+  "lng": -122.4209185,
+  "maps": "https://www.google.com/maps?q=Swan+Oyster+Depot+San+Francisco",
+  "website": "https://swanoysterdepotrestaurant.com/",
+  "instagram": "https://instagram.com/swan.oyster.official",
+  "telephone": "+1-415-673-1101",
+  "review": {
+   "status": "published",
+   "date": "2024-11-12",
+   "rating": 5,
+   "shareTitle": "Swan Oyster Depot: Sicilian sashimi on Polk",
+   "bestDish": "Sicilian sashimi",
+   "personal": [
+    "I was lucky that I didn't have to wait this day, but usually, you actually have to wait a while to get there. The seafood is fresh, good quality, and if you happen to ask for a crab cocktail or the sashimi, you're definitely going to have a feast.",
+    "Great beer, great people, and a packed line to get what you need. So, happily to recommend this, and as good as it gets when you want some seafood."
+   ],
+   "dishes": [
+    {
+     "name": "Sicilian sashimi",
+     "description": "The famous plate. Fresh is the point."
+    },
+    {
+     "name": "Crab cocktail",
+     "description": "Ask for a crab cocktail if you want a feast."
+    }
+   ],
+   "faqs": [
+    {
+     "question": "Does Swan Oyster Depot take reservations?",
+     "answer": "No. First come, first served. Usually you wait a while. I was lucky one day and did not have to. Arrive early if you can."
+    },
+    {
+     "question": "What should I order at Swan Oyster Depot?",
+     "answer": "Ask for a crab cocktail or the sashimi and you are going to have a feast. Fresh seafood, good quality. Great beer too."
+    },
+    {
+     "question": "Is Swan Oyster Depot worth the wait?",
+     "answer": "Yes. Opened in 1912, so about 114 years. Great beer, great people, packed line. As good as it gets when you want seafood."
+    }
+   ],
+   "reservationTip": "No reservations -arrive before 11am to beat the line",
+   "idealFor": "Seafood lovers seeking an authentic SF experience",
+   "pullQuote": null,
+   "guest": null,
+   "images": [
+    {
+     "file": "swan-oyster-depot-mixed-fish-carpaccio-16a27982.jpg",
+     "caption": ""
+    },
+    {
+     "file": "swan-oyster-depot-oyster-depot-9ebca850.jpg",
+     "caption": ""
+    },
+    {
+     "file": "swan-oyster-depot-seafood-display-window-e8034b2d.jpg",
+     "caption": ""
+    }
+   ],
+   "url": "https://www.cookfoodie.com/reviews/swan-oyster-depot"
+  },
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "house-of-prime-rib",
+    "mi": 0.19
+   },
+   {
+    "slug": "octavia",
+    "mi": 0.39
+   },
+   {
+    "slug": "mensho-tokyo",
+    "mi": 0.46
+   }
+  ]
+ },
+ {
+  "slug": "trad-bone-broth",
+  "name": "Trad Bone Broth",
+  "hood": "Noe Valley",
+  "cuisine": "Bone Broth",
+  "region": "cafe",
+  "adj": {
+   "en": "bone broth",
+   "es": "de caldo"
+  },
+  "meals": [
+   "breakfast",
+   "lunch"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "solo",
+   "soup",
+   "calm",
+   "personal"
+  ],
+  "plato": {
+   "en": "broth on tap",
+   "es": "caldo de hueso"
+  },
+  "note": "Takeout-only bone broth cafe on 24th Street: broths on tap (beef, chicken, a Korean-style Seoul Broth, and a vegetarian option) plus made-to-order savory and sweet broth drinks. Open Tue-Sun 9am-7pm, closed Mondays.",
+  "priority": 2,
+  "address": "3903 24th St, San Francisco, CA 94114",
+  "lat": 37.7514644,
+  "lng": -122.4298534,
+  "maps": "https://www.google.com/maps/search/?api=1&query=Trad%20Bone%20Broth%203903%2024th%20St%2C%20San%20Francisco%2C%20CA%2094114",
+  "website": "https://tradbonebroth.com/",
+  "instagram": "https://instagram.com/tradbonebroth",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "noe-cafe",
+    "mi": 0.21
+   },
+   {
+    "slug": "lolo",
+    "mi": 0.61
+   },
+   {
+    "slug": "mosto",
+    "mi": 0.63
+   }
+  ]
+ },
+ {
+  "slug": "yuanbao-jiaozi",
+  "name": "Yuanbao Jiaozi",
+  "hood": "Inner Richmond",
+  "cuisine": "Asian",
+  "region": "china",
+  "adj": {
+   "en": "Northern Chinese",
+   "es": "del norte de China"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "family",
+   "share",
+   "casual",
+   "soup",
+   "calm"
+  ],
+  "plato": {
+   "en": "handmade dumplings",
+   "es": "dumplings hechos a mano"
+  },
+  "note": "Handmade dumplings are the star. Try the pork & chive and the fish dumplings. Their hand-pulled noodles in rich broths are equally exceptional. A neighborhood favorite for authentic Northern Chinese cuisine.",
+  "priority": 2,
+  "address": "2110 Irving St, San Francisco, CA 94122",
+  "lat": 37.7635688,
+  "lng": -122.4806874,
+  "maps": "https://www.google.com/maps?q=Yuanbao+Jiaozi+San+Francisco+Inner+Richmond",
+  "website": null,
+  "instagram": "https://instagram.com/yuanbaojiaozi",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "kingdom-of-dumplings",
+    "mi": 1.47
+   },
+   {
+    "slug": "beit-rima",
+    "mi": 1.62
+   },
+   {
+    "slug": "kitchen-istanbul",
+    "mi": 1.64
+   }
+  ]
+ },
+ {
+  "slug": "zuni-cafe",
+  "name": "Zuni Café",
+  "hood": "Hayes Valley",
+  "cuisine": "California cuisine",
+  "region": "usa",
+  "adj": {
+   "en": "Californian",
+   "es": "californiana"
+  },
+  "meals": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$$",
+  "priceEst": true,
+  "tags": [
+   "date",
+   "share",
+   "wine",
+   "cocktails",
+   "reserve",
+   "lively"
+  ],
+  "plato": {
+   "en": "roast chicken for two",
+   "es": "pollo asado para dos"
+  },
+  "note": "Their legendary roast chicken for two with bread salad is a San Francisco institution, order it and wait the 45 minutes, it's worth it. This James Beard Award-winning restaurant has been defining California cuisine since 1979. Also try their Caesar salad and oysters.",
+  "priority": 2,
+  "address": "1658 Market St, San Francisco, CA 94102",
+  "lat": 37.7734497,
+  "lng": -122.4216527,
+  "maps": "https://www.google.com/maps?q=Zuni+Cafe+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/zunicafe",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "burma-love",
+    "mi": 0.27
+   },
+   {
+    "slug": "shizen",
+    "mi": 0.36
+   },
+   {
+    "slug": "four-barrel-coffee",
+    "mi": 0.44
+   }
+  ]
+ },
+ {
+  "slug": "arsicault-bakery",
+  "name": "Arsicault Bakery",
+  "hood": "Inner Richmond",
+  "cuisine": "Bakery",
+  "region": "cafe",
+  "adj": {
+   "en": "French bakery",
+   "es": "de panadería francesa"
+  },
+  "meals": [
+   "breakfast",
+   "coffee"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "line",
+   "sweet",
+   "solo",
+   "coffee",
+   "casual"
+  ],
+  "plato": {
+   "en": "SF's best croissant",
+   "es": "el mejor croissant de SF"
+  },
+  "note": "Home of SF's best croissant - buttery, flaky perfection that regularly wins 'Best Croissant' awards. Their almond croissant and kouign-amann are equally exceptional. Arrive early, they sell out fast.",
+  "priority": 1,
+  "address": "397 Arguello Blvd, San Francisco, CA 94118",
+  "lat": 37.7834067,
+  "lng": -122.459227,
+  "maps": "https://www.google.com/maps?q=Arsicault+Bakery+Inner+Richmond",
+  "website": null,
+  "instagram": "https://instagram.com/arsicaultbakery",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "burma-super-star",
+    "mi": 0.19
+   },
+   {
+    "slug": "kitchen-istanbul",
+    "mi": 0.22
+   },
+   {
+    "slug": "ju-ni",
+    "mi": 1.21
+   }
+  ]
+ },
+ {
+  "slug": "tartine-bakery",
+  "name": "Tartine Bakery",
+  "hood": "Mission",
+  "cuisine": "Bakery",
+  "region": "cafe",
+  "adj": {
+   "en": "bakery",
+   "es": "de panadería"
+  },
+  "meals": [
+   "breakfast",
+   "coffee"
+  ],
+  "price": "$",
+  "priceEst": true,
+  "tags": [
+   "line",
+   "sweet",
+   "coffee",
+   "casual",
+   "family",
+   "solo"
+  ],
+  "plato": {
+   "en": "a morning bun",
+   "es": "un morning bun"
+  },
+  "note": "Home to the city's most famous morning buns and country bread that launched a thousand sourdough obsessions. Their croissants are equally legendary. This bakery transformed American bread culture and remains a pilgrimage site for bakers worldwide.",
+  "priority": 1,
+  "address": "600 Guerrero St, San Francisco, CA 94110",
+  "lat": 37.7614552,
+  "lng": -122.4239452,
+  "maps": "https://www.google.com/maps?q=Tartine+Bakery+San+Francisco",
+  "website": null,
+  "instagram": "https://instagram.com/tartinebakery",
+  "telephone": null,
+  "review": null,
+  "reviewLink": null,
+  "reel": null,
+  "igPosts": [],
+  "nearby": [
+   {
+    "slug": "bi-rite-creamery",
+    "mi": 0.09
+   },
+   {
+    "slug": "lazy-bear",
+    "mi": 0.24
+   },
+   {
+    "slug": "lolo",
+    "mi": 0.31
+   }
+  ]
+ }
+]
