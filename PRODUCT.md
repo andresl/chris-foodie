@@ -46,7 +46,8 @@ Every place is a first-person pick from one person with a real track record (Coo
 
 - Name: CookFoodie, exactly as the original site. The original chef logo (illustration) is the only face; no photos of Christian (Andrés, 13-oct-2026).
 - The game host is "Cvander", Christian in first person, with the tone of his X posts (scrap/christian/voz.md).
-- Visual: food photos lead, one accent (CookFoodie orange), one sober type family. Themed costume concepts were rejected.
+- Visual: food photos lead, palette Noche (dark with a chili accent, color in blocks), one sober type family. Themed costume concepts were rejected, and the look must not resemble MiDon.
+- Guide: 12 places per load, random order, places with Chris's photos first.
 - Author voice: Christian in first person ("I", "trust me"), honest, short sentences, playful asides ("People in Spain will judge me").
 - Christian's photos ship as they are: no retouching, no AI edits.
 

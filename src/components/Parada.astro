@@ -14,7 +14,7 @@ const foto = archivo ? fotos[`../assets/reviews/${archivo}`]?.default : undefine
 const visibles = l.tags.filter((t) => t in insignias);
 const publicada = l.review && l.review.status !== 'in_progress';
 ---
-<li class:list={['lugar', { 'con-foto': foto }]} data-slug={l.slug} style={`view-transition-name: l-${l.slug};`}>
+<li class:list={['lugar', { 'con-foto': foto }]} data-slug={l.slug}>
   <a class="lugar-enlace" href={`/places/${l.slug}`}>
     {foto && (
       <div class="lugar-foto">

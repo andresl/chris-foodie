@@ -8,4 +8,6 @@ export default defineConfig({
   build: { format: 'file', inlineStylesheets: 'auto' },
   compressHTML: true,
   devToolbar: { enabled: false },
+  // Leaflet se importa solo al abrir el mapa; en desarrollo hay que preempaquetarlo o Vite responde 504.
+  vite: { optimizeDeps: { include: ['leaflet'] } },
 });

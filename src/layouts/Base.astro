@@ -10,7 +10,7 @@ const { titulo, descripcion, imagen } = Astro.props;
 const canonica = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
-<html lang="en" data-lang="en" data-paleta="tomate">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,7 +20,7 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
     {imagen && <meta property="og:image" content={new URL(imagen, Astro.site)} />}
-    <meta name="theme-color" content="#d42a1e" />
+    <meta name="theme-color" content="#1b1917" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <script is:inline>
@@ -31,10 +31,6 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
         if (!l) l = (navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
         document.documentElement.dataset.lang = l;
         document.documentElement.lang = l;
-        // Paleta en prueba: ?paleta=tomate|mostaza|noche, recordada en este navegador.
-        var p = new URLSearchParams(location.search).get('paleta');
-        try { if (p) localStorage.setItem('cf-paleta', p); else p = localStorage.getItem('cf-paleta'); } catch (e) {}
-        if (p === 'tomate' || p === 'mostaza' || p === 'noche') document.documentElement.dataset.paleta = p;
       })();
     </script>
   </head>

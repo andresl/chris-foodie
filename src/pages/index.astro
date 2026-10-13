@@ -18,9 +18,12 @@ const casillas = Array.from({ length: 4 }, (_, i) => [pool[i], pool[i + 4], pool
 
 const regionesUsadas = Object.entries(regiones).filter(([k]) => lugares.some((l) => l.region === k));
 const comidasUsadas = Object.entries(comidas).filter(([k]) => lugares.some((l) => l.meals.includes(k)));
-const datosCliente = lugares.map((l) => ({
+// Primero los lugares con fotos de Chris; el navegador después los baraja (con foto y sin foto por separado).
+const conFoto = (l: (typeof lugares)[number]) => !!l.review?.images?.length;
+const enLista = [...lugares.filter(conFoto), ...lugares.filter((l) => !conFoto(l))];
+const datosCliente = enLista.map((l) => ({
   s: l.slug, n: l.name, lat: l.lat, lng: l.lng, r: l.region, m: l.meals, p: l.price,
-  rv: !!l.review && l.review.status !== 'in_progress', h: l.hood,
+  rv: !!l.review && l.review.status !== 'in_progress', h: l.hood, f: conFoto(l),
 }));
 const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_progress').length;
 ---
@@ -62,7 +65,7 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
     <div class="guia-cabeza">
       <h2 id="guia-titulo" class="guia-titulo"><T en="The guide" es="La guía" /></h2>
       <p class="guia-estado" data-estado aria-live="polite">
-        <T en="53 places, Chris's favorites first." es="53 lugares, primero las favoritas de Chris." />
+        <T en="53 places, the ones with Chris's photos first." es="53 lugares, primero los que tienen fotos de Chris." />
       </p>
     </div>
 
@@ -113,8 +116,11 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
 
     <div id="vista-lista" role="tabpanel" data-panel="lista">
       <ol class="lugares" data-lugares>
-        {lugares.map((l, i) => <Parada lugar={l} prioridad={i < 3} />)}
+        {enLista.map((l, i) => <Parada lugar={l} prioridad={i < 3} />)}
       </ol>
+      <div class="mas" data-mas-caja hidden>
+        <button type="button" class="boton borde" data-mas></button>
+      </div>
       <div class="vacio" data-vacio hidden>
         <p class="vacio-titulo"><T en="Nothing matches all of that." es="Nada cumple con todo eso." /></p>
         <p><T en="Drop a filter or two." es="Quita uno o dos filtros." /></p>
@@ -202,6 +208,9 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
     .vistas { margin-left: 0; }
   }
 
+  /* Antes de que corra el script solo se ven 12 (el script luego usa hidden). */
+  .lugares:not(.listo) > :global(.lugar:nth-child(n + 13)) { display: none; }
+  .mas { display: flex; justify-content: center; margin-top: 26px; }
   .lugares { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 16px; margin: 0; padding: 0; align-items: start; }
   .vacio { display: grid; justify-items: start; gap: 8px; padding: 28px; border-radius: var(--r); background: var(--placa-2); }
   .vacio-titulo { font-weight: 700; font-size: 1.2rem; }

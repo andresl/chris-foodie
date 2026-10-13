@@ -1,6 +1,5 @@
 /* CookFoodie San Francisco: las fotos de comida de Chris al frente y una sola familia tipográfica.
-   El color va en bloques (cabecera, portada, plan, pie), no en detalles. Tres paletas en prueba:
-   tomate (rojo de guía gastronómica), mostaza (mostaza y negro) y noche (oscura, de cena). Se eligen con ?paleta=. */
+   Paleta Noche: el color va en bloques (cabecera, portada, plan, pie), no en detalles. */
 
 @import '@fontsource-variable/geist/wght.css';
 
@@ -10,58 +9,8 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Tomate: rojo dominante con blanco y negro (Resy, Guía Michelin, Eater). */
-:root, html[data-paleta='tomate'] {
-  color-scheme: light;
-  --campo: #d42a1e;
-  --campo-hondo: #ad1f15;
-  --sobre-campo: #ffffff;
-  --sobre-campo-2: #ffe3df;
-  --boton-campo: #ffffff;
-  --boton-campo-texto: #b8221a;
-  --fondo: #ffffff;
-  --placa: #ffffff;
-  --placa-2: #f3f3f3;
-  --texto: #111111;
-  --texto-2: #4b4b4b;
-  --texto-3: #737373;
-  --linea: #e5e5e5;
-  --acento: #d42a1e;
-  --acento-hondo: #ad1f15;
-  --acento-suave: #fdeae8;
-  --sobre-acento: #ffffff;
-  --pie: #111111;
-  --sobre-pie: #f2f2f2;
-  --sombra: 0 1px 2px rgb(17 17 17 / 0.06), 0 8px 24px -12px rgb(17 17 17 / 0.2);
-  --sombra-alta: 0 2px 4px rgb(17 17 17 / 0.06), 0 18px 40px -18px rgb(17 17 17 / 0.34);
-}
-
-/* Mostaza: bloques mostaza con tinta negra (The Infatuation, Bon Appétit). */
-html[data-paleta='mostaza'] {
-  color-scheme: light;
-  --campo: #f2b418;
-  --campo-hondo: #d99b00;
-  --sobre-campo: #111111;
-  --sobre-campo-2: #3b2f0c;
-  --boton-campo: #111111;
-  --boton-campo-texto: #ffffff;
-  --fondo: #ffffff;
-  --placa: #ffffff;
-  --placa-2: #f4f3f0;
-  --texto: #111111;
-  --texto-2: #4b4b4b;
-  --texto-3: #737373;
-  --linea: #e6e4df;
-  --acento: #111111;
-  --acento-hondo: #333333;
-  --acento-suave: #fff3d1;
-  --sobre-acento: #ffffff;
-  --pie: #111111;
-  --sobre-pie: #f2b418;
-}
-
-/* Noche: fondo oscuro de cena con acento chile (Tock, Resy de noche). */
-html[data-paleta='noche'] {
+/* Noche: fondo oscuro de cena con acento chile (Tock, Resy de noche). Elegida por Andrés el 13-oct-2026. */
+:root {
   color-scheme: dark;
   --campo: #1b1917;
   --campo-hondo: #0f0e0d;
@@ -147,12 +96,12 @@ html { scrollbar-color: var(--texto-3) transparent; }
 /* Pines del mapa (Leaflet) */
 .pin-lugar span {
   display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
-  background: #18181b; color: #fff; border: 2px solid #fff;
+  background: #f6f3ef; color: #121110; border: 2px solid #121110;
   font: 700 0.72rem var(--f); box-shadow: 0 3px 8px rgb(0 0 0 / 0.3);
 }
-.pin-lugar.uno span { background: #e2550b; }
+.pin-lugar.uno span { background: #ff5a36; color: #1a0904; }
 .pin-yo span { display: block; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; border: 3px solid #fff; box-shadow: 0 0 0 6px rgb(37 99 235 / 0.2); }
-.pin-enlace { color: #18181b; text-decoration: none; font-family: var(--f); }
+.pin-enlace { color: #121110; text-decoration: none; font-family: var(--f); }
 .leaflet-container { font-family: var(--f); }
 
 @media (prefers-reduced-motion: reduce) {
