@@ -10,7 +10,7 @@ const { titulo, descripcion, imagen } = Astro.props;
 const canonica = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" data-paleta="tomate">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,8 +20,7 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
     {imagen && <meta property="og:image" content={new URL(imagen, Astro.site)} />}
-    <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#d42a1e" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <script is:inline>
@@ -32,12 +31,16 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
         if (!l) l = (navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
         document.documentElement.dataset.lang = l;
         document.documentElement.lang = l;
+        // Paleta en prueba: ?paleta=tomate|mostaza|noche, recordada en este navegador.
+        var p = new URLSearchParams(location.search).get('paleta');
+        try { if (p) localStorage.setItem('cf-paleta', p); else p = localStorage.getItem('cf-paleta'); } catch (e) {}
+        if (p === 'tomate' || p === 'mostaza' || p === 'noche') document.documentElement.dataset.paleta = p;
       })();
     </script>
   </head>
   <body>
     <a class="saltar" href="#contenido"><T en="Skip to content" es="Saltar al contenido" /></a>
-    <header class="cabeza">
+    <header class="cabeza en-campo">
       <div class="envoltura cabeza-fila">
         <a class="marca" href="/">
           <Image src={logo} alt="" width={36} height={36} class="marca-logo" loading="eager" />
@@ -59,7 +62,7 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
 
-    <footer class="pie">
+    <footer class="pie en-pie">
       <div class="envoltura pie-fila">
         <div class="pie-marca">
           <span class="pie-logo"><Image src={logo} alt="" width={44} height={44} class="marca-logo grande" /><span class="marca-nombre">CookFoodie</span></span>
@@ -100,18 +103,18 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
   .saltar { position: absolute; left: 12px; top: -60px; z-index: 30; background: var(--acento); color: var(--sobre-acento); padding: 10px 16px; border-radius: 999px; font-weight: 700; }
   .saltar:focus { top: 12px; }
 
-  .cabeza { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--fondo) 88%, transparent); backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid var(--linea); }
+  .cabeza { position: sticky; top: 0; z-index: 20; }
   .cabeza-fila { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
   .marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
   .marca-logo { width: 36px; height: 36px; border-radius: 50%; }
-  .marca-nombre { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.04em; color: var(--acento); }
+  .marca-nombre { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.04em; color: var(--texto); }
   .marca-ciudad { font-weight: 550; font-size: 0.9rem; color: var(--texto-2); }
   .nav { display: flex; align-items: center; gap: 2px; }
   .nav-link { display: inline-flex; align-items: center; gap: 0.45em; min-height: 44px; padding: 0 12px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; color: var(--texto-2); }
   .nav-link:hover { color: var(--texto); background: var(--placa-2); }
   .idioma { display: inline-flex; margin-left: 6px; padding: 3px; border-radius: 999px; border: 1px solid var(--linea); }
   .idioma button { min-width: 38px; min-height: 34px; border: 0; border-radius: 999px; background: transparent; color: var(--texto-2); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; }
-  .idioma button[aria-pressed='true'] { background: var(--texto); color: var(--fondo); }
+  .idioma button[aria-pressed='true'] { background: var(--texto); color: var(--campo); }
   @media (max-width: 600px) {
     .nav-link span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
     .nav-link { padding: 0 10px; }
@@ -119,7 +122,7 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
     .marca-ciudad { display: none; }
   }
 
-  .pie { border-top: 1px solid var(--linea); margin-top: 24px; }
+  .pie { margin-top: 0; }
   .pie-fila { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px; padding-block: 40px 16px; }
   .pie-marca { max-width: 48ch; }
   .pie-logo { display: inline-flex; align-items: center; gap: 10px; }

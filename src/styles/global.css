@@ -1,45 +1,89 @@
-/* CookFoodie San Francisco: las fotos de comida de Chris al frente, un solo acento (el naranja de la marca)
-   y una sola familia tipográfica. */
+/* CookFoodie San Francisco: las fotos de comida de Chris al frente y una sola familia tipográfica.
+   El color va en bloques (cabecera, portada, plan, pie), no en detalles. Tres paletas en prueba:
+   tomate (rojo de guía gastronómica), mostaza (mostaza y negro) y noche (oscura, de cena). Se eligen con ?paleta=. */
 
 @import '@fontsource-variable/geist/wght.css';
 
 :root {
-  color-scheme: light;
-  --fondo: #f7f7f5;
-  --placa: #ffffff;
-  --placa-2: #efefec;
-  --texto: #18181b;
-  --texto-2: #55555e;
-  --texto-3: #7a7a84;
-  --linea: #e3e3e0;
-  --acento: #e2550b;
-  --acento-hondo: #b8430a;
-  --acento-suave: #fdeee4;
-  --sobre-acento: #ffffff;
-  --sombra: 0 1px 2px rgb(24 24 27 / 0.06), 0 8px 24px -12px rgb(24 24 27 / 0.18);
-  --sombra-alta: 0 2px 4px rgb(24 24 27 / 0.06), 0 18px 40px -18px rgb(24 24 27 / 0.32);
   --f: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
   --r: 16px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --fondo: #111113;
-    --placa: #1a1a1d;
-    --placa-2: #232327;
-    --texto: #f3f3f4;
-    --texto-2: #b3b3bb;
-    --texto-3: #8b8b95;
-    --linea: #2c2c31;
-    --acento: #ff7a33;
-    --acento-hondo: #ff9a62;
-    --acento-suave: #2b1a10;
-    --sobre-acento: #1a0d05;
-    --sombra: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 26px -14px rgb(0 0 0 / 0.7);
-    --sombra-alta: 0 2px 4px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.8);
-  }
+/* Tomate: rojo dominante con blanco y negro (Resy, Guía Michelin, Eater). */
+:root, html[data-paleta='tomate'] {
+  color-scheme: light;
+  --campo: #d42a1e;
+  --campo-hondo: #ad1f15;
+  --sobre-campo: #ffffff;
+  --sobre-campo-2: #ffe3df;
+  --boton-campo: #ffffff;
+  --boton-campo-texto: #b8221a;
+  --fondo: #ffffff;
+  --placa: #ffffff;
+  --placa-2: #f3f3f3;
+  --texto: #111111;
+  --texto-2: #4b4b4b;
+  --texto-3: #737373;
+  --linea: #e5e5e5;
+  --acento: #d42a1e;
+  --acento-hondo: #ad1f15;
+  --acento-suave: #fdeae8;
+  --sobre-acento: #ffffff;
+  --pie: #111111;
+  --sobre-pie: #f2f2f2;
+  --sombra: 0 1px 2px rgb(17 17 17 / 0.06), 0 8px 24px -12px rgb(17 17 17 / 0.2);
+  --sombra-alta: 0 2px 4px rgb(17 17 17 / 0.06), 0 18px 40px -18px rgb(17 17 17 / 0.34);
+}
+
+/* Mostaza: bloques mostaza con tinta negra (The Infatuation, Bon Appétit). */
+html[data-paleta='mostaza'] {
+  color-scheme: light;
+  --campo: #f2b418;
+  --campo-hondo: #d99b00;
+  --sobre-campo: #111111;
+  --sobre-campo-2: #3b2f0c;
+  --boton-campo: #111111;
+  --boton-campo-texto: #ffffff;
+  --fondo: #ffffff;
+  --placa: #ffffff;
+  --placa-2: #f4f3f0;
+  --texto: #111111;
+  --texto-2: #4b4b4b;
+  --texto-3: #737373;
+  --linea: #e6e4df;
+  --acento: #111111;
+  --acento-hondo: #333333;
+  --acento-suave: #fff3d1;
+  --sobre-acento: #ffffff;
+  --pie: #111111;
+  --sobre-pie: #f2b418;
+}
+
+/* Noche: fondo oscuro de cena con acento chile (Tock, Resy de noche). */
+html[data-paleta='noche'] {
+  color-scheme: dark;
+  --campo: #1b1917;
+  --campo-hondo: #0f0e0d;
+  --sobre-campo: #f6f3ef;
+  --sobre-campo-2: #bfb8b0;
+  --boton-campo: #ff5a36;
+  --boton-campo-texto: #1a0904;
+  --fondo: #121110;
+  --placa: #1c1a18;
+  --placa-2: #272421;
+  --texto: #f6f3ef;
+  --texto-2: #bfb8b0;
+  --texto-3: #918a82;
+  --linea: #322e2a;
+  --acento: #ff5a36;
+  --acento-hondo: #ff7b5c;
+  --acento-suave: #33170f;
+  --sobre-acento: #1a0904;
+  --pie: #0b0a09;
+  --sobre-pie: #f6f3ef;
+  --sombra: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 26px -14px rgb(0 0 0 / 0.7);
+  --sombra-alta: 0 2px 4px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.8);
 }
 
 /* Idioma: el CSS muestra solo la versión activa. */
@@ -113,4 +157,24 @@ html { scrollbar-color: var(--texto-3) transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}
+
+/* Bloques de color: dentro de un campo, los tokens se reasignan y los componentes se adaptan solos. */
+.en-campo {
+  background: var(--campo); color: var(--sobre-campo);
+  --texto: var(--sobre-campo);
+  --texto-2: var(--sobre-campo-2);
+  --texto-3: var(--sobre-campo-2);
+  --acento: var(--boton-campo);
+  --acento-hondo: color-mix(in srgb, var(--boton-campo) 86%, var(--campo));
+  --sobre-acento: var(--boton-campo-texto);
+  --linea: color-mix(in srgb, var(--sobre-campo) 38%, transparent);
+  --placa-2: color-mix(in srgb, var(--sobre-campo) 14%, transparent);
+}
+.en-pie {
+  background: var(--pie); color: var(--sobre-pie);
+  --texto: var(--sobre-pie);
+  --texto-2: color-mix(in srgb, var(--sobre-pie) 72%, var(--pie));
+  --texto-3: color-mix(in srgb, var(--sobre-pie) 55%, var(--pie));
+  --linea: color-mix(in srgb, var(--sobre-pie) 18%, transparent);
 }

@@ -24,7 +24,7 @@ const visibles = l.tags.filter((t) => t in insignias);
 ---
 <Base titulo={`${l.name} · CookFoodie San Francisco`} descripcion={descripcion}>
   <article class="ficha">
-    <header class="ficha-cabeza">
+    <header class="ficha-cabeza en-campo">
       <div class="envoltura ficha-cabeza-fila">
         <a class="volver" href="/#guia"><Icono n="izq" /><T en="Back to the guide" es="Volver a la guía" /></a>
         <div class="ficha-letrero">
@@ -201,7 +201,7 @@ const visibles = l.tags.filter((t) => t in insignias);
 </script>
 
 <style>
-  .ficha-cabeza { border-bottom: 1px solid var(--linea); }
+  .ficha-cabeza { }
   .ficha-cabeza-fila { padding-block: 18px 32px; display: grid; gap: 16px; }
   .volver { display: inline-flex; align-items: center; gap: 0.4em; width: fit-content; min-height: 40px; font-weight: 600; text-decoration: none; color: var(--texto-2); }
   .volver:hover { color: var(--texto); text-decoration: underline; }

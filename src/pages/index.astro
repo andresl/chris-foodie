@@ -28,6 +28,7 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
   titulo="CookFoodie San Francisco · Where Chris eats"
   descripcion="53 San Francisco places Christian Van Der Henst recommends, from Burmese to Salvadoran, sorted by how close you are. Or answer ten quick questions and get a plan.">
 
+  <div class="en-campo portada-campo">
   <section class="portada envoltura" aria-labelledby="titular">
     <div class="portada-texto">
       <h1 id="titular" class="titular"><T en="Where Chris eats in San Francisco." es="Dónde come Chris en San Francisco." /></h1>
@@ -55,6 +56,7 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
       ))}
     </div>
   </section>
+  </div>
 
   <section id="guia" class="guia envoltura" aria-labelledby="guia-titulo">
     <div class="guia-cabeza">
@@ -124,7 +126,7 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
     </div>
   </section>
 
-  <section class="plan envoltura" aria-labelledby="plan-titulo">
+  <section class="plan envoltura en-campo" aria-labelledby="plan-titulo">
     <Image src={logo} alt="" width={72} height={72} class="plan-logo" />
     <div>
       <h2 id="plan-titulo" class="plan-titulo"><T en="Can't decide? Let Cvander plan it." es="¿No te decides? Que Cvander te arme el plan." /></h2>
@@ -157,8 +159,8 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
   .casilla { position: relative; overflow: hidden; border-radius: 14px; background: var(--placa-2); display: block; }
   .casilla.c0 { grid-row: span 2; }
   .casilla.c3 { grid-column: 2 / 4; }
-  .casilla :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 900ms var(--ease), transform 1600ms var(--ease); }
-  .casilla :global(img.visible) { opacity: 1; transform: scale(1); }
+  .casilla :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: inset(100% 0 0 0); transform: scale(1.08); transition: clip-path 850ms var(--ease), transform 1600ms var(--ease); }
+  .casilla :global(img.visible) { clip-path: inset(0); transform: scale(1); }
   .casilla :global(img.arriba) { z-index: 1; }
   .casilla:hover :global(img.visible) { transform: scale(1.03); }
   @media (max-width: 860px) {
@@ -170,7 +172,7 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
   }
 
   /* ---------- La guía ---------- */
-  .guia { padding-block: 40px 56px; border-top: 1px solid var(--linea); }
+  .guia { padding-block: 44px 56px; }
   .guia-cabeza { display: grid; gap: 4px; margin-bottom: 20px; }
   .guia-titulo { font-size: clamp(1.8rem, 3.6vw, 2.5rem); font-weight: 750; letter-spacing: -0.04em; }
   .guia-estado { color: var(--texto-2); font-weight: 550; }
@@ -208,7 +210,7 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
   /* ---------- Invitación al plan ---------- */
   .plan {
     display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px;
-    margin-bottom: 56px; padding: clamp(20px, 3vw, 32px); border-radius: 20px; background: var(--placa); border: 1px solid var(--linea);
+    margin-bottom: 56px; padding: clamp(20px, 3vw, 32px); border-radius: 20px;
   }
   .plan-logo { width: 72px; height: 72px; border-radius: 50%; }
   .plan-titulo { font-size: clamp(1.3rem, 2.4vw, 1.7rem); font-weight: 700; }
