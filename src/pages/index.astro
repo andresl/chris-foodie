@@ -29,15 +29,15 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
 ---
 <Base
   titulo="CookFoodie San Francisco · Where Chris eats"
-  descripcion="53 San Francisco places Christian Van Der Henst recommends, from Burmese to Salvadoran, sorted by how close you are. Or answer ten quick questions and get a plan.">
+  descripcion="53 San Francisco places Christian Van Der Henst recommends, from Burmese to Salvadoran, sorted by how close you are. Or answer five quick questions and get a plan.">
 
   <div class="en-campo portada-campo">
   <section class="portada envoltura" aria-labelledby="titular">
     <div class="portada-texto">
       <h1 id="titular" class="titular"><T en="Where Chris eats in San Francisco." es="Dónde come Chris en San Francisco." /></h1>
       <p class="bajada">
-        <T en="53 places, from Burmese tea leaf salad to Salvadoran pupusas. Sorted by how close you are, or picked for you in ten taps."
-           es="53 lugares, de la ensalada birmana de hoja de té a las pupusas salvadoreñas. Ordenados por cercanía, o elegidos para ti en diez clics." />
+        <T en="53 places, from Burmese tea leaf salad to Salvadoran pupusas. Sorted by how close you are, or picked for you in five taps."
+           es="53 lugares, de la ensalada birmana de hoja de té a las pupusas salvadoreñas. Ordenados por cercanía, o elegidos para ti en cinco clics." />
       </p>
       <div class="acciones">
         <button type="button" class="boton" data-cerca><Icono n="navegar" /><T en="Near me" es="Cerca de mí" /></button>
@@ -136,8 +136,8 @@ const resenados = lugares.filter((l) => l.review && l.review.status !== 'in_prog
     <Image src={logo} alt="" width={72} height={72} class="plan-logo" />
     <div>
       <h2 id="plan-titulo" class="plan-titulo"><T en="Can't decide? Let Cvander plan it." es="¿No te decides? Que Cvander te arme el plan." /></h2>
-      <p><T en="Ten quick questions: World Cup final or a Tuesday MLS game, beer or mezcal, a line or no line. You get a place, a dish and two backups."
-            es="Diez preguntas rápidas: final del Mundial o MLS un martes, chela o mezcal, fila o sin fila. Te llevas un lugar, un plato y dos opciones más." /></p>
+      <p><T en="Five quick questions, a different set every time: the World Cup, beer or mezcal, your agent ordering for the table. You get a place, a dish and two backups."
+            es="Cinco preguntas rápidas, distintas cada vez: el Mundial, chela o mezcal, tu agente pidiendo para la mesa. Te llevas un lugar, un plato y dos opciones más." /></p>
     </div>
     <a class="boton" href="/juego"><Icono n="chispa" /><T en="Plan my meal" es="Arma tu plan" /></a>
   </section>

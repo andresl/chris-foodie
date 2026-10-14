@@ -6,7 +6,7 @@ import T from '../components/T.astro';
 import Icono from '../components/Icono.astro';
 import logo from '../assets/logo-cookfoodie.png';
 import { lugares, primeraFrase } from '../lib/datos';
-import { intro } from '../lib/preguntas';
+import { intro, POR_PARTIDA } from '../lib/preguntas';
 
 const fotos = import.meta.glob<{ default: ImageMetadata }>('../assets/reviews/*.{jpg,jpeg,png,webp}', { eager: true });
 const datos = await Promise.all(lugares.map(async (l) => {
@@ -20,10 +20,10 @@ const datos = await Promise.all(lugares.map(async (l) => {
   };
 }));
 ---
-<Base titulo="Plan my meal · CookFoodie San Francisco" descripcion="Ten quick questions from Cvander: World Cup or MLS, beer or mezcal, a line or no line. You get a San Francisco place, a dish and two backups.">
+<Base titulo="Plan my meal · CookFoodie San Francisco" descripcion="Five quick questions from Cvander, a different set every time. You get a San Francisco place, a dish and two backups.">
   <section class="juego envoltura" data-juego>
-    <div class="avance" aria-hidden="true" data-avance>
-      {Array.from({ length: 10 }).map(() => <span class="avance-paso"></span>)}
+    <div class="avance" aria-hidden="true" data-avance style={`--pasos: ${POR_PARTIDA}`}>
+      {Array.from({ length: POR_PARTIDA }).map(() => <span class="avance-paso"></span>)}
       <span class="avance-num num" data-avance-num></span>
     </div>
 
@@ -31,7 +31,7 @@ const datos = await Promise.all(lugares.map(async (l) => {
       <Image src={logo} alt="" width={64} height={64} class="anfitrion-logo" loading="eager" />
       <div>
         <p class="anfitrion-nombre">Cvander</p>
-        <p class="anfitrion-dice" data-dice aria-live="polite"><T en="Ten questions, one plan" es="Diez preguntas, un plan" /></p>
+        <p class="anfitrion-dice" data-dice aria-live="polite"><T en="Five questions, one plan" es="Cinco preguntas, un plan" /></p>
       </div>
     </div>
 
@@ -71,7 +71,7 @@ const datos = await Promise.all(lugares.map(async (l) => {
 <style>
   .juego { display: grid; gap: 24px; max-width: 820px; padding-block: 36px 72px; min-height: calc(100dvh - 64px); align-content: start; }
 
-  .avance { display: grid; grid-template-columns: repeat(10, 1fr) auto; gap: 5px; align-items: center; }
+  .avance { display: grid; grid-template-columns: repeat(var(--pasos, 5), 1fr) auto; gap: 5px; align-items: center; }
   .avance-paso { height: 5px; border-radius: 5px; background: var(--linea); transition: background 400ms var(--ease), transform 400ms var(--ease); transform-origin: left; }
   .avance-paso.hecho { background: var(--acento); }
   .avance-paso.actual { background: var(--texto-3); }
